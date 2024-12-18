@@ -17,11 +17,11 @@ MYSQL_JAR = /home/braian/Documentos/Workspace/Libraries/mysql-connector-j_9.0.0-
 
 
 # Alvo padrão
-all: compile copy_fxml
+all: compile copy_fxml copy_images
 
 # Compila o programa
 compile:
-	# Compilando o programa...
+	@echo "\nCompilando..."
 	$(JAVAC) $(JAVAFX_FLAGS) -cp $(SRC_DIR):$(MYSQL_JAR) -d $(BIN_DIR) \
 		$(SRC_DIR)/application/*.java \
 		$(SRC_DIR)/gui/*.java \
@@ -31,20 +31,24 @@ compile:
 
 # Copia o arquivo FXML para o diretório bin/gui
 copy_fxml:
-	# Verifica se o diretório bin/gui existe e cria se necessário
+	@echo "\nCopiando os FXML's para a pasta bin/gui/..."
 	mkdir -p $(BIN_DIR)/gui
 	cp $(SRC_DIR)/gui/MenuView.fxml $(BIN_DIR)/gui/
+	
+copy_images:
+	@echo "\nCopiando as imagens para a pasta bin/gui/images..."
+	mkdir -p $(BIN_DIR)/gui/images
+	cp $(SRC_DIR)/gui/images/* $(BIN_DIR)/gui/images/
 
 # Executa o programa
-run: compile copy_fxml
-	clear
-	# Rodando o programa...
+run:
+	@echo "\nExecutando o programa..."
 	$(JAVA) $(JAVAFX_FLAGS) -cp $(BIN_DIR):$(MYSQL_JAR) $(MAIN_CLASS)
 
 # Limpa os arquivos compilados
 clean:
-	find $(BIN_DIR) -name "*.class" -delete
-	rm -rf $(BIN_DIR)/gui/MenuView.fxml
+	@echo "\nApagando a pasta bin/..."
+	rm -rf $(BIN_DIR)/
 
 # Recompila e executa o programa
-recompile: clean compile run
+recompile: clean compile copy_fxml copy_images run
