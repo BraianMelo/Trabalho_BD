@@ -27,13 +27,19 @@ compile:
 		$(SRC_DIR)/gui/*.java \
 		$(SRC_DIR)/model/*.java \
 		$(SRC_DIR)/model/enums/*.java \
-		$(SRC_DIR)/model/dao/*.java
+		$(SRC_DIR)/model/dao/*.java \
+		$(SRC_DIR)/util/*.java
 
 # Copia o arquivo FXML para o diretório bin/gui
 copy_fxml:
 	@echo "\nCopiando os FXML's para a pasta bin/gui/..."
 	mkdir -p $(BIN_DIR)/gui
 	cp $(SRC_DIR)/gui/MenuView.fxml $(BIN_DIR)/gui/
+	cp $(SRC_DIR)/gui/CryptidView.fxml $(BIN_DIR)/gui/
+	
+	mkdir -p $(BIN_DIR)/gui/styles
+	cp $(SRC_DIR)/gui/styles/CrytidView.css $(BIN_DIR)/gui/styles/
+	cp $(SRC_DIR)/gui/styles/MenuView.css $(BIN_DIR)/gui/styles/
 	
 copy_images:
 	@echo "\nCopiando as imagens para a pasta bin/gui/images..."
@@ -41,7 +47,7 @@ copy_images:
 	cp $(SRC_DIR)/gui/images/* $(BIN_DIR)/gui/images/
 
 # Executa o programa
-run:
+execute:
 	@echo "\nExecutando o programa..."
 	$(JAVA) $(JAVAFX_FLAGS) -cp $(BIN_DIR):$(MYSQL_JAR) $(MAIN_CLASS)
 
@@ -51,4 +57,4 @@ clean:
 	rm -rf $(BIN_DIR)/
 
 # Recompila e executa o programa
-recompile: clean compile copy_fxml copy_images run
+recompile: clean compile copy_fxml copy_images execute

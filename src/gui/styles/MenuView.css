@@ -1,0 +1,74 @@
+.scroll-pane {
+   -fx-background: #1E1E1E;
+   -fx-background-color: #1E1E1E;
+}
+
+.scroll-bar {
+    -fx-background-color: #121212; /* Cor de fundo da barra de rolagem */
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #E0E0E0; /* Cor do botão de rolagem (thumb) */
+}
+
+.scroll-pane > .corner {
+    -fx-background-color: #1E1E1E;
+}
+
+/* Estilo para a área de conteúdo do TabPane */
+.tab-pane {
+    -fx-background-color: #1E1E1E; /* Cor de fundo do TabPane */
+}
+
+/* Estilo para o Header (área onde as abas ficam) */
+.tab-header-background{
+    -fx-background-color: #121212; /* Cor de fundo personalizada para o header */
+}
+
+.tab {
+    -fx-background-color: #3A3A3A; /* Cor de fundo das abas não selecionadas */
+    -fx-text-base-color: #E0E0E0; /* Cor do texto das abas não selecionadas */
+    -fx-border-color: transparent;
+}
+
+
+.tab:selected {
+    -fx-background-color: #2C2C2C; /* Cor de fundo da aba selecionada */
+    -fx-text-base-color: #E0E0E0;        /* Cor do texto da aba selecionada */
+    -fx-border-color: transparent;
+    -fx-focus-color: transparent;
+     -fx-faint-focus-color: transparent;
+}
+
+.root {
+	-fx-background-color: #1E1E1E;
+}
+
+.label {
+	-fx-text-fill: #E0E0E0;
+}
+
+.text-id {
+	-fx-fill: #E0E0E0;
+	
+}
+
+.table-view {
+	-fx-background-color: #3A3A3A;
+	-fx-border-color: #000000;
+}
+
+.table-view .column-header {
+    -fx-background-color: #3A3A3A; /* Cor de fundo do cabeçalho */
+    -fx-border-color: #2C2C2C; /* Cor da borda */
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #E0E0E0; /* Cor do texto */
+    -fx-font-weight: bold; /* Texto em negrito */
+}
+
+.toggle-button:selected {
+    -fx-background-color: #388E3C; 
+    -fx-text-fill: white;
+}

@@ -10,8 +10,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import model.Criptideo;
-import model.dao.CriptideoDAO;
+
+import util.WindowsUtil;
 
 public class Main extends Application {
 
@@ -22,27 +22,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) {
-        try {
-            // Carregar a interface gráfica
-            Parent parent = FXMLLoader.load(getClass().getResource("/gui/MenuView.fxml"));
-            Scene scene = new Scene(parent);
-            stage.setScene(scene);
-
-            // Definir ícone da janela
-            Image icone = new Image(getClass().getResourceAsStream("/gui/images/Icon.png"));
-            stage.getIcons().add(icone);
-
-            stagePreferences(stage);
-
-            stage.show();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void stagePreferences(Stage stage) {
-        stage.setTitle("SGBD: Criptozoologia");
-        stage.setResizable(false);
+        WindowsUtil.abrirJanela("/gui/MenuView.fxml", "/gui/styles/MenuView.css", "SGBD: Criptozoologia", "/gui/images/Icon.png");
     }
 }

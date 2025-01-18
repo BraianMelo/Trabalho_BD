@@ -1,78 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MenuViewController">
+<AnchorPane fx:id="apMenuView" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MenuViewController">
    <children>
       <TabPane prefHeight="500.0" prefWidth="700.0" rotateGraphic="true" side="BOTTOM" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="30.0" tabMaxWidth="130.0" tabMinHeight="30.0" tabMinWidth="130.0">
         <tabs>
           <Tab text="Criptozoologia">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <AnchorPane fx:id="apCriptideos" minHeight="0.0" minWidth="0.0" prefHeight="470.0" prefWidth="700.0">
                      <children>
-                        <ScrollPane hbarPolicy="NEVER" prefHeight="464.0" prefWidth="700.0" vbarPolicy="ALWAYS">
+                        <ScrollPane fitToHeight="true" hbarPolicy="NEVER" prefHeight="460.0" prefWidth="700.0" vbarPolicy="ALWAYS">
                           <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="685.0">
+                            <AnchorPane fx:id="apCriptideos">
                                  <children>
-                                    <ImageView fitHeight="268.0" fitWidth="686.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@images/Kraken_cortado.jpeg" />
-                                       </image>
-                                    </ImageView>
-                                    <Separator layoutX="-7.0" layoutY="205.0" prefHeight="1.0" prefWidth="700.0" />
-                                    <Label alignment="CENTER" layoutY="203.0" prefHeight="40.0" prefWidth="685.0" text="Oque é Criptozoologia?" textOverrun="CLIP">
-                                       <font>
-                                          <Font name="DejaVu Sans Bold" size="20.0" />
-                                       </font>
-                                    </Label>
-                                    <Label alignment="CENTER" layoutY="294.0" prefHeight="40.0" prefWidth="685.0" text="Como ela surgiu?" textOverrun="CLIP">
-                                       <font>
-                                          <Font name="DejaVu Sans Bold" size="20.0" />
-                                       </font>
-                                    </Label>
-                                    <Text layoutX="14.0" layoutY="257.0" lineSpacing="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;A criptozoologia é o estudo de criptídeos, ou seja, animais que se acredita existirem, mas ainda não foram cientificamente comprovados. O termo deriva do grego &quot;kryptós&quot; (oculto) e &quot;zoologia&quot; (estudo dos animais)." textAlignment="JUSTIFY" wrappingWidth="661.0">
-                                       <font>
-                                          <Font name="DejaVu Sans" size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Text layoutX="14.0" layoutY="345.0" lineSpacing="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="A criptozoologia surgiu no século XX como idéia dos pesquisadores Bernard Heuvelmans e Ivan Sanderson. Eles propuseram uma abordagem científica para investigar relatos desses criptídeos, coletando e analisando evidências, como pegadas, registros visuais e relatos de testemunhas oculares. " textAlignment="JUSTIFY" wrappingWidth="661.0">
-                                       <font>
-                                          <Font name="DejaVu Sans" size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Label alignment="CENTER" layoutX="2.0" layoutY="399.0" prefHeight="40.0" prefWidth="685.0" text="A criptozooligia é uma Ciência?" textOverrun="CLIP">
-                                       <font>
-                                          <Font name="DejaVu Sans Bold" size="20.0" />
-                                       </font>
-                                    </Label>
-                                    <Text layoutX="13.0" layoutY="451.0" lineSpacing="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apesar de alguns relatos terem se mostrado verdadeiros, como o Kraken, que possivelmente era uma versão exagerada da lula-gigante, a criptozoologia é considerada uma pseudociência, pois não atende aos critérios e métodos rigorosos exigidos pela ciência." textAlignment="JUSTIFY" wrappingWidth="660.0">
-                                       <font>
-                                          <Font name="DejaVu Sans" size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Label alignment="CENTER" layoutY="488.0" prefHeight="40.0" prefWidth="685.0" text="Porque esse assunto?" textOverrun="CLIP">
-                                       <font>
-                                          <Font name="DejaVu Sans Bold" size="20.0" />
-                                       </font>
-                                    </Label>
-                                    <Text layoutX="15.0" layoutY="540.0" lineSpacing="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="A criptozoologia nos convida a explorar mitos e lendas de criaturas misteriosas. Apesar de a maioria esmagadora dessas histórias permanecer no campo do folclore, é interessante e curioso conhecer alguns dos relatos mais famosos dessa área." textAlignment="JUSTIFY" wrappingWidth="660.0">
-                                       <font>
-                                          <Font name="DejaVu Sans" size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <Separator layoutX="-5.0" layoutY="6.0" prefHeight="1.0" prefWidth="700.0" />
+                                    <VBox alignment="CENTER" layoutY="-3.0" maxWidth="685.0" minWidth="685.0" prefHeight="700.0" prefWidth="685.0" spacing="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <ImageView fx:id="imgKraken" fitHeight="190.0" fitWidth="700.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@images/Kraken_cortado.jpeg" />
+                                             </image>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </ImageView>
+                                          <Label alignment="CENTER" prefHeight="40.0" prefWidth="685.0" text="Oque é Criptozoologia?" textOverrun="CLIP">
+                                             <font>
+                                                <Font name="DejaVu Sans Bold" size="20.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <Text lineSpacing="2.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-id" text="&quot;A criptozoologia é o estudo de criptídeos, ou seja, animais que se acredita existirem, mas ainda não foram cientificamente comprovados. O termo deriva do grego &quot;kryptós&quot; (oculto) e &quot;zoologia&quot; (estudo dos animais)." textAlignment="JUSTIFY" wrappingWidth="661.0">
+                                             <font>
+                                                <Font name="DejaVu Sans" size="16.0" />
+                                             </font>
+                                          </Text>
+                                          <Label alignment="CENTER" prefHeight="40.0" prefWidth="685.0" text="Como ela surgiu?" textOverrun="CLIP">
+                                             <font>
+                                                <Font name="DejaVu Sans Bold" size="20.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <Text lineSpacing="2.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-id" text="A criptozoologia surgiu no século XX como idéia dos pesquisadores Bernard Heuvelmans e Ivan Sanderson. Eles propuseram uma abordagem científica para investigar relatos desses criptídeos, coletando e analisando evidências, como pegadas, registros visuais e relatos de testemunhas oculares. " textAlignment="JUSTIFY" wrappingWidth="661.0">
+                                             <font>
+                                                <Font name="DejaVu Sans" size="16.0" />
+                                             </font>
+                                          </Text>
+                                          <Label alignment="CENTER" prefHeight="40.0" prefWidth="685.0" text="A criptozooligia é uma Ciência?" textOverrun="CLIP">
+                                             <font>
+                                                <Font name="DejaVu Sans Bold" size="20.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <Text lineSpacing="2.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-id" text="Apesar de alguns relatos terem se mostrado verdadeiros, como o Kraken, que possivelmente era uma versão exagerada da lula-gigante, a criptozoologia é considerada uma pseudociência, pois não atende aos critérios e métodos rigorosos exigidos pela ciência." textAlignment="JUSTIFY" wrappingWidth="660.0">
+                                             <font>
+                                                <Font name="DejaVu Sans" size="16.0" />
+                                             </font>
+                                          </Text>
+                                          <Label alignment="CENTER" prefHeight="40.0" prefWidth="685.0" text="Porque esse assunto?" textOverrun="CLIP">
+                                             <font>
+                                                <Font name="DejaVu Sans Bold" size="20.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <Text lineSpacing="2.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-id" text="A criptozoologia nos convida a explorar mitos e lendas de criaturas misteriosas. Apesar de a maioria esmagadora dessas histórias permanecer no campo do folclore, é interessante e curioso conhecer alguns dos relatos mais famosos dessa área." textAlignment="JUSTIFY" wrappingWidth="660.0">
+                                             <font>
+                                                <Font name="DejaVu Sans" size="16.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </Text>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                                       </padding>
+                                    </VBox>
                                  </children>
                               </AnchorPane>
                           </content>
@@ -89,11 +116,11 @@
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="460.0" prefWidth="685.0">
                                  <children>
-                                    <TableView fx:id="tbvCriptideos" layoutX="7.0" layoutY="66.0" maxHeight="340.0" maxWidth="672.0" minHeight="340.0" minWidth="672.0" prefHeight="340.0" prefWidth="672.0">
+                                    <TableView fx:id="tbvCriptideos" layoutX="7.0" layoutY="66.0" maxHeight="340.0" maxWidth="672.0" minHeight="340.0" minWidth="672.0" onMouseClicked="#onTbvCriptideosMouseClick" prefHeight="340.0" prefWidth="672.0">
                                       <columns>
                                           <TableColumn fx:id="tbcIdCriptideo" editable="false" prefWidth="30.0" text="ID" />
                                         <TableColumn fx:id="tbcNomeCriptideo" editable="false" minWidth="30.0" prefWidth="150.0" text="Nome" />
-                                        <TableColumn fx:id="tbcDescricaoCriptideo" editable="false" minWidth="30.0" prefWidth="280.0" sortable="false" text="Descrição" />
+                                        <TableColumn fx:id="tbcDescricaoCriptideo" editable="false" minWidth="30.0" prefWidth="270.0" sortable="false" text="Descrição" />
                                           <TableColumn fx:id="tbcTipoCriptideo" editable="false" minWidth="30.0" prefWidth="110.0" text="Tipo" />
                                           <TableColumn fx:id="tbcTipoStatus" editable="false" minWidth="30.0" prefWidth="110.0" text="Status" />
                                       </columns>
@@ -112,7 +139,7 @@
           </Tab>
             <Tab text="Desenvolvedores">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <AnchorPane fx:id="ultimoPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <Label layoutX="162.0" layoutY="170.0" text="Integrantes do Trabalho">
                            <font>
@@ -170,6 +197,56 @@
                      </children>
                   </AnchorPane>
                </content>
+            </Tab>
+            <Tab text="Opções">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <VBox alignment="TOP_CENTER" prefHeight="465.0" prefWidth="700.0" spacing="10.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Label text="Modo Dark:">
+                                 <font>
+                                    <Font name="DejaVu Sans Bold" size="30.0" />
+                                 </font>
+                              </Label>
+                              <Text lineSpacing="2.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-id" text="O modo dark oferece conforto visual e uma aparência moderna, ideal para ambientes com pouca luz. A paleta combina tons escuros e neutros com destaques sutis para garantir contraste e legibilidade: " textAlignment="JUSTIFY" wrappingWidth="661.0">
+                                 <font>
+                                    <Font name="DejaVu Sans" size="16.0" />
+                                 </font>
+                              </Text>
+                              <ToggleButton fx:id="tbtnDarkMode" mnemonicParsing="false" onAction="#onTbtnDarkModeAction" prefWidth="200.0" selected="true" text="Habilitado">
+                                 <padding>
+                                    <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                                 </padding>
+                                 <font>
+                                    <Font name="DejaVu Sans" size="20.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" />
+                                 </VBox.margin>
+                              </ToggleButton>
+                              <Separator prefWidth="200.0">
+                                 <padding>
+                                    <Insets left="10.0" right="10.0" />
+                                 </padding>
+                              </Separator>
+                              <Label text="Tamanho dos Textos:">
+                                 <font>
+                                    <Font name="DejaVu Sans Bold" size="30.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Slider fx:id="sldTamanhoFont" blockIncrement="2.0" majorTickUnit="2.0" max="20.0" maxWidth="300.0" min="12.0" minWidth="300.0" minorTickCount="0" onMouseReleased="#onSldTamanhoFontMouseRelease" prefWidth="300.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="16.0" VBox.vgrow="ALWAYS" />
+                           </children>
+                           <padding>
+                              <Insets left="20.0" right="20.0" top="30.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+              </content>
             </Tab>
         </tabs>
       </TabPane>
