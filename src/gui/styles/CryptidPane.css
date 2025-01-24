@@ -1,0 +1,37 @@
+/* Estilo base para botões */
+.button {
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 4, 0, 2, 2);
+    -fx-text-fill: white;
+    -fx-border-width: 1px;
+}
+
+/* Botão Apagar - Vermelho */
+.btn-apagar {
+    -fx-background-color: #e63946;
+    -fx-border-color: #d62828;
+}
+.btn-apagar:hover {
+    -fx-background-color: #d62828;
+    -fx-border-color: #a62020;
+}
+.btn-apagar:pressed {
+    -fx-background-color: #a62020;
+    -fx-border-color: #800f0f;
+}
+
+/* Botão Editar - Verde */
+.btn-editar {
+    -fx-background-color: #2a9d8f;
+    -fx-border-color: #21867a;
+}
+.btn-editar:hover {
+    -fx-background-color: #21867a;
+    -fx-border-color: #1b6f63;
+}
+.btn-editar:pressed {
+    -fx-background-color: #1b6f63;
+    -fx-border-color: #14544d;
+}

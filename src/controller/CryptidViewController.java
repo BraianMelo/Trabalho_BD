@@ -1,9 +1,11 @@
-package gui;
+package controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 import model.Criptideo;
+
+import util.WindowsUtil;
 
 public class CryptidViewController {
 
@@ -28,11 +30,13 @@ public class CryptidViewController {
 
     @FXML
     public void initialize() {
+		WindowsUtil windowsUtil = new WindowsUtil();
+		
         // Certifique-se de que o objeto Criptideo não seja nulo antes de usá-lo
         if (criptideo != null) {
             lblNome.setText(criptideo.getNome());
-            lblStatus.setText(criptideo.getStatusCr().toString());
-            lblTipo.setText(criptideo.getTipo().toString());
+            lblStatus.setText(windowsUtil.formatarEnum(criptideo.getStatusCr().toString()));
+            lblTipo.setText(windowsUtil.formatarEnum(criptideo.getTipo().toString()));
             txtDescricao.setText(criptideo.getDescricao());
         } else {
             System.err.println("Objeto Criptideo não foi inicializado!");

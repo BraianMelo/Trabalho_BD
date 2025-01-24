@@ -24,10 +24,10 @@ compile:
 	@echo "\nCompilando..."
 	$(JAVAC) $(JAVAFX_FLAGS) -cp $(SRC_DIR):$(MYSQL_JAR) -d $(BIN_DIR) \
 		$(SRC_DIR)/application/*.java \
-		$(SRC_DIR)/gui/*.java \
-		$(SRC_DIR)/model/*.java \
 		$(SRC_DIR)/model/enums/*.java \
+		$(SRC_DIR)/model/*.java \
 		$(SRC_DIR)/model/dao/*.java \
+		$(SRC_DIR)/controller/*.java \
 		$(SRC_DIR)/util/*.java
 
 # Copia o arquivo FXML para o diretório bin/gui
@@ -36,10 +36,12 @@ copy_fxml:
 	mkdir -p $(BIN_DIR)/gui
 	cp $(SRC_DIR)/gui/MenuView.fxml $(BIN_DIR)/gui/
 	cp $(SRC_DIR)/gui/CryptidView.fxml $(BIN_DIR)/gui/
+	cp $(SRC_DIR)/gui/CryptidPane.fxml $(BIN_DIR)/gui/
 	
 	mkdir -p $(BIN_DIR)/gui/styles
 	cp $(SRC_DIR)/gui/styles/CrytidView.css $(BIN_DIR)/gui/styles/
 	cp $(SRC_DIR)/gui/styles/MenuView.css $(BIN_DIR)/gui/styles/
+	cp $(SRC_DIR)/gui/styles/CryptidPane.css $(BIN_DIR)/gui/styles/
 	
 copy_images:
 	@echo "\nCopiando as imagens para a pasta bin/gui/images..."

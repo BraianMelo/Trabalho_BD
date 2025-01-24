@@ -8,8 +8,6 @@
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -18,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="apMenuView" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MenuViewController">
+<AnchorPane fx:id="apMenuView" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MenuViewController">
    <children>
       <TabPane prefHeight="500.0" prefWidth="700.0" rotateGraphic="true" side="BOTTOM" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="30.0" tabMaxWidth="130.0" tabMinHeight="30.0" tabMinWidth="130.0">
         <tabs>
@@ -112,24 +110,16 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ScrollPane hbarPolicy="NEVER" prefHeight="468.0" prefWidth="700.0">
+                        <ScrollPane fitToHeight="true" hbarPolicy="NEVER" prefHeight="460.0" prefWidth="700.0">
                           <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="460.0" prefWidth="685.0">
+                            <AnchorPane>
                                  <children>
-                                    <TableView fx:id="tbvCriptideos" layoutX="7.0" layoutY="66.0" maxHeight="340.0" maxWidth="672.0" minHeight="340.0" minWidth="672.0" onMouseClicked="#onTbvCriptideosMouseClick" prefHeight="340.0" prefWidth="672.0">
-                                      <columns>
-                                          <TableColumn fx:id="tbcIdCriptideo" editable="false" prefWidth="30.0" text="ID" />
-                                        <TableColumn fx:id="tbcNomeCriptideo" editable="false" minWidth="30.0" prefWidth="150.0" text="Nome" />
-                                        <TableColumn fx:id="tbcDescricaoCriptideo" editable="false" minWidth="30.0" prefWidth="270.0" sortable="false" text="Descrição" />
-                                          <TableColumn fx:id="tbcTipoCriptideo" editable="false" minWidth="30.0" prefWidth="110.0" text="Tipo" />
-                                          <TableColumn fx:id="tbcTipoStatus" editable="false" minWidth="30.0" prefWidth="110.0" text="Status" />
-                                      </columns>
-                                    </TableView>
                                     <Label layoutX="250.0" layoutY="14.0" text="Criptídeos:">
                                        <font>
                                           <Font name="DejaVu Sans Bold" size="30.0" />
                                        </font>
                                     </Label>
+                                    <VBox fx:id="vboxGrid" alignment="CENTER" layoutX="-11.0" layoutY="69.0" prefHeight="387.0" prefWidth="700.0" AnchorPane.bottomAnchor="10.0" AnchorPane.topAnchor="70.0" />
                                  </children>
                               </AnchorPane>
                           </content>

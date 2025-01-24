@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 import model.Criptideo;
-import gui.CryptidViewController;
+import controller.CryptidViewController;
 
 public class WindowsUtil {
 
@@ -72,5 +72,11 @@ public class WindowsUtil {
             e.printStackTrace();
         }
     }
+    
+    public String formatarEnum(String enumStr){
+		String strFormatada = enumStr.toLowerCase();
+		strFormatada = strFormatada.substring(0, 1).toUpperCase() + strFormatada.substring(1);
+		return strFormatada;
+	}
 
 }

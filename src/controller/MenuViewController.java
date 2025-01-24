@@ -1,4 +1,4 @@
-package gui;
+package controller;
 
 import java.awt.Desktop;
 import java.io.IOException;
@@ -12,6 +12,8 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.layout.Pane;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Hyperlink;
@@ -19,10 +21,11 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.Slider;
-import javafx.scene.control.cell.PropertyValueFactory;
+
 import javafx.scene.input.MouseEvent;
 
-import gui.CryptidViewController;
+import controller.CryptydPaneController;
+import controller.CryptidViewController;
 import model.Criptideo;
 import model.dao.CriptideoDAO;
 import util.WindowsUtil;
@@ -35,6 +38,9 @@ public class MenuViewController {
 
 	@FXML
 	private AnchorPane apMenuView;
+	
+	@FXML
+	private VBox vboxGrid;
 
     @FXML
     private Hyperlink hpBraianGithub;
@@ -54,61 +60,38 @@ public class MenuViewController {
     @FXML
     private Slider sldTamanhoFont;
 
-    @FXML
-    private TableView<Criptideo> tbvCriptideos; // Define a TableView para Criptideo
-
-    @FXML
-    private TableColumn<Criptideo, Integer> tbcIdCriptideo; // Coluna para ID
-
-    @FXML
-    private TableColumn<Criptideo, String> tbcNomeCriptideo; // Coluna para Nome
-
-    @FXML
-    private TableColumn<Criptideo, String> tbcDescricaoCriptideo; // Coluna para Descrição
-
-    @FXML
-    private TableColumn<Criptideo, String> tbcTipoCriptideo; // Coluna para Tipo
-
-    @FXML
-    private TableColumn<Criptideo, String> tbcTipoStatus; // Coluna para Status
 
     @FXML
     public void initialize() {
-        // Inicializa as colunas com os valores da classe Criptideo
-        tbcIdCriptideo.setCellValueFactory(new PropertyValueFactory<>("idCriptideo"));
-        tbcNomeCriptideo.setCellValueFactory(new PropertyValueFactory<>("nome"));
-        tbcDescricaoCriptideo.setCellValueFactory(new PropertyValueFactory<>("descricao"));
-        tbcTipoCriptideo.setCellValueFactory(new PropertyValueFactory<>("tipo"));
-        tbcTipoStatus.setCellValueFactory(new PropertyValueFactory<>("statusCr"));
-
-        // Carrega os dados da lista de Criptídeos e exibe na TableView
+        // Carrega os dados da lista de Criptídeos e mostra no grid
         carregarCriptideos();
+        
     }
 
     private void carregarCriptideos() {
         // Cria o DAO e obtém a lista de Criptídeos
         CriptideoDAO criptideoDAO = new CriptideoDAO();
         List<Criptideo> listaCriptideos = criptideoDAO.listarTodos();
+        
+        try {
+			for (Criptideo criptideo : listaCriptideos) {
+				// Carrega o FXML do layout de cada Criptídeo
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/CryptidPane.fxml"));
+				Pane pane = loader.load();
 
-        // Adiciona a lista à TableView
-        tbvCriptideos.getItems().setAll(listaCriptideos);
-    }
-    
-    @FXML
-    private void onTbvCriptideosMouseClick(MouseEvent event){
-		if (event.getClickCount() == 2) {
-			Criptideo criptideoSelecionado = tbvCriptideos.getSelectionModel().getSelectedItem();
-			
-			if (criptideoSelecionado != null) {
-				String titulo = "Criptídeo: " + criptideoSelecionado.getNome();
-				String caminhoFXML = "/gui/CryptidView.fxml";
-				String iconePath = "/gui/images/Icon.png";
-				String caminhoCss = "/gui/styles/CrytidView.css";
-				
-				WindowsUtil.abrirJanelaComCriptideo(caminhoFXML, caminhoCss, titulo, iconePath, criptideoSelecionado);
+				// Obtém o controlador associado ao FXML
+				CryptydPaneController controller = loader.getController();
+
+				// Passa os dados do Criptídeo para o controlador
+				controller.setDados(criptideo);
+
+				// Adiciona o Pane ao VBox
+				vboxGrid.getChildren().add(pane);
 			}
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-	}
+    }
     
     public void abrirLink(String url) {
         try {

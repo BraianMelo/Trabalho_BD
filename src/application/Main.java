@@ -17,7 +17,7 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);  // Inicia a aplicação JavaFX primeiro
-        System.out.println("Terminou!");
+        System.out.println("Aplicação encerrada!");
     }
 
     @Override
