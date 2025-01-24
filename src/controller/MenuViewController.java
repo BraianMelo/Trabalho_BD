@@ -24,10 +24,10 @@ import javafx.scene.control.Slider;
 
 import javafx.scene.input.MouseEvent;
 
-import controller.CryptydPaneController;
+import controller.CryptidPaneController;
 import controller.CryptidViewController;
 import model.Criptideo;
-import model.dao.CriptideoDAO;
+import persistence.CriptideoDAO;
 import util.WindowsUtil;
 
 import java.util.List;
@@ -80,7 +80,7 @@ public class MenuViewController {
 				Pane pane = loader.load();
 
 				// Obtém o controlador associado ao FXML
-				CryptydPaneController controller = loader.getController();
+				CryptidPaneController controller = loader.getController();
 
 				// Passa os dados do Criptídeo para o controlador
 				controller.setDados(criptideo);

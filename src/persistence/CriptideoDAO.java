@@ -1,4 +1,4 @@
-package model.dao;
+package persistence;
 
 import model.Criptideo;
 import model.enums.Tipo;

@@ -14,6 +14,7 @@ Trabalho_BD/
 │   │   ├── images/    # Recursos gráficos (ícones e imagens)
 │   │   └── styles/    # Estilos para a interface gráfica
 │   ├── model/         # Classes relacionadas aos dados e regras de negócio
+
 │   │   └── enums/     # Enumerações utilizadas no projeto
 │   ├── persistence/   # Classes de acesso a dados
 │   └── util/          # Utilitários gerais do projeto

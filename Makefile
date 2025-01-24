@@ -17,7 +17,7 @@ MYSQL_JAR = /home/braian/Documentos/Workspace/Libraries/mysql-connector-j_9.0.0-
 
 
 # Alvo padrão
-all: compile copy_fxml copy_images
+all: compile copy_fxml copy_images copy_stylesheets
 
 # Compila o programa
 compile:
@@ -26,7 +26,7 @@ compile:
 		$(SRC_DIR)/application/*.java \
 		$(SRC_DIR)/model/enums/*.java \
 		$(SRC_DIR)/model/*.java \
-		$(SRC_DIR)/model/dao/*.java \
+		$(SRC_DIR)/persistence/*.java \
 		$(SRC_DIR)/controller/*.java \
 		$(SRC_DIR)/util/*.java
 
@@ -38,15 +38,17 @@ copy_fxml:
 	cp $(SRC_DIR)/gui/CryptidView.fxml $(BIN_DIR)/gui/
 	cp $(SRC_DIR)/gui/CryptidPane.fxml $(BIN_DIR)/gui/
 	
-	mkdir -p $(BIN_DIR)/gui/styles
-	cp $(SRC_DIR)/gui/styles/CrytidView.css $(BIN_DIR)/gui/styles/
-	cp $(SRC_DIR)/gui/styles/MenuView.css $(BIN_DIR)/gui/styles/
-	cp $(SRC_DIR)/gui/styles/CryptidPane.css $(BIN_DIR)/gui/styles/
-	
 copy_images:
 	@echo "\nCopiando as imagens para a pasta bin/gui/images..."
 	mkdir -p $(BIN_DIR)/gui/images
 	cp $(SRC_DIR)/gui/images/* $(BIN_DIR)/gui/images/
+	
+copy_stylesheets:
+	@echo "\nCopiando os stylesheets para a pasta bin/gui/styles/..."
+	mkdir -p $(BIN_DIR)/gui/styles
+	cp $(SRC_DIR)/gui/styles/CrytidView.css $(BIN_DIR)/gui/styles/
+	cp $(SRC_DIR)/gui/styles/MenuView.css $(BIN_DIR)/gui/styles/
+	cp $(SRC_DIR)/gui/styles/CryptidPane.css $(BIN_DIR)/gui/styles/
 
 # Executa o programa
 execute:
@@ -59,4 +61,4 @@ clean:
 	rm -rf $(BIN_DIR)/
 
 # Recompila e executa o programa
-recompile: clean compile copy_fxml copy_images execute
+recompile: clean compile copy_fxml copy_images copy_stylesheets execute

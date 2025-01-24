@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import model.Criptideo;
 
-public class CryptydPaneController {
+public class CryptidPaneController {
 
     @FXML
     private Label lblNome;
