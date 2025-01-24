@@ -12,7 +12,7 @@ MAIN_CLASS = application.Main
 JAVAFX_LIB = /home/braian/Documentos/Workspace/Libraries/openjfx-21.0.5_linux-x64_bin-sdk/javafx-sdk-21.0.5/lib
 JAVAFX_FLAGS = --module-path $(JAVAFX_LIB) --add-modules javafx.controls,javafx.fxml
 
-# Caminho do MySQL Connector/J
+# Caminho do MySQL Connector
 MYSQL_JAR = /home/braian/Documentos/Workspace/Libraries/mysql-connector-j_9.0.0-1ubuntu22.04_all/usr/share/java/mysql-connector-java-9.0.0.jar
 
 
@@ -29,6 +29,8 @@ compile:
 		$(SRC_DIR)/persistence/*.java \
 		$(SRC_DIR)/controller/*.java \
 		$(SRC_DIR)/util/*.java
+
+# TODO: 'gui/' virar 'view/'
 
 # Copia o arquivo FXML para o diretório bin/gui
 copy_fxml:

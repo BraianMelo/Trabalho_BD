@@ -155,6 +155,11 @@ public class MenuViewController {
 		apMenuView.lookupAll(".text-id").forEach(node -> {
 			node.setStyle("-fx-font-size: " + tamanhoFonte + "px;");
 		});
+		
+		
+		apMenuView.lookupAll(".lbl-titulo").forEach(node -> {
+			node.setStyle("-fx-font-size: " + (tamanhoFonte + 9) + "px; -fx-font-weight: bold;");
+		});
 	}
 
 }

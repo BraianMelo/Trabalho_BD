@@ -38,9 +38,9 @@
                                                 <Insets />
                                              </VBox.margin>
                                           </ImageView>
-                                          <Label alignment="CENTER" prefHeight="40.0" prefWidth="685.0" text="Oque é Criptozoologia?" textOverrun="CLIP">
+                                          <Label alignment="CENTER" prefHeight="40.0" prefWidth="685.0" styleClass="lbl-titulo" text="Oque é Criptozoologia?" textOverrun="CLIP">
                                              <font>
-                                                <Font name="DejaVu Sans Bold" size="20.0" />
+                                                <Font name="DejaVu Sans Bold" size="25.0" />
                                              </font>
                                              <VBox.margin>
                                                 <Insets top="10.0" />
@@ -51,9 +51,9 @@
                                                 <Font name="DejaVu Sans" size="16.0" />
                                              </font>
                                           </Text>
-                                          <Label alignment="CENTER" prefHeight="40.0" prefWidth="685.0" text="Como ela surgiu?" textOverrun="CLIP">
+                                          <Label alignment="CENTER" prefHeight="40.0" prefWidth="685.0" styleClass="lbl-titulo" text="Como ela surgiu?" textOverrun="CLIP">
                                              <font>
-                                                <Font name="DejaVu Sans Bold" size="20.0" />
+                                                <Font name="DejaVu Sans Bold" size="25.0" />
                                              </font>
                                              <VBox.margin>
                                                 <Insets top="10.0" />
@@ -64,9 +64,9 @@
                                                 <Font name="DejaVu Sans" size="16.0" />
                                              </font>
                                           </Text>
-                                          <Label alignment="CENTER" prefHeight="40.0" prefWidth="685.0" text="A criptozooligia é uma Ciência?" textOverrun="CLIP">
+                                          <Label alignment="CENTER" prefHeight="40.0" prefWidth="685.0" styleClass="lbl-titulo" text="A criptozooligia é uma Ciência?" textOverrun="CLIP">
                                              <font>
-                                                <Font name="DejaVu Sans Bold" size="20.0" />
+                                                <Font name="DejaVu Sans Bold" size="25.0" />
                                              </font>
                                              <VBox.margin>
                                                 <Insets top="10.0" />
@@ -77,9 +77,9 @@
                                                 <Font name="DejaVu Sans" size="16.0" />
                                              </font>
                                           </Text>
-                                          <Label alignment="CENTER" prefHeight="40.0" prefWidth="685.0" text="Porque esse assunto?" textOverrun="CLIP">
+                                          <Label alignment="CENTER" prefHeight="40.0" prefWidth="685.0" styleClass="lbl-titulo" text="Porque esse assunto?" textOverrun="CLIP">
                                              <font>
-                                                <Font name="DejaVu Sans Bold" size="20.0" />
+                                                <Font name="DejaVu Sans Bold" size="25.0" />
                                              </font>
                                              <VBox.margin>
                                                 <Insets top="10.0" />
@@ -114,12 +114,14 @@
                           <content>
                             <AnchorPane>
                                  <children>
-                                    <Label layoutX="250.0" layoutY="14.0" text="Criptídeos:">
-                                       <font>
-                                          <Font name="DejaVu Sans Bold" size="30.0" />
-                                       </font>
-                                    </Label>
-                                    <VBox fx:id="vboxGrid" alignment="CENTER" layoutX="-11.0" layoutY="69.0" prefHeight="387.0" prefWidth="700.0" AnchorPane.bottomAnchor="10.0" AnchorPane.topAnchor="70.0" />
+                                    <VBox fx:id="vboxGrid" alignment="TOP_CENTER" layoutX="-11.0" prefHeight="448.0" prefWidth="700.0" AnchorPane.bottomAnchor="20.0" AnchorPane.topAnchor="20.0">
+                                       <children>
+                                          <Label styleClass="lbl-titulo" text="Criptídeos:">
+                                             <font>
+                                                <Font name="DejaVu Sans Bold" size="25.0" />
+                                             </font>
+                                          </Label>
+                                       </children></VBox>
                                  </children>
                               </AnchorPane>
                           </content>
@@ -131,7 +133,7 @@
                <content>
                   <AnchorPane fx:id="ultimoPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Label layoutX="162.0" layoutY="170.0" text="Integrantes do Trabalho">
+                        <Label layoutX="159.0" layoutY="172.0" text="Integrantes do Trabalho">
                            <font>
                               <Font name="DejaVu Sans Bold" size="30.0" />
                            </font>
@@ -154,7 +156,7 @@
                               <Font name="DejaVu Sans Bold" size="20.0" />
                            </font>
                         </Hyperlink>
-                        <ImageView fitHeight="226.0" fitWidth="224.0" layoutX="256.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="226.0" fitWidth="224.0" layoutX="238.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@images/Icone_Monstro_Lago_Ness.png" />
                            </image>
@@ -194,9 +196,9 @@
                      <children>
                         <VBox alignment="TOP_CENTER" prefHeight="465.0" prefWidth="700.0" spacing="10.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <Label text="Modo Dark:">
+                              <Label styleClass="lbl-titulo" text="Modo Dark:">
                                  <font>
-                                    <Font name="DejaVu Sans Bold" size="30.0" />
+                                    <Font name="DejaVu Sans Bold" size="25.0" />
                                  </font>
                               </Label>
                               <Text lineSpacing="2.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-id" text="O modo dark oferece conforto visual e uma aparência moderna, ideal para ambientes com pouca luz. A paleta combina tons escuros e neutros com destaques sutis para garantir contraste e legibilidade: " textAlignment="JUSTIFY" wrappingWidth="661.0">
@@ -220,9 +222,9 @@
                                     <Insets left="10.0" right="10.0" />
                                  </padding>
                               </Separator>
-                              <Label text="Tamanho dos Textos:">
+                              <Label styleClass="lbl-titulo" text="Tamanho dos Textos:">
                                  <font>
-                                    <Font name="DejaVu Sans Bold" size="30.0" />
+                                    <Font name="DejaVu Sans Bold" size="25.0" />
                                  </font>
                                  <VBox.margin>
                                     <Insets top="10.0" />

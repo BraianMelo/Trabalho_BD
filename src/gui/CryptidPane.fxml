@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="650.0" stylesheets="@styles/CryptidPane.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CryptidPaneController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="650.0" stylesheets="@styles/CryptidPane.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CryptidPaneController">
    <children>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="650.0">
          <children>
@@ -18,21 +18,24 @@
                   <Insets left="40.0" right="40.0" />
                </VBox.margin>
             </Separator>
-            <Label fx:id="lblNome" alignment="CENTER" prefHeight="50.0" prefWidth="650.0" text="Nome">
+            <Label fx:id="lblNome" alignment="BOTTOM_CENTER" prefHeight="40.0" prefWidth="650.0" styleClass=".lbl-titulo" text="Nome">
                <font>
                   <Font name="DejaVu Sans Bold" size="20.0" />
                </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
             </Label>
             <HBox alignment="CENTER" prefHeight="40.0" prefWidth="600.0">
                <children>
                   <HBox alignment="CENTER" prefHeight="40.0" prefWidth="600.0" spacing="15.0">
                      <children>
-                        <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="200.0" text="Status:">
+                        <Label alignment="BOTTOM_RIGHT" prefHeight="40.0" prefWidth="200.0" text="Status:">
                            <font>
                               <Font name="DejaVu Sans Bold" size="16.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lblStatus" prefHeight="40.0" prefWidth="200.0" text="Desconhecido">
+                        <Label fx:id="lblStatus" alignment="BOTTOM_LEFT" prefHeight="40.0" prefWidth="200.0" styleClass="text-id" text="Desconhecido">
                            <font>
                               <Font name="DejaVu Sans" size="16.0" />
                            </font>
@@ -41,12 +44,12 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="40.0" prefWidth="600.0" spacing="15.0">
                      <children>
-                        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="40.0" prefWidth="200.0" text="Tipo:">
+                        <Label alignment="BOTTOM_RIGHT" contentDisplay="CENTER" prefHeight="40.0" prefWidth="200.0" text="Tipo:">
                            <font>
                               <Font name="DejaVu Sans Bold" size="16.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lblTipo" prefHeight="40.0" prefWidth="200.0" text="Voador">
+                        <Label fx:id="lblTipo" alignment="BOTTOM_LEFT" prefHeight="40.0" prefWidth="200.0" styleClass="text-id" text="Voador">
                            <font>
                               <Font name="DejaVu Sans" size="16.0" />
                            </font>
@@ -55,7 +58,7 @@
                   </HBox>
                </children>
             </HBox>
-            <Label fx:id="lblDescricao" alignment="CENTER" prefHeight="40.0" prefWidth="600.0" text="Descricao" textAlignment="CENTER" VBox.vgrow="SOMETIMES">
+            <Label fx:id="lblDescricao" alignment="BOTTOM_CENTER" prefHeight="40.0" prefWidth="600.0" styleClass="text-id" text="Descricao" textAlignment="CENTER" VBox.vgrow="SOMETIMES">
                <font>
                   <Font name="DejaVu Sans Oblique" size="16.0" />
                </font>
