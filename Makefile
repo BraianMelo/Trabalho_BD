@@ -32,25 +32,27 @@ compile:
 
 # TODO: 'gui/' virar 'view/'
 
-# Copia o arquivo FXML para o diretório bin/gui
+# Copia o arquivo FXML para o diretório bin/view
 copy_fxml:
-	@echo "\nCopiando os FXML's para a pasta bin/gui/..."
-	mkdir -p $(BIN_DIR)/gui
-	cp $(SRC_DIR)/gui/MenuView.fxml $(BIN_DIR)/gui/
-	cp $(SRC_DIR)/gui/CryptidView.fxml $(BIN_DIR)/gui/
-	cp $(SRC_DIR)/gui/CryptidPane.fxml $(BIN_DIR)/gui/
+	@echo "\nCopiando os FXML's para a pasta bin/view/..."
+	mkdir -p $(BIN_DIR)/view
+	cp $(SRC_DIR)/view/MenuView.fxml $(BIN_DIR)/view/
+	cp $(SRC_DIR)/view/CryptidView.fxml $(BIN_DIR)/view/
+	cp $(SRC_DIR)/view/CryptidPane.fxml $(BIN_DIR)/view/
 	
 copy_images:
-	@echo "\nCopiando as imagens para a pasta bin/gui/images..."
-	mkdir -p $(BIN_DIR)/gui/images
-	cp $(SRC_DIR)/gui/images/* $(BIN_DIR)/gui/images/
+	@echo "\nCopiando as imagens para a pasta bin/view/images..."
+	mkdir -p $(BIN_DIR)/view/images
+	cp $(SRC_DIR)/view/images/* $(BIN_DIR)/view/images/
 	
 copy_stylesheets:
-	@echo "\nCopiando os stylesheets para a pasta bin/gui/styles/..."
-	mkdir -p $(BIN_DIR)/gui/styles
-	cp $(SRC_DIR)/gui/styles/CrytidView.css $(BIN_DIR)/gui/styles/
-	cp $(SRC_DIR)/gui/styles/MenuView.css $(BIN_DIR)/gui/styles/
-	cp $(SRC_DIR)/gui/styles/CryptidPane.css $(BIN_DIR)/gui/styles/
+	@echo "\nCopiando os stylesheets para a pasta bin/view/styles/..."
+	mkdir -p $(BIN_DIR)/view/styles
+	cp $(SRC_DIR)/view/styles/CrytidView.css $(BIN_DIR)/view/styles/
+	cp $(SRC_DIR)/view/styles/MenuView.css $(BIN_DIR)/view/styles/
+	
+	mkdir -p $(BIN_DIR)/view/styles
+	cp $(SRC_DIR)/view/styles/CryptidPane.css $(BIN_DIR)/view/styles/
 
 # Executa o programa
 execute:

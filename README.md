@@ -11,7 +11,7 @@ Trabalho_BD/
 ├── src/               # Código-fonte do projeto
 │   ├── application/   # Ponto de entrada da aplicação
 │   ├── controller/    # Controladores responsáveis pela lógica da interface
-│   ├── gui/           # Arquivos relacionados à interface gráfica
+│   ├── view/          # Arquivos relacionados à interface gráfica
 │   │   ├── images/    # Recursos gráficos (ícones e imagens)
 │   │   └── styles/    # Estilos para a interface gráfica
 │   ├── model/         # Classes relacionadas aos dados e regras de negócio

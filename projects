@@ -28,7 +28,11 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=-1
+current_page=2
+FILE_NAME_0=0;XML;0;EUTF-8;1;1;0;%2Fhome%2Fbraian%2FDocumentos%2FWorkspace%2FJava%2FGedit%2FTrabalho_BD%2Fsrc%2Fview%2FCryptidPane.fxml;0;4
+FILE_NAME_1=1964;Java;0;EUTF-8;1;1;0;%2Fhome%2Fbraian%2FDocumentos%2FWorkspace%2FJava%2FGedit%2FTrabalho_BD%2Fsrc%2Fcontroller%2FMenuViewController.java;0;4
+FILE_NAME_2=639;Java;0;EUTF-8;1;1;0;%2Fhome%2Fbraian%2FDocumentos%2FWorkspace%2FJava%2FGedit%2FTrabalho_BD%2Fsrc%2Fapplication%2FMain.java;0;4
+FILE_NAME_3=1511;XML;0;EUTF-8;1;1;0;%2Fhome%2Fbraian%2FDocumentos%2FWorkspace%2FJava%2FGedit%2FTrabalho_BD%2Fbin%2Fgui%2FMenuView.fxml;0;4
 
 [VTE]
 last_dir=/home/braian/Documentos/Workspace/Java/Gedit/Trabalho_BD

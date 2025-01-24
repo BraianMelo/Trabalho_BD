@@ -76,7 +76,7 @@ public class MenuViewController {
         try {
 			for (Criptideo criptideo : listaCriptideos) {
 				// Carrega o FXML do layout de cada Criptídeo
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/CryptidPane.fxml"));
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/CryptidPane.fxml"));
 				Pane pane = loader.load();
 
 				// Obtém o controlador associado ao FXML

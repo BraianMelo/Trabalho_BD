@@ -23,6 +23,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) {
-        WindowsUtil.abrirJanela("/gui/MenuView.fxml", "/gui/styles/MenuView.css", "SGBD: Criptozoologia", "/gui/images/Icon.png");
+        WindowsUtil.abrirJanela("/view/MenuView.fxml", "/view/styles/MenuView.css", "SGBD: Criptozoologia", "/view/images/Icon.png");
     }
 }
