@@ -7,16 +7,18 @@ public class Criptideo {
     private int idCriptideo;
     private String nome;
     private String descricao;
-    private Tipo tipo; // Enum para "Terrestre", "Aquatico", "Voador"
-    private StatusCriptideo statusCr; // Enum para "Avistado" e "Confirmado"
+    private Tipo tipo; 
+    private StatusCriptideo statusCr; 
+    private String imagemCaminho; 
 
     // Construtor
-    public Criptideo(int idCriptideo, String nome, String descricao, Tipo tipo, StatusCriptideo statusCr) {
+    public Criptideo(int idCriptideo, String nome, String descricao, Tipo tipo, StatusCriptideo statusCr, String imagemCaminho) {
         this.idCriptideo = idCriptideo;
         this.nome = nome;
         this.descricao = descricao;
         this.tipo = tipo;
         this.statusCr = statusCr;
+        this.imagemCaminho = imagemCaminho;
     }
 
     // Getters e Setters
@@ -60,6 +62,14 @@ public class Criptideo {
         this.statusCr = statusCr;
     }
 
+    public String getImagemCaminho() {
+        return imagemCaminho;
+    }
+
+    public void setImagemCaminho(String imagemCaminho) {
+        this.imagemCaminho = imagemCaminho;
+    }
+
     // Método para exibir informações
     public void exibirInformacoes() {
         System.out.println("ID: " + idCriptideo);
@@ -67,11 +77,13 @@ public class Criptideo {
         System.out.println("Descrição: " + descricao);
         System.out.println("Tipo: " + tipo);
         System.out.println("Status: " + statusCr);
+        System.out.println("Imagem: " + imagemCaminho); 
     }
 
     // toString
     @Override
     public String toString() {
-        return idCriptideo + " - " + nome + " : " + descricao +" | " + tipo+ " | " + statusCr;
+        return String.format("%d - %s: %s | Tipo: %s | Status: %s | Imagem: %s", 
+                             idCriptideo, nome, descricao, tipo, statusCr, imagemCaminho);
     }
 }

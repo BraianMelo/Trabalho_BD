@@ -44,13 +44,16 @@
 	-fx-background-color: #1E1E1E;
 }
 
-.label {
+.lbl-titulo {
 	-fx-text-fill: #E0E0E0;
 }
 
 .text-id {
 	-fx-fill: #E0E0E0;
-	
+}
+
+.lbl-link-id {
+	-fx-text-fill: #E0E0E0;
 }
 
 .table-view {
@@ -71,4 +74,7 @@
 .toggle-button:selected {
     -fx-background-color: #388E3C; 
     -fx-text-fill: white;
+    -fx-border-radius: 15; /* Bordas arredondadas */
+    -fx-background-radius: 15; /* Bordas arredondadas no fundo */
+    -fx-border-width: 2px;
 }

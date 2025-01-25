@@ -12,7 +12,7 @@ public class CriptideoDAO {
 
     // Inserir um novo criptídeo no banco de dados
     public void inserir(Criptideo criptideo) {
-        String sql = "INSERT INTO Criptideo (Nome, Descricao, Tipo, Status_cr) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO Criptideo (Nome, Descricao, Tipo, Status_cr, ImagemCaminho) VALUES (?, ?, ?, ?, ?)";
 
         try (Connection conn = ConexaoBD.getConexao();
              PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
@@ -21,6 +21,7 @@ public class CriptideoDAO {
             stmt.setString(2, criptideo.getDescricao());
             stmt.setString(3, criptideo.getTipo().name());
             stmt.setString(4, criptideo.getStatusCr().name());
+            stmt.setString(5, criptideo.getImagemCaminho());
 
             int affectedRows = stmt.executeUpdate();
             if (affectedRows > 0) {
@@ -37,7 +38,7 @@ public class CriptideoDAO {
 
     // Atualizar um criptídeo existente no banco de dados
     public void atualizar(Criptideo criptideo) {
-        String sql = "UPDATE Criptideo SET Nome = ?, Descricao = ?, Tipo = ?, Status_cr = ? WHERE ID_Criptideo = ?";
+        String sql = "UPDATE Criptideo SET Nome = ?, Descricao = ?, Tipo = ?, Status_cr = ?, ImagemCaminho = ? WHERE ID_Criptideo = ?";
 
         try (Connection conn = ConexaoBD.getConexao();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -46,7 +47,8 @@ public class CriptideoDAO {
             stmt.setString(2, criptideo.getDescricao());
             stmt.setString(3, criptideo.getTipo().name());
             stmt.setString(4, criptideo.getStatusCr().name());
-            stmt.setInt(5, criptideo.getIdCriptideo());
+            stmt.setString(5, criptideo.getImagemCaminho()); // Atualizando o caminho da imagem
+            stmt.setInt(6, criptideo.getIdCriptideo());
 
             stmt.executeUpdate();
         } catch (SQLException e) {
@@ -85,7 +87,8 @@ public class CriptideoDAO {
                         rs.getString("Nome"),
                         rs.getString("Descricao"),
                         Tipo.valueOf(rs.getString("Tipo")),
-                        StatusCriptideo.valueOf(rs.getString("Status_cr"))
+                        StatusCriptideo.valueOf(rs.getString("Status_cr")),
+                        rs.getString("ImagemCaminho") // Recuperando o caminho da imagem
                 );
             }
         } catch (SQLException e) {
@@ -111,7 +114,8 @@ public class CriptideoDAO {
                         rs.getString("Nome"),
                         rs.getString("Descricao"),
                         Tipo.valueOf(rs.getString("Tipo")),
-                        StatusCriptideo.valueOf(rs.getString("Status_cr"))
+                        StatusCriptideo.valueOf(rs.getString("Status_cr")),
+                        rs.getString("Imagem_Caminho") // Recuperando o caminho da imagem
                 );
                 criptideos.add(criptideo);
             }

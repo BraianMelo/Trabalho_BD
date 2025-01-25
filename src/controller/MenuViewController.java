@@ -9,18 +9,23 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.Pane;
 
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.FXML;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.Slider;
+import javafx.scene.control.TabPane;
+import javafx.scene.control.Tab;
+import javafx.scene.control.ScrollPane;
 
 import javafx.scene.input.MouseEvent;
 
@@ -38,6 +43,9 @@ public class MenuViewController {
 
 	@FXML
 	private AnchorPane apMenuView;
+	
+	@FXML
+	private TabPane tabPane;
 	
 	@FXML
 	private VBox vboxGrid;
@@ -64,11 +72,11 @@ public class MenuViewController {
     @FXML
     public void initialize() {
         // Carrega os dados da lista de Criptídeos e mostra no grid
-        carregarCriptideos();
+        carregarGridCriptideos();
         
     }
 
-    private void carregarCriptideos() {
+    public void carregarGridCriptideos() {
         // Cria o DAO e obtém a lista de Criptídeos
         CriptideoDAO criptideoDAO = new CriptideoDAO();
         List<Criptideo> listaCriptideos = criptideoDAO.listarTodos();
@@ -83,7 +91,7 @@ public class MenuViewController {
 				CryptidPaneController controller = loader.getController();
 
 				// Passa os dados do Criptídeo para o controlador
-				controller.setDados(criptideo);
+				controller.setDados(criptideo, this);
 
 				// Adiciona o Pane ao VBox
 				vboxGrid.getChildren().add(pane);
@@ -92,6 +100,29 @@ public class MenuViewController {
 			e.printStackTrace();
 		}
     }
+    
+    public void adicionarAba(String titulo) {
+        try {
+            // Carrega o conteúdo do editar.fxml
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/EditCryptidPane.fxml"));
+            Node conteudo = loader.load();
+
+            // Cria uma nova aba
+            Tab novaAba = new Tab(titulo);
+
+            // Define o conteúdo da aba
+            novaAba.setContent(conteudo);
+
+            // Adiciona a aba ao TabPane
+            tabPane.getTabs().add(novaAba);
+
+            // Torna a nova aba ativa
+            tabPane.getSelectionModel().select(novaAba);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Erro ao carregar o arquivo editar.fxml");
+        }
+	}
     
     public void abrirLink(String url) {
         try {
@@ -135,11 +166,11 @@ public class MenuViewController {
 		if(modoDark) {
 			apMenuView.getScene().getStylesheets().clear();
 			tbtnDarkMode.setText("Desabilitado");
-			tbtnDarkMode.setStyle("-fx-background-color: #D32F2F; -fx-text-fill: #E0E0E0;");
+			tbtnDarkMode.setStyle("-fx-background-color: #D32F2F; -fx-text-fill: #E0E0E0; -fx-cursor: hand;");
 		} else {
-			apMenuView.getScene().getStylesheets().add(getClass().getResource("/gui/styles/MenuView.css").toExternalForm());
+			apMenuView.getScene().getStylesheets().add(getClass().getResource("/view/styles/MenuView.css").toExternalForm());
 			tbtnDarkMode.setText("Habilitado");
-			tbtnDarkMode.setStyle("-fx-background-color: #388E3C; -fx-text-fill: #ffffff;");
+			tbtnDarkMode.setStyle("-fx-background-color: #388E3C; -fx-text-fill: #ffffff; -fx-cursor: hand;");
 		}
 		
 		modoDark = !modoDark;

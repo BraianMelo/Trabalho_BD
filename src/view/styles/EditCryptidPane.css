@@ -1,0 +1,90 @@
+.button {
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 4, 0, 2, 2);
+    -fx-text-fill: white;
+    -fx-border-width: 1px;
+}
+
+/* Botão Salvar - Azul Claro */
+.btn-salvar {
+    -fx-background-color: #1d7a8c; /* Azul Claro */
+    -fx-border-color: #155e63; /* Azul mais escuro */
+}
+.btn-salvar:hover {
+    -fx-background-color: #155e63; /* Azul mais escuro */
+    -fx-border-color: #0f4b4e; /* Azul ainda mais escuro */
+}
+.btn-salvar:pressed {
+    -fx-background-color: #0f4b4e; /* Azul mais escuro */
+    -fx-border-color: #083535; /* Azul bem escuro */
+}
+
+/* Estilo base para TextFields */
+.text-field {
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-border-width: 2px;
+    -fx-border-color: #ccc; /* Cor de borda padrão */
+    -fx-padding: 5px;
+    -fx-text-fill: #333; /* Cor do texto */
+    -fx-font-size: 14px;
+    -fx-font-family: "Arial";
+}
+
+/* Efeito de foco para TextField */
+.text-field:focused {
+    -fx-border-color: #1d7a8c; /* Azul claro para indicar foco */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 4, 0, 0, 2); /* Efeito de sombra */
+}
+
+/* Efeito de hover para TextField */
+.text-field:hover {
+    -fx-border-color: #155e63; /* Azul mais escuro no hover */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 4, 0, 0, 2); /* Efeito de sombra leve */
+}
+
+/* Efeito de TextField desabilitado */
+.text-field:disabled {
+    -fx-border-color: #e0e0e0; /* Cor de borda para desabilitado */
+    -fx-background-color: #f5f5f5; /* Cor de fundo para desabilitado */
+    -fx-text-fill: #aaa; /* Cor do texto para desabilitado */
+}
+
+.menu-button {
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-border-width: 2px;
+}
+
+/* Efeito de hover para MenuButton */
+.menu-button:hover {
+    -fx-background-color: #f1f1f1; /* Cor de fundo ao passar o mouse */
+    -fx-border-color: #155e63; /* Azul mais escuro no hover */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 4, 0, 0, 2); /* Efeito de sombra leve */
+}
+
+/* Efeito de foco para MenuButton */
+.menu-button:focused {
+    -fx-border-color: #1d7a8c; /* Azul claro para indicar foco */
+    -fx-background-color: #e9f7f7; /* Cor de fundo clara ao focar */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 4, 0, 0, 2); /* Efeito de sombra mais forte */
+}
+
+/* Efeito de pressionado para MenuButton */
+.menu-button:pressed {
+    -fx-background-color: #d8f0f0; /* Cor de fundo ao pressionar */
+    -fx-border-color: #1b6f63; /* Azul mais escuro ao pressionar */
+}
+
+/* Estilo para o item do MenuButton */
+.menu-button .menu-item {
+    -fx-text-fill: #000000; /* Cor do texto dos itens do menu */
+}
+
+/* Efeito de hover para os itens do Menu */
+.menu-button .menu-item:hover {
+    -fx-background-color: #3196F0; 
+    -fx-text-fill: #E0E0E0; 
+}

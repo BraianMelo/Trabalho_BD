@@ -9,6 +9,7 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -18,9 +19,9 @@
 
 <AnchorPane fx:id="apMenuView" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MenuViewController">
    <children>
-      <TabPane prefHeight="500.0" prefWidth="700.0" rotateGraphic="true" side="BOTTOM" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="30.0" tabMaxWidth="130.0" tabMinHeight="30.0" tabMinWidth="130.0">
+      <TabPane fx:id="tabPane" prefHeight="500.0" prefWidth="700.0" rotateGraphic="true" side="BOTTOM" tabClosingPolicy="ALL_TABS" tabMaxHeight="30.0" tabMaxWidth="130.0" tabMinHeight="30.0" tabMinWidth="130.0">
         <tabs>
-          <Tab text="Criptozoologia">
+          <Tab closable="false" text="Criptozoologia">
             <content>
               <AnchorPane fx:id="apCriptideos" minHeight="0.0" minWidth="0.0" prefHeight="470.0" prefWidth="700.0">
                      <children>
@@ -32,7 +33,7 @@
                                        <children>
                                           <ImageView fx:id="imgKraken" fitHeight="190.0" fitWidth="700.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@images/Kraken_cortado.jpeg" />
+                                                <Image url="@images/Img_Kraken.jpeg" />
                                              </image>
                                              <VBox.margin>
                                                 <Insets />
@@ -106,7 +107,7 @@
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab text="Criptideos">
+          <Tab closable="false" text="Criptideos">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -129,11 +130,11 @@
                      </children></AnchorPane>
             </content>
           </Tab>
-            <Tab text="Desenvolvedores">
+            <Tab closable="false" text="Desenvolvedores">
                <content>
                   <AnchorPane fx:id="ultimoPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Label layoutX="159.0" layoutY="172.0" text="Integrantes do Trabalho">
+                        <Label layoutX="159.0" layoutY="172.0" styleClass="lbl-titulo" text="Integrantes do Trabalho">
                            <font>
                               <Font name="DejaVu Sans Bold" size="30.0" />
                            </font>
@@ -142,6 +143,13 @@
                            <font>
                               <Font name="DejaVu Sans Bold" size="20.0" />
                            </font>
+                           <tooltip>
+                              <Tooltip consumeAutoHidingEvents="false" contentDisplay="CENTER" height="40.0" text="https://github.com/BraianMelo" textAlignment="CENTER" width="100.0">
+                                 <font>
+                                    <Font name="DejaVu Sans Oblique" size="14.0" />
+                                 </font>
+                              </Tooltip>
+                           </tooltip>
                         </Hyperlink>
                         <Separator layoutX="140.0" layoutY="217.0" prefHeight="1.0" prefWidth="450.0" />
                         <Separator layoutX="139.0" layoutY="264.0" prefHeight="1.0" prefWidth="450.0" />
@@ -150,11 +158,25 @@
                            <font>
                               <Font name="DejaVu Sans Bold" size="20.0" />
                            </font>
+                           <tooltip>
+                              <Tooltip consumeAutoHidingEvents="false" contentDisplay="CENTER" text="https://github.com/GustavoH-C">
+                                 <font>
+                                    <Font name="DejaVu Sans Oblique" size="14.0" />
+                                 </font>
+                              </Tooltip>
+                           </tooltip>
                         </Hyperlink>
                         <Hyperlink fx:id="hpYuriGithub1" alignment="CENTER" contentDisplay="CENTER" layoutX="168.0" layoutY="315.0" onAction="#onHpYuriGithubAction" prefHeight="33.0" prefWidth="400.0" text="Yuri Sillas - (YuriDrumond)" underline="true">
                            <font>
                               <Font name="DejaVu Sans Bold" size="20.0" />
                            </font>
+                           <tooltip>
+                              <Tooltip consumeAutoHidingEvents="false" contentDisplay="CENTER" text="https://github.com/YuriDrumond">
+                                 <font>
+                                    <Font name="DejaVu Sans Oblique" size="14.0" />
+                                 </font>
+                              </Tooltip>
+                           </tooltip>
                         </Hyperlink>
                         <ImageView fitHeight="226.0" fitWidth="224.0" layoutX="238.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -176,7 +198,7 @@
                               <Image url="@images/Icone_Github.png" />
                            </image>
                         </ImageView>
-                        <Label layoutX="212.0" layoutY="428.0" text="O trabalho completo está disponível">
+                        <Label id="lbl-link-id" layoutX="212.0" layoutY="428.0" styleClass="lbl-link-id" text="O trabalho completo está disponível">
                            <font>
                               <Font name="DejaVu Sans" size="14.0" />
                            </font>
@@ -185,12 +207,19 @@
                            <font>
                               <Font name="DejaVu Sans Bold" size="14.0" />
                            </font>
+                           <tooltip>
+                              <Tooltip contentDisplay="CENTER" text="https://github.com/BraianMelo/Trabalho_BD">
+                                 <font>
+                                    <Font name="DejaVu Sans Oblique" size="14.0" />
+                                 </font>
+                              </Tooltip>
+                           </tooltip>
                         </Hyperlink>
                      </children>
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab text="Opções">
+            <Tab closable="false" text="Opções">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -206,7 +235,7 @@
                                     <Font name="DejaVu Sans" size="16.0" />
                                  </font>
                               </Text>
-                              <ToggleButton fx:id="tbtnDarkMode" mnemonicParsing="false" onAction="#onTbtnDarkModeAction" prefWidth="200.0" selected="true" text="Habilitado">
+                              <ToggleButton fx:id="tbtnDarkMode" mnemonicParsing="false" onAction="#onTbtnDarkModeAction" prefWidth="200.0" selected="true" style="-fx-cursor: hand;" text="Habilitado">
                                  <padding>
                                     <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                                  </padding>
