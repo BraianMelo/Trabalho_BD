@@ -28,13 +28,12 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=0
-FILE_NAME_0=442;None;0;EUTF-8;1;1;0;%2Fhome%2Fbraian%2FDocumentos%2FWorkspace%2FJava%2FGedit%2FTrabalho_BD%2Fprojects;0;4
-FILE_NAME_1=306;Java;0;EUTF-8;1;1;0;%2Fhome%2Fbraian%2FDocumentos%2FWorkspace%2FJava%2FGedit%2FTrabalho_BD%2Fsrc%2Fpersistence%2FCriptideoDAO.java;0;4
-FILE_NAME_2=1297;Java;0;EUTF-8;1;1;0;%2Fhome%2Fbraian%2FDocumentos%2FWorkspace%2FJava%2FGedit%2FTrabalho_BD%2Fsrc%2Fcontroller%2FEditCryptidPaneController.java;0;4
-FILE_NAME_3=1871;CSS;0;EUTF-8;1;1;0;%2Fhome%2Fbraian%2FDocumentos%2FWorkspace%2FJava%2FGedit%2FTrabalho_BD%2Fsrc%2Fview%2Fstyles%2FMenuView.css;0;4
-FILE_NAME_4=2551;CSS;0;EUTF-8;1;1;0;%2Fhome%2Fbraian%2FDocumentos%2FWorkspace%2FJava%2FGedit%2FTrabalho_BD%2Fsrc%2Fview%2Fstyles%2FEditCryptidPane.css;0;4
-FILE_NAME_5=0;CSS;0;EUTF-8;1;1;0;%2Fhome%2Fbraian%2FDocumentos%2FWorkspace%2FJava%2FGedit%2FTrabalho_BD%2Fsrc%2Fview%2Fstyles%2FCrytidView.css;0;4
+current_page=4
+FILE_NAME_0=1133;None;0;EUTF-8;1;1;0;%2Fhome%2Fbraian%2FDocumentos%2FWorkspace%2FJava%2FGedit%2FTrabalho_BD%2Fprojects;0;4
+FILE_NAME_1=1871;CSS;0;EUTF-8;1;1;0;%2Fhome%2Fbraian%2FDocumentos%2FWorkspace%2FJava%2FGedit%2FTrabalho_BD%2Fsrc%2Fview%2Fstyles%2FMenuView.css;0;4
+FILE_NAME_2=2551;CSS;0;EUTF-8;1;1;0;%2Fhome%2Fbraian%2FDocumentos%2FWorkspace%2FJava%2FGedit%2FTrabalho_BD%2Fsrc%2Fview%2Fstyles%2FEditCryptidPane.css;0;4
+FILE_NAME_3=0;CSS;0;EUTF-8;1;1;0;%2Fhome%2Fbraian%2FDocumentos%2FWorkspace%2FJava%2FGedit%2FTrabalho_BD%2Fsrc%2Fview%2Fstyles%2FCrytidView.css;0;4
+FILE_NAME_4=299;Java;0;EUTF-8;1;1;0;%2Fhome%2Fbraian%2FDocumentos%2FWorkspace%2FJava%2FGedit%2FTrabalho_BD%2Fsrc%2Fapplication%2FMain.java;0;4
 
 [VTE]
 last_dir=/home/braian/Documentos/Workspace/Java/Gedit/Trabalho_BD

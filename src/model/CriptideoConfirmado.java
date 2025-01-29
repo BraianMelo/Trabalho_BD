@@ -1,6 +1,8 @@
 package model;
 
 import java.time.LocalDate;
+import model.enums.Tipo;
+import model.enums.StatusCriptideo;
 
 public class CriptideoConfirmado extends Criptideo {
 
@@ -11,9 +13,7 @@ public class CriptideoConfirmado extends Criptideo {
     private String observacoes;
 
     // Construtor
-    public CriptideoConfirmado(int idConfirmado, int idCriptideo, String nome, String descricao, 
-                               Tipo tipo, StatusCriptideo statusCr, String imagemCaminho, String nomeCientifico, 
-                               LocalDate dataConfirmacao, String fonte, String observacoes) {
+    public CriptideoConfirmado(int idConfirmado, int idCriptideo, String nome, String descricao, Tipo tipo, StatusCriptideo statusCr, String imagemCaminho, String nomeCientifico, LocalDate dataConfirmacao, String fonte, String observacoes) {
         // Chama o construtor da classe pai Criptideo
         super(idCriptideo, nome, descricao, tipo, statusCr, imagemCaminho);
         this.idConfirmado = idConfirmado;

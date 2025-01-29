@@ -1,5 +1,9 @@
 package model;
 
+import model.enums.Tipo;
+import model.enums.StatusCriptideo;
+import model.enums.Genero;
+
 public class Pesquisador extends Testemunha {
 
     private int idPesquisador;
@@ -7,9 +11,8 @@ public class Pesquisador extends Testemunha {
     private String areaAtuacao;
     private String instituicao;
 
-    public Pesquisador(int idPesquisador, int idTestemunha, String nome, String sobrenome, int idade, 
-                       Genero genero, String email, String telefone, String areaAtuacao, String instituicao) {
-        super(nome, sobrenome, idade, genero, email, telefone);
+    public Pesquisador(int idPesquisador, int idTestemunha, String nome, String sobrenome, int idade, Genero genero, String email, String telefone, String areaAtuacao, String instituicao) {
+        super(idTestemunha, nome, sobrenome, idade, genero, email, telefone);
         this.idPesquisador = idPesquisador;
         this.idTestemunha = idTestemunha;
         this.areaAtuacao = areaAtuacao;
