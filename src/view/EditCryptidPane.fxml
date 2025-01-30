@@ -43,9 +43,9 @@
                         </Label>
                         <MenuButton fx:id="mbtnTipo" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="36.0" prefWidth="300.0" text="Terrestre" textOverrun="CLIP">
                            <items>
-                              <MenuItem mnemonicParsing="false" onAction="#onMtbnTipoAction" text="Terrestre" />
-                              <MenuItem mnemonicParsing="false" onAction="#onMtbnTipoAction" text="Aéreo" />
-                              <MenuItem mnemonicParsing="false" onAction="#onMtbnTipoAction" text="Aquático" />
+                              <MenuItem mnemonicParsing="false" onAction="#onMbtnTipoAction" text="Terrestre" />
+                              <MenuItem mnemonicParsing="false" onAction="#onMbtnTipoAction" text="Aquatico" />
+                              <MenuItem mnemonicParsing="false" onAction="#onMbtnTipoAction" text="Voador" />
                            </items>
                            <font>
                               <Font name="DejaVu Sans" size="14.0" />
@@ -60,10 +60,10 @@
                               <Font name="DejaVu Sans Bold" size="14.0" />
                            </font>
                         </Label>
-                        <MenuButton fx:id="mtbnStatus" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="36.0" prefWidth="300.0" text="Avistado" textOverrun="CLIP">
+                        <MenuButton fx:id="mbtnStatus" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="36.0" prefWidth="300.0" text="Avistado" textOverrun="CLIP">
                           <items>
-                            <MenuItem mnemonicParsing="false" onAction="#onMtbnStatusAction" text="Avistado" />
-                            <MenuItem mnemonicParsing="false" onAction="#onMtbnStatusAction" text="Confirmado" />
+                            <MenuItem mnemonicParsing="false" onAction="#onMbtnStatusAction" text="Avistado" />
+                            <MenuItem mnemonicParsing="false" onAction="#onMbtnStatusAction" text="Confirmado" />
                           </items>
                            <font>
                               <Font name="DejaVu Sans" size="14.0" />

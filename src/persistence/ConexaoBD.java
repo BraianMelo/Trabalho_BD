@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConexaoBD {
+	
+	// @TODO: BD.properties
 
     private static final String URL = "jdbc:mysql://localhost:3306/Trabalho_BD"; // Altere para o seu banco
     private static final String USUARIO = "root"; // Altere para o seu usuário

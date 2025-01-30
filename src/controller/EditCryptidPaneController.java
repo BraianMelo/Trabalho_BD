@@ -8,7 +8,16 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
 
+import controller.MenuViewController;
+import model.Criptideo;
+import model.enums.StatusCriptideo;
+import model.enums.Tipo;
+import persistence.CriptideoDAO;
+
 public class EditCryptidPaneController {
+	
+	private MenuViewController menuController;
+	private Criptideo criptideo;
 
     @FXML
     private TextField txtfNomeCriptideo;
@@ -17,40 +26,56 @@ public class EditCryptidPaneController {
     private MenuButton mbtnTipo;
 
     @FXML
-    private MenuButton mtbnStatus;
+    private MenuButton mbtnStatus;
 
     @FXML
     private TextField txtfCaminhoFoto;
 
     @FXML
     private Button btnSalvar;
+    
+	public void setDados(Criptideo criptideo, MenuViewController menuController) {
+		this.menuController = menuController;
+		this.criptideo = criptideo;
+		
+		if (criptideo != null) {
+			txtfNomeCriptideo.setText(criptideo.getNome());
+			txtfCaminhoFoto.setText(criptideo.getImagemCaminho());
+			selecionarMenuItem(mbtnStatus, criptideo.getStatusCr().ordinal());
+			selecionarMenuItem(mbtnTipo, criptideo.getTipo().ordinal());
+		}
+	}
+	
+	private void selecionarMenuItem(MenuButton menuButton, int valor) {
+		if (valor >= 0 && valor < menuButton.getItems().size()) {
+			menuButton.setText(menuButton.getItems().get(valor).getText());
+		}
+	}
 
     // Evento para alterar o texto do MenuButton de tipo do Criptídeo
     @FXML
-    private void onMtbnTipoAction(ActionEvent event) {
+    private void onMbtnTipoAction(ActionEvent event) {
         MenuItem selectedItem = (MenuItem) event.getSource();
         mbtnTipo.setText(selectedItem.getText());
     }
 
     // Evento para alterar o texto do MenuButton de status do Criptídeo
     @FXML
-    private void onMtbnStatusAction(ActionEvent event) {
+    private void onMbtnStatusAction(ActionEvent event) {
         MenuItem selectedItem = (MenuItem) event.getSource();
-        mtbnStatus.setText(selectedItem.getText());
+        mbtnStatus.setText(selectedItem.getText());
     }
     
     @FXML
     private void onBtnSalvarAction(ActionEvent event) {
-        // Aqui você pode adicionar a lógica para salvar as informações
-        String nome = txtfNomeCriptideo.getText();
-        String tipo = mbtnTipo.getText();
-        String status = mtbnStatus.getText();
-        String caminhoFoto = txtfCaminhoFoto.getText();
+        criptideo.setNome(txtfNomeCriptideo.getText());
+        criptideo.setTipo(Tipo.valueOf(mbtnTipo.getText().toUpperCase()));
+        criptideo.setStatusCr(StatusCriptideo.valueOf(mbtnStatus.getText().toUpperCase()));
+        criptideo.setImagemCaminho(txtfCaminhoFoto.getText());
 
-        System.out.println("Nome do Criptídeo: " + nome);
-        System.out.println("Tipo do Criptídeo: " + tipo);
-        System.out.println("Status do Criptídeo: " + status);
-        System.out.println("Caminho da Foto: " + caminhoFoto);
+        CriptideoDAO criptideoDAO = new CriptideoDAO();
+        criptideoDAO.atualizar(criptideo);
+        menuController.carregarGridCriptideos();
 
     }
 

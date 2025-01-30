@@ -30,6 +30,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 
 import controller.CryptidPaneController;
+import controller.EditCryptidPaneController;
 import controller.CryptidViewController;
 import model.Criptideo;
 import persistence.CriptideoDAO;
@@ -76,48 +77,48 @@ public class MenuViewController {
         
     }
 
-    public void carregarGridCriptideos() {
-        // Cria o DAO e obtém a lista de Criptídeos
-        CriptideoDAO criptideoDAO = new CriptideoDAO();
-        List<Criptideo> listaCriptideos = criptideoDAO.listarTodos();
-        
-        try {
+	public void carregarGridCriptideos() {
+		// Cria o DAO e obtém a lista de Criptídeos
+		CriptideoDAO criptideoDAO = new CriptideoDAO();
+		List<Criptideo> listaCriptideos = criptideoDAO.listarTodos();
+
+		// Limpa o grid antes de recarregar
+		vboxGrid.getChildren().clear(); 
+
+		try {
 			for (Criptideo criptideo : listaCriptideos) {
-				// Carrega o FXML do layout de cada Criptídeo
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/CryptidPane.fxml"));
 				Pane pane = loader.load();
 
-				// Obtém o controlador associado ao FXML
 				CryptidPaneController controller = loader.getController();
-
-				// Passa os dados do Criptídeo para o controlador
 				controller.setDados(criptideo, this);
 
-				// Adiciona o Pane ao VBox
+				// Adiciona o novo item ao grid
 				vboxGrid.getChildren().add(pane);
 			}
 		} catch (IOException e) {
+			System.err.println("Erro ao carregar os Criptídeos: " + e.getMessage());
 			e.printStackTrace();
 		}
-    }
+	}
+
     
-    public void adicionarAba(String titulo) {
+    public void adicionarAba(Criptideo criptideo) {
         try {
-            // Carrega o conteúdo do editar.fxml
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/EditCryptidPane.fxml"));
             Node conteudo = loader.load();
 
-            // Cria uma nova aba
-            Tab novaAba = new Tab(titulo);
+            Tab novaAba = new Tab("Editar "+ criptideo.getNome());
 
-            // Define o conteúdo da aba
             novaAba.setContent(conteudo);
 
-            // Adiciona a aba ao TabPane
             tabPane.getTabs().add(novaAba);
 
-            // Torna a nova aba ativa
             tabPane.getSelectionModel().select(novaAba);
+            
+            EditCryptidPaneController controller = loader.getController();
+            controller.setDados(criptideo, this);
+            
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Erro ao carregar o arquivo editar.fxml");
@@ -163,6 +164,7 @@ public class MenuViewController {
     
 	@FXML
     void onTbtnDarkModeAction() {
+		// @FIXME: Botão de Habilitado não troca o style.
 		if(modoDark) {
 			apMenuView.getScene().getStylesheets().clear();
 			tbtnDarkMode.setText("Desabilitado");

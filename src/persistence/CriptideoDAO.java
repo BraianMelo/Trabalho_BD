@@ -38,7 +38,7 @@ public class CriptideoDAO {
 
     // Atualizar um criptídeo existente no banco de dados
     public void atualizar(Criptideo criptideo) {
-        String sql = "UPDATE Criptideo SET Nome = ?, Descricao = ?, Tipo = ?, Status_cr = ?, ImagemCaminho = ? WHERE ID_Criptideo = ?";
+        String sql = "UPDATE Criptideo SET Nome = ?, Descricao = ?, Tipo = ?, Status_cr = ?, Imagem_Caminho = ? WHERE ID_Criptideo = ?";
 
         try (Connection conn = ConexaoBD.getConexao();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -47,7 +47,7 @@ public class CriptideoDAO {
             stmt.setString(2, criptideo.getDescricao());
             stmt.setString(3, criptideo.getTipo().name());
             stmt.setString(4, criptideo.getStatusCr().name());
-            stmt.setString(5, criptideo.getImagemCaminho()); // Atualizando o caminho da imagem
+            stmt.setString(5, criptideo.getImagemCaminho());
             stmt.setInt(6, criptideo.getIdCriptideo());
 
             stmt.executeUpdate();

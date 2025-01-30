@@ -19,7 +19,7 @@ import controller.MenuViewController;
 
 public class CryptidPaneController {
 	
-	private Integer idCriptideo = null;
+	private Criptideo criptideo;
 	private MenuViewController menuViewController = null;
 
     // Labels para exibir informações sobre o criptídeo
@@ -63,7 +63,7 @@ public class CryptidPaneController {
     
     @FXML
     void onBtnEditarAction() {
-		menuViewController.adicionarAba("Editar "+ lblNome.getText());
+		menuViewController.adicionarAba(criptideo);
 	}
     
     //TODO: Excluir Criptideo
@@ -82,7 +82,7 @@ public class CryptidPaneController {
         if (result.isPresent() && result.get() == ButtonType.OK) {
             try {
 				CriptideoDAO criptideoDAO = new CriptideoDAO();
-				criptideoDAO.excluir(idCriptideo);
+				criptideoDAO.excluir(criptideo.getIdCriptideo());
 				System.out.println("Exclusão realizada com sucesso.");
 				
 			} catch (Exception e) {
@@ -103,7 +103,7 @@ public class CryptidPaneController {
     // Método auxiliar para formatar o texto do Enum
     private String formatarEnum(String texto) {
         if (texto == null || texto.isEmpty()) {
-            return texto; // Retorna o texto original se for nulo ou vazio
+            return texto;
         }
         return texto.substring(0, 1).toUpperCase() + texto.substring(1).toLowerCase();
     }
@@ -111,7 +111,7 @@ public class CryptidPaneController {
     // Método para definir os dados do criptídeo
     public void setDados(Criptideo criptideo, MenuViewController menuViewController) {
 		this.menuViewController = menuViewController;
-        idCriptideo = criptideo.getIdCriptideo();
+        this.criptideo = criptideo;
         
         lblNome.setText(criptideo.getNome());
         lblTipo.setText(formatarEnum(criptideo.getTipo().toString()));
