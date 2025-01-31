@@ -30,8 +30,8 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 
 import controller.CryptidPaneController;
+import controller.CryptidInformationPaneController;
 import controller.EditCryptidPaneController;
-import controller.CryptidViewController;
 import model.Criptideo;
 import persistence.CriptideoDAO;
 import util.WindowsUtil;
@@ -103,7 +103,7 @@ public class MenuViewController {
 	}
 
     
-    public void adicionarAba(Criptideo criptideo) {
+    public void adicionarAbaEdicao(Criptideo criptideo) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/EditCryptidPane.fxml"));
             Node conteudo = loader.load();
@@ -118,6 +118,28 @@ public class MenuViewController {
             
             EditCryptidPaneController controller = loader.getController();
             controller.setDados(criptideo, this);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Erro ao carregar o arquivo editar.fxml");
+        }
+	}
+	
+	public void adicionarAbaInformacao(Criptideo criptideo, List<Integer> idsAvistamentos) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/CryptidInformationsPane.fxml"));
+            Node conteudo = loader.load();
+
+            Tab novaAba = new Tab("Informações do "+ criptideo.getNome());
+
+            novaAba.setContent(conteudo);
+
+            tabPane.getTabs().add(novaAba);
+
+            tabPane.getSelectionModel().select(novaAba);
+            
+            CryptidInformationPaneController controller = loader.getController();
+            controller.setDados(criptideo, idsAvistamentos);
             
         } catch (Exception e) {
             e.printStackTrace();

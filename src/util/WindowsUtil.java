@@ -9,7 +9,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 import model.Criptideo;
-import controller.CryptidViewController;
 
 public class WindowsUtil {
 
@@ -44,34 +43,6 @@ public class WindowsUtil {
 			e.printStackTrace();
 		}
 	}
-
-	
-	public static void abrirJanelaComCriptideo(String caminhoFXML, String caminhoCss, String titulo, String iconePath, Criptideo criptideo) {
-        try {
-            // Carregar o arquivo FXML
-            FXMLLoader loader = new FXMLLoader(WindowsUtil.class.getResource(caminhoFXML));
-
-            // Passar o objeto Criptideo para o controlador
-            loader.setControllerFactory(controllerClass -> new CryptidViewController(criptideo));
-
-            // Carregar a cena
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            
-            // Adiciona o CSS à cena, se o caminho for fornecido
-			if (caminhoCss != null && !caminhoCss.isEmpty()) {
-				scene.getStylesheets().add(WindowsUtil.class.getResource(caminhoCss).toExternalForm());
-			}
-
-            // Criar a janela
-            Stage stage = new Stage();
-            stage.setTitle(titulo);
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
     
     public String formatarEnum(String enumStr){
 		String strFormatada = enumStr.toLowerCase();

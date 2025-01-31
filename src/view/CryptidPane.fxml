@@ -85,7 +85,7 @@
             </Label>
             <HBox alignment="CENTER_RIGHT" prefHeight="150.0" prefWidth="610.0" spacing="10.0">
                <children>
-                  <Button fx:id="btnEditar1" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" styleClass="btn-informacao">
+                  <Button fx:id="btnInformacao" mnemonicParsing="false" onAction="#onBtnInformacaoAction" prefHeight="40.0" prefWidth="40.0" styleClass="btn-informacao">
                      <font>
                         <Font name="DejaVu Sans Bold" size="14.0" />
                      </font>

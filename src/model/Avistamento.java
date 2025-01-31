@@ -5,15 +5,13 @@ import java.time.LocalDate;
 public class Avistamento {
 
     private int idAvistamento;
-    private int idCriptideo;
     private String local;
     private String pais;
     private LocalDate data;
 
     // Construtor
-    public Avistamento(int idAvistamento, int idCriptideo, String local, String pais, LocalDate data) {
+    public Avistamento(int idAvistamento, String local, String pais, LocalDate data) {
         this.idAvistamento = idAvistamento;
-        this.idCriptideo = idCriptideo;
         this.local = local;
         this.pais = pais;
         this.data = data;
@@ -27,15 +25,7 @@ public class Avistamento {
     public void setIdAvistamento(int idAvistamento) {
         this.idAvistamento = idAvistamento;
     }
-
-    public int getIdCriptideo() {
-        return idCriptideo;
-    }
-
-    public void setIdCriptideo(int idCriptideo) {
-        this.idCriptideo = idCriptideo;
-    }
-
+    
     public String getLocal() {
         return local;
     }
@@ -65,11 +55,9 @@ public class Avistamento {
     public String toString() {
         return "Avistamento{" +
                 "idAvistamento=" + idAvistamento +
-                ", idCriptideo=" + idCriptideo +
                 ", local='" + local + '\'' +
                 ", pais='" + pais + '\'' +
                 ", data=" + data +
                 '}';
     }
 }
-

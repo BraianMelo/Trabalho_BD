@@ -28,11 +28,10 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=1
-FILE_NAME_0=461;None;0;EUTF-8;1;1;0;%2Fhome%2Fbraian%2FDocumentos%2FWorkspace%2FJava%2FGedit%2FTrabalho_BD%2Fprojects;0;4
-FILE_NAME_1=3188;Java;0;EUTF-8;1;1;0;%2Fhome%2Fbraian%2FDocumentos%2FWorkspace%2FJava%2FGedit%2FTrabalho_BD%2Fsrc%2Fcontroller%2FMenuViewController.java;0;4
-FILE_NAME_2=1639;Java;0;EUTF-8;1;1;0;%2Fhome%2Fbraian%2FDocumentos%2FWorkspace%2FJava%2FGedit%2FTrabalho_BD%2Fsrc%2Fcontroller%2FCryptidPaneController.java;0;4
-FILE_NAME_3=841;Java;0;EUTF-8;1;1;0;%2Fhome%2Fbraian%2FDocumentos%2FWorkspace%2FJava%2FGedit%2FTrabalho_BD%2Fsrc%2Fcontroller%2FEditCryptidPaneController.java;0;4
+current_page=2
+FILE_NAME_0=768;Java;0;EUTF-8;1;1;0;%2Fhome%2Fbraian%2FDocumentos%2FWorkspace%2FJava%2FGedit%2FTrabalho_BD%2Fsrc%2Fcontroller%2FSightingPaneController.java;0;4
+FILE_NAME_1=771;XML;0;EUTF-8;1;1;0;%2Fhome%2Fbraian%2FDocumentos%2FWorkspace%2FJava%2FGedit%2FTrabalho_BD%2Fsrc%2Fview%2FSightingPane.fxml;0;4
+FILE_NAME_2=2709;Java;0;EUTF-8;1;1;0;%2Fhome%2Fbraian%2FDocumentos%2FWorkspace%2FJava%2FGedit%2FTrabalho_BD%2Fsrc%2Fcontroller%2FCryptidInformationPaneController.java;0;4
 
 [VTE]
 last_dir=/home/braian/Documentos/Workspace/Java/Gedit/Trabalho_BD

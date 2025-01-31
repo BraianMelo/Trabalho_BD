@@ -37,9 +37,10 @@ copy_fxml:
 	@echo "\nCopiando os FXML's para a pasta bin/view/..."
 	mkdir -p $(BIN_DIR)/view
 	cp $(SRC_DIR)/view/MenuView.fxml $(BIN_DIR)/view/
-	cp $(SRC_DIR)/view/CryptidView.fxml $(BIN_DIR)/view/
 	cp $(SRC_DIR)/view/CryptidPane.fxml $(BIN_DIR)/view/
 	cp $(SRC_DIR)/view/EditCryptidPane.fxml $(BIN_DIR)/view/
+	cp $(SRC_DIR)/view/SightingPane.fxml $(BIN_DIR)/view/
+	cp $(SRC_DIR)/view/CryptidInformationsPane.fxml $(BIN_DIR)/view/
 	
 copy_images:
 	@echo "\nCopiando as imagens para a pasta bin/view/images..."
@@ -49,11 +50,8 @@ copy_images:
 copy_stylesheets:
 	@echo "\nCopiando os stylesheets para a pasta bin/view/styles/..."
 	mkdir -p $(BIN_DIR)/view/styles
-	cp $(SRC_DIR)/view/styles/CrytidView.css $(BIN_DIR)/view/styles/
 	cp $(SRC_DIR)/view/styles/MenuView.css $(BIN_DIR)/view/styles/
 	cp $(SRC_DIR)/view/styles/EditCryptidPane.css $(BIN_DIR)/view/styles/
-	
-	mkdir -p $(BIN_DIR)/view/styles
 	cp $(SRC_DIR)/view/styles/CryptidPane.css $(BIN_DIR)/view/styles/
 
 # Executa o programa

@@ -11,10 +11,19 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
+import java.io.File;
 import java.util.Optional;
+import java.util.List; 
+import java.util.ArrayList;   
 
 import model.Criptideo;
+import model.Avistamento;
+import model.Testemunha;
+import persistence.TestemunhaDAO;
+import persistence.AvistamentoTestemunhaDAO;
 import persistence.CriptideoDAO;
+import persistence.AvistamentoDAO;
+import persistence.CriptideoAvistamentoDAO;
 import controller.MenuViewController;
 
 public class CryptidPaneController {
@@ -22,7 +31,6 @@ public class CryptidPaneController {
 	private Criptideo criptideo;
 	private MenuViewController menuViewController = null;
 
-    // Labels para exibir informações sobre o criptídeo
     @FXML
     private Label lblNome;
 
@@ -35,7 +43,6 @@ public class CryptidPaneController {
     @FXML
     private Label lblDescricao;
 
-    // Pane e ImageView para a imagem do criptídeo
     @FXML
     private StackPane paneImagem;
 
@@ -52,6 +59,29 @@ public class CryptidPaneController {
     public void initialize() {
         configurarImagemRedonda();
     }
+	
+	// Método para definir os dados do criptídeo
+    public void setDados(Criptideo criptideo, MenuViewController menuViewController) {
+		this.menuViewController = menuViewController;
+        this.criptideo = criptideo;
+        
+        lblNome.setText(criptideo.getNome());
+        lblTipo.setText(formatarEnum(criptideo.getTipo().toString()));
+        lblStatus.setText(formatarEnum(criptideo.getStatusCr().toString()));
+        lblDescricao.setText(criptideo.getDescricao());
+        
+		// Adiciona a imagem ao ImageView
+		if (criptideo.getImagemCaminho() != null && !criptideo.getImagemCaminho().isEmpty()) {
+			File arquivoImagem = new File(criptideo.getImagemCaminho());
+
+			if (arquivoImagem.exists()) { // Verifica se o arquivo realmente existe
+				Image imagem = new Image(arquivoImagem.toURI().toString());
+				imagemRedonda.setImage(imagem); // Define a imagem no ImageView
+			} else {
+				imagemRedonda.setImage(new Image("/view/images/Icone_Sem_Imagem.png"));
+			}
+		}
+    }
 
     // Configura a borda arredondada da imagem
     private void configurarImagemRedonda() {
@@ -63,7 +93,7 @@ public class CryptidPaneController {
     
     @FXML
     void onBtnEditarAction() {
-		menuViewController.adicionarAba(criptideo);
+		menuViewController.adicionarAbaEdicao(criptideo);
 	}
     
     //TODO: Excluir Criptideo
@@ -97,8 +127,16 @@ public class CryptidPaneController {
         } 
     }
     
-    
-    //TODO: Editar Criptideo
+	@FXML
+	private void onBtnInformacaoAction() {
+		CriptideoAvistamentoDAO caDAO = new CriptideoAvistamentoDAO();
+
+		List<Integer> idsAvistamentos = caDAO.buscarIdsAvistamentosPorCriptideo(criptideo.getIdCriptideo());
+		menuViewController.adicionarAbaInformacao(criptideo, idsAvistamentos);
+		
+	}
+
+
 
     // Método auxiliar para formatar o texto do Enum
     private String formatarEnum(String texto) {
@@ -106,22 +144,5 @@ public class CryptidPaneController {
             return texto;
         }
         return texto.substring(0, 1).toUpperCase() + texto.substring(1).toLowerCase();
-    }
-
-    // Método para definir os dados do criptídeo
-    public void setDados(Criptideo criptideo, MenuViewController menuViewController) {
-		this.menuViewController = menuViewController;
-        this.criptideo = criptideo;
-        
-        lblNome.setText(criptideo.getNome());
-        lblTipo.setText(formatarEnum(criptideo.getTipo().toString()));
-        lblStatus.setText(formatarEnum(criptideo.getStatusCr().toString()));
-        lblDescricao.setText(criptideo.getDescricao());
-        
-        // Adiciona a imagem ao ImageView
-        if (criptideo.getImagemCaminho() != null && !criptideo.getImagemCaminho().isEmpty()) {
-            Image imagem = new Image("file:" + criptideo.getImagemCaminho());
-            imagemRedonda.setImage(imagem); // Define a imagem no ImageView
-        }
     }
 }
