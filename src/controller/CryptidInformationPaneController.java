@@ -16,8 +16,11 @@ import java.util.List;
 
 import model.Criptideo;
 import model.Avistamento;
+import model.Testemunha;
 import persistence.AvistamentoDAO;
+import persistence.TestemunhaDAO;
 import persistence.AvistamentoTestemunhaDAO;
+import controller.WitnessPaneController;
 
 public class CryptidInformationPaneController {
 
@@ -49,46 +52,8 @@ public class CryptidInformationPaneController {
 
     // Método para definir os dados do criptídeo
     public void setDados(Criptideo criptideo, List<Integer> idsAvistamentos) {
-        lblNome.setText(criptideo.getNome());
-        lblTipo.setText(formatarEnum(criptideo.getTipo().toString()));
-        lblStatus.setText(formatarEnum(criptideo.getStatusCr().toString()));
-        lblDescricao.setText(criptideo.getDescricao());
-
-        // Adiciona a imagem ao ImageView
-        if (criptideo.getImagemCaminho() != null && !criptideo.getImagemCaminho().isEmpty()) {
-            File arquivoImagem = new File(criptideo.getImagemCaminho());
-
-            if (arquivoImagem.exists()) { // Verifica se o arquivo realmente existe
-                Image imagem = new Image(arquivoImagem.toURI().toString());
-                imagemRedonda.setImage(imagem); // Define a imagem no ImageView
-            } else {
-                imagemRedonda.setImage(new Image("/view/images/Icone_Sem_Imagem.png"));
-            }
-        }
-
-        AvistamentoDAO avistamentoDAO = new AvistamentoDAO();
-        
-        int numeroAvistamento = 1;
-
-        for (int idAvistamento : idsAvistamentos) {
-            Avistamento avistamento = avistamentoDAO.consultarPorId(idAvistamento);
-
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/SightingPane.fxml"));
-                Pane pane = loader.load();
-
-                // Obtém o controlador correto para o FXML
-                SightingPaneController controller = loader.getController();
-                controller.setDados(avistamento, numeroAvistamento);
-
-                // Adiciona o novo item ao grid
-                vboxGrid.getChildren().add(pane);
-                
-                ++numeroAvistamento;
-            } catch (IOException e) {
-                System.err.println("Erro ao carregar SightingPane.fxml: " + e.getMessage());
-            }
-        }
+		adiocionarCriptideo(criptideo);
+		adiocionarAvistamentos(idsAvistamentos);
     }
 
     // Configura a borda arredondada da imagem
@@ -106,4 +71,75 @@ public class CryptidInformationPaneController {
         }
         return texto.substring(0, 1).toUpperCase() + texto.substring(1).toLowerCase();
     }
+    
+    private void adiocionarCriptideo(Criptideo criptideo){
+		lblNome.setText(criptideo.getNome());
+        lblTipo.setText(formatarEnum(criptideo.getTipo().toString()));
+        lblStatus.setText(formatarEnum(criptideo.getStatusCr().toString()));
+        lblDescricao.setText(criptideo.getDescricao());
+
+        // Adiciona a imagem ao ImageView
+        if (criptideo.getImagemCaminho() != null && !criptideo.getImagemCaminho().isEmpty()) {
+            File arquivoImagem = new File(criptideo.getImagemCaminho());
+
+            if (arquivoImagem.exists()) { // Verifica se o arquivo realmente existe
+                Image imagem = new Image(arquivoImagem.toURI().toString());
+                imagemRedonda.setImage(imagem); // Define a imagem no ImageView
+            } else {
+                imagemRedonda.setImage(new Image("/view/images/Icone_Sem_Imagem.png"));
+            }
+        }
+	}
+    
+    private void adiocionarAvistamentos(List<Integer> idsAvistamentos){
+		AvistamentoTestemunhaDAO atDAO = new AvistamentoTestemunhaDAO();
+		AvistamentoDAO avistamentoDAO = new AvistamentoDAO();
+		Avistamento avistamento;
+		
+        int numeroAvistamento = 1;
+        
+        try {
+			for (int idAvistamento : idsAvistamentos) {
+				avistamento = avistamentoDAO.consultarPorId(idAvistamento);
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/SightingPane.fxml"));
+                Pane pane = loader.load();
+
+                SightingPaneController controller = loader.getController();
+                controller.setDados(avistamento, numeroAvistamento);
+
+                vboxGrid.getChildren().add(pane);
+                
+                ++numeroAvistamento;
+                
+                List<Integer> idsTestemunhas = atDAO.buscarIdsTestemunhasPorAvistamento(idAvistamento);
+                
+				adiocionarTestemunhas(idsTestemunhas);
+			}
+ 
+        } catch (IOException e) {
+            System.err.println("Erro ao carregar SightingPane.fxml: " + e.getMessage());
+        }
+    }
+	
+    
+    private void adiocionarTestemunhas(List<Integer> idsTestemunhas){
+		TestemunhaDAO testemunhaDAO = new TestemunhaDAO();
+		Testemunha testemunha;
+		
+		try {
+			for(int idTestemunha: idsTestemunhas) {
+				testemunha = testemunhaDAO.buscarTestemunhaPorId(idTestemunha);
+						
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/WitnessPane.fxml"));
+				Pane pane = loader.load();
+						
+				WitnessPaneController controller = loader.getController();
+				controller.setDados(testemunha);
+						
+				vboxGrid.getChildren().add(pane);
+			}
+		} catch (IOException e) {
+            System.err.println("Erro ao carregar WitnessPane.fxml: " + e.getMessage());
+        }
+	}
 }

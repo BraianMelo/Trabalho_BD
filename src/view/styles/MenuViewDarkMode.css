@@ -74,7 +74,68 @@
 .toggle-button:selected {
     -fx-background-color: #388E3C; 
     -fx-text-fill: white;
-    -fx-border-radius: 15; /* Bordas arredondadas */
-    -fx-background-radius: 15; /* Bordas arredondadas no fundo */
+    -fx-border-radius: 15;
+    -fx-background-radius: 15; 
     -fx-border-width: 2px;
+}
+
+.pane-imagem {
+    -fx-background-color: #E0E0E0; /* Fundo transparente */
+    -fx-border-color: #E0E0E0; /* Cor da borda em hexadecimal */
+    -fx-background-radius: 15; /* Bordas arredondadas no fundo */
+    -fx-border-radius: 15; /* Bordas arredondadas na borda */
+    -fx-border-width: 3; /* Largura da borda */
+    -fx-pref-height: 100; /* Altura do Pane */
+    -fx-pref-width: 100; 
+}
+
+/* Estilo base para botões */
+.button {
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 4, 0, 2, 2);
+    -fx-text-fill: white;
+    -fx-border-width: 1px;
+}
+
+/* Botão Apagar - Vermelho */
+.btn-apagar {
+    -fx-background-color: #e63946;
+    -fx-border-color: #d62828;
+}
+.btn-apagar:hover {
+    -fx-background-color: #d62828;
+    -fx-border-color: #a62020;
+}
+.btn-apagar:pressed {
+    -fx-background-color: #a62020;
+    -fx-border-color: #800f0f;
+}
+
+/* Botão Editar - Verde */
+.btn-editar {
+    -fx-background-color: #2a9d8f;
+    -fx-border-color: #21867a;
+}
+.btn-editar:hover {
+    -fx-background-color: #21867a;
+    -fx-border-color: #1b6f63;
+}
+.btn-editar:pressed {
+    -fx-background-color: #1b6f63;
+    -fx-border-color: #14544d;
+}
+
+.btn-informacao {
+    -fx-background-color: #457b9d;
+    -fx-border-color: #3a6580;
+}
+.btn-informacao:hover {
+    -fx-background-color: #3a6580;
+    -fx-border-color: #2e5065;
+}
+.btn-informacao:pressed {
+    -fx-background-color: #2e5065;
+    -fx-border-color: #223a4a;
 }

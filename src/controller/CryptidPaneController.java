@@ -7,15 +7,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 
 import java.io.File;
-import java.util.Optional;
 import java.util.List; 
 import java.util.ArrayList;   
 
+import util.WindowsUtil;
 import model.Criptideo;
 import model.Avistamento;
 import model.Testemunha;
@@ -99,17 +96,9 @@ public class CryptidPaneController {
     //TODO: Excluir Criptideo
     @FXML
     void onBtnExcluirAction() {
-        // Criando um alerta de confirmação
-        Alert alert = new Alert(AlertType.CONFIRMATION);
-        alert.setTitle("Confirmação");
-        alert.setHeaderText("Deseja excluir " + lblNome.getText() + "?");
-        alert.setContentText("Escolha OK para continuar ou Cancelar para sair.");
-
-        // Exibindo o alerta e aguardando a resposta
-        Optional<ButtonType> result = alert.showAndWait();
-
-        // Verificando a resposta
-        if (result.isPresent() && result.get() == ButtonType.OK) {
+		WindowsUtil windows = new WindowsUtil();
+		boolean confirmacao = windows.mostrarAlertaConfirmacao("Excluir "+criptideo.getNome()); 
+        if (confirmacao) {
             try {
 				CriptideoDAO criptideoDAO = new CriptideoDAO();
 				criptideoDAO.excluir(criptideo.getIdCriptideo());
@@ -117,12 +106,7 @@ public class CryptidPaneController {
 				
 			} catch (Exception e) {
 				System.err.println("Erro ao excluir: " + e.getMessage());
-				
-				Alert errorAlert = new Alert(AlertType.ERROR);
-				errorAlert.setTitle("Erro");
-				errorAlert.setHeaderText("Não foi possível excluir o " + lblNome.getText());
-				errorAlert.setContentText(e.getMessage());
-				errorAlert.showAndWait();
+				windows.mostrarAlertaErro("Não foi possível excluir o "+ criptideo.getNome());
 			}
         } 
     }

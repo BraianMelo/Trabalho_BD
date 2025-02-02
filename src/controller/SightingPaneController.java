@@ -1,9 +1,13 @@
 package controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.layout.Pane;
 import javafx.scene.control.Label;
+import javafx.scene.control.Button;
+
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
+
 import model.Avistamento;
 
 public class SightingPaneController {
@@ -21,6 +25,16 @@ public class SightingPaneController {
 
     @FXML
     private Label lblLocal;
+    
+    @FXML
+    private Button btnExcluir;
+    
+    @FXML
+    private Button btnEditar;
+    
+    @FXML
+    private Pane panePrincipal;
+    
 
     public void setDados(Avistamento avistamento, int numeroAvistamento) {
         if (avistamento == null) {
@@ -38,4 +52,16 @@ public class SightingPaneController {
             lblData.setText("Data desconhecida");
         }
     }
+    
+        @FXML
+    void onBtnExcluirAction() {
+        System.out.println("Excluir");
+    }
+    
+    @FXML
+    void onBtnEditarAction() {
+		System.out.println("Editar");
+		//menuViewController.adicionarAbaEdicao(criptideo);
+	}
+    
 }

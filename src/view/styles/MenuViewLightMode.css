@@ -1,11 +1,26 @@
+
+/* Toggle Button */
+.toggle-button {
+    -fx-border-radius: 15;
+    -fx-background-radius: 15; 
+    -fx-border-width: 2px;
+}
+
+/* Pane de Imagem */
 .pane-imagem {
-    -fx-background-color: #E0E0E0; /* Fundo transparente */
-    -fx-border-color: #E0E0E0; /* Cor da borda em hexadecimal */
-    -fx-background-radius: 15; /* Bordas arredondadas no fundo */
-    -fx-border-radius: 15; /* Bordas arredondadas na borda */
-    -fx-border-width: 3; /* Largura da borda */
-    -fx-pref-height: 100; /* Altura do Pane */
-    -fx-pref-width: 100; 
+    -fx-border-radius: 15px;
+    -fx-background-radius: 15px;
+    -fx-border-width: 3px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0, 2, 2);
+}
+
+/* Botões */
+.button {
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 4, 0, 2, 2);
+    -fx-border-width: 1px;
 }
 
 /* Estilo base para botões */

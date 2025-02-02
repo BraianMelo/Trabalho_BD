@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="170.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.WitnessPaneController">
+   <children>
+      <VBox alignment="TOP_CENTER" prefHeight="170.0" prefWidth="600.0">
+         <children>
+            <Separator prefWidth="200.0">
+               <VBox.margin>
+                  <Insets left="50.0" right="50.0" />
+               </VBox.margin>
+            </Separator>
+            <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="15.0">
+               <children>
+                  <Label fx:id="lblNome" text="Nome">
+                     <font>
+                        <Font name="DejaVu Sans Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblSobrenome" text="Sobrenome">
+                     <font>
+                        <Font name="DejaVu Sans Bold" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="40.0" spacing="15.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="293.0" spacing="10.0">
+                     <children>
+                        <Label prefHeight="40.0" text="Genero:">
+                           <font>
+                              <Font name="DejaVu Sans Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblGenero" prefHeight="40.0" text="Masculino">
+                           <font>
+                              <Font name="DejaVu Sans" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets left="50.0" right="50.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="300.0" spacing="10.0">
+                     <children>
+                        <Label prefHeight="40.0" text="Idade:">
+                           <font>
+                              <Font name="DejaVu Sans Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblIdade" prefHeight="40.0" text="20">
+                           <font>
+                              <Font name="DejaVu Sans" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0" spacing="15.0">
+               <children>
+                  <Label prefHeight="40.0" text="Telefone:">
+                     <font>
+                        <Font name="DejaVu Sans Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblTelefone" prefHeight="40.0" text="Nenhum Telefone informado">
+                     <font>
+                        <Font name="DejaVu Sans" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="50.0" right="50.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0" spacing="15.0">
+               <children>
+                  <Label prefHeight="40.0" text="Email:">
+                     <font>
+                        <Font name="DejaVu Sans Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblEmail" prefHeight="40.0" text="Nenhum Email informado">
+                     <font>
+                        <Font name="DejaVu Sans" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="50.0" right="50.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="10.0" />
+         </padding>
+      </VBox>
+   </children>
+</Pane>

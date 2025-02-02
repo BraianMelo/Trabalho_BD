@@ -1,0 +1,62 @@
+CREATE DATABASE Trabalho_BD;
+USE Trabalho_BD;
+
+CREATE TABLE Criptideo (
+    ID_Criptideo SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    Nome VARCHAR(100) NOT NULL,
+    Descricao TEXT,
+    Tipo ENUM('VOADOR', 'TERRESTRE', 'AQUATICO') DEFAULT 'TERRESTRE',
+    Status_cr ENUM('CONFIRMADO', 'AVISTADO') DEFAULT 'AVISTADO',
+    Imagem_Caminho VARCHAR(500)
+);
+
+CREATE TABLE Avistamento (
+    ID_Avistamento SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    Local_Av VARCHAR(200) NOT NULL,
+    Pais VARCHAR(50) NOT NULL,
+    Data_Av DATE NOT NULL
+);
+
+CREATE TABLE Criptideo_Avistamento (
+    ID_Criptideo SMALLINT UNSIGNED NOT NULL,
+    ID_Avistamento SMALLINT UNSIGNED NOT NULL,
+    PRIMARY KEY (ID_Criptideo, ID_Avistamento),
+    FOREIGN KEY (ID_Criptideo) REFERENCES Criptideo(ID_Criptideo) ON DELETE CASCADE,
+    FOREIGN KEY (ID_Avistamento) REFERENCES Avistamento(ID_Avistamento) ON DELETE CASCADE
+);
+
+CREATE TABLE Testemunha (
+    ID_Testemunha SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    Nome VARCHAR(100) NOT NULL,
+    Sobrenome VARCHAR(100) NOT NULL,
+    Idade TINYINT UNSIGNED NOT NULL,
+    Genero ENUM('M', 'F', 'O') NOT NULL,
+    Email VARCHAR(100) UNIQUE,
+    Telefone VARCHAR(30) UNIQUE
+);
+
+CREATE TABLE Pesquisador (
+    ID_Pesquisador SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    ID_Testemunha SMALLINT UNSIGNED NOT NULL,
+    Area_Atuacao VARCHAR(100) NOT NULL,
+    Instituicao VARCHAR(100),
+    FOREIGN KEY (ID_Testemunha) REFERENCES Testemunha(ID_Testemunha) ON DELETE CASCADE
+);
+
+CREATE TABLE Avistamento_Testemunha (
+    ID_Avistamento SMALLINT UNSIGNED NOT NULL,
+    ID_Testemunha SMALLINT UNSIGNED NOT NULL,
+    PRIMARY KEY (ID_Avistamento, ID_Testemunha),
+    FOREIGN KEY (ID_Avistamento) REFERENCES Avistamento(ID_Avistamento) ON DELETE CASCADE,
+    FOREIGN KEY (ID_Testemunha) REFERENCES Testemunha(ID_Testemunha) ON DELETE CASCADE
+);
+
+CREATE TABLE Criptideo_Confirmado (
+    ID_Confirmado SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    ID_Criptideo SMALLINT UNSIGNED NOT NULL,
+    Nome_Cientifico VARCHAR(100),
+    Data_Confirmacao DATE NOT NULL,
+    Fonte_Confirmacao VARCHAR(200) NOT NULL,
+    Observacoes TEXT,
+    FOREIGN KEY (ID_Criptideo) REFERENCES Criptideo(ID_Criptideo) ON DELETE CASCADE
+);

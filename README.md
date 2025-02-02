@@ -6,7 +6,7 @@ Este projeto consiste em um sistema de gerenciamento de banco de dados com inter
 
 ```
 Trabalho_BD/
-├── database/           # Scripts relacionados ao banco de dados
+├── database/          # Scripts relacionados ao banco de dados
 ├── bin/               # Arquivos compilados
 ├── src/               # Código-fonte do projeto
 │   ├── application/   # Ponto de entrada da aplicação

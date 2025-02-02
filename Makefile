@@ -17,7 +17,7 @@ MYSQL_JAR = /home/braian/Documentos/Workspace/Libraries/mysql-connector-j_9.0.0-
 
 
 # Alvo padrão
-all: compile copy_fxml copy_images copy_stylesheets
+all: compile copy_resources
 
 # Compila o programa
 compile:
@@ -30,29 +30,14 @@ compile:
 		$(SRC_DIR)/controller/*.java \
 		$(SRC_DIR)/util/*.java
 
-# TODO: 'gui/' virar 'view/'
+# Copia os fxmls, css e as imagens para a pasta bin
+copy_resources:
+	@echo "\nCopiando recursos (FXML, imagens e stylesheets) para a pasta bin/view..."
+	mkdir -p $(BIN_DIR)/view $(BIN_DIR)/view/images $(BIN_DIR)/view/styles
+	cp -r $(SRC_DIR)/view/*.fxml $(BIN_DIR)/view/
+	cp -r $(SRC_DIR)/view/images/* $(BIN_DIR)/view/images/
+	cp -r $(SRC_DIR)/view/styles/*.css $(BIN_DIR)/view/styles/
 
-# Copia o arquivo FXML para o diretório bin/view
-copy_fxml:
-	@echo "\nCopiando os FXML's para a pasta bin/view/..."
-	mkdir -p $(BIN_DIR)/view
-	cp $(SRC_DIR)/view/MenuView.fxml $(BIN_DIR)/view/
-	cp $(SRC_DIR)/view/CryptidPane.fxml $(BIN_DIR)/view/
-	cp $(SRC_DIR)/view/EditCryptidPane.fxml $(BIN_DIR)/view/
-	cp $(SRC_DIR)/view/SightingPane.fxml $(BIN_DIR)/view/
-	cp $(SRC_DIR)/view/CryptidInformationsPane.fxml $(BIN_DIR)/view/
-	
-copy_images:
-	@echo "\nCopiando as imagens para a pasta bin/view/images..."
-	mkdir -p $(BIN_DIR)/view/images
-	cp $(SRC_DIR)/view/images/* $(BIN_DIR)/view/images/
-	
-copy_stylesheets:
-	@echo "\nCopiando os stylesheets para a pasta bin/view/styles/..."
-	mkdir -p $(BIN_DIR)/view/styles
-	cp $(SRC_DIR)/view/styles/MenuView.css $(BIN_DIR)/view/styles/
-	cp $(SRC_DIR)/view/styles/EditCryptidPane.css $(BIN_DIR)/view/styles/
-	cp $(SRC_DIR)/view/styles/CryptidPane.css $(BIN_DIR)/view/styles/
 
 # Executa o programa
 execute:
@@ -65,4 +50,4 @@ clean:
 	rm -rf $(BIN_DIR)/
 
 # Recompila e executa o programa
-recompile: clean compile copy_fxml copy_images copy_stylesheets execute
+recompile: clean compile copy_resources execute

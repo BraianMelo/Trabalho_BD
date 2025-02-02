@@ -6,6 +6,11 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+import javafx.scene.control.ButtonType;
+import java.util.Optional;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+
 import java.io.IOException;
 
 import model.Criptideo;
@@ -42,6 +47,29 @@ public class WindowsUtil {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public boolean mostrarAlertaConfirmacao(String titulo){
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Confirmação");
+        alert.setHeaderText(titulo);
+        alert.setContentText("Escolha OK para continuar ou Cancelar para sair.");
+
+        // Exibindo o alerta e aguardando a resposta
+        Optional<ButtonType> result = alert.showAndWait();
+
+        // Verificando a resposta
+        if (result.isPresent() && result.get() == ButtonType.OK)
+			return true;
+			
+		return false;
+	}
+	
+	public void mostrarAlertaErro(String texto) {
+		Alert errorAlert = new Alert(AlertType.ERROR);
+		errorAlert.setTitle("Erro");
+		errorAlert.setHeaderText(texto);
+		errorAlert.showAndWait();
 	}
     
     public String formatarEnum(String enumStr){

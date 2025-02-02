@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -82,23 +81,7 @@
                             <Insets bottom="20.0" top="10.0" />
                         </VBox.margin>
                     </Label>
-                    <Separator>
-                        <VBox.margin>
-                            <Insets left="40.0" right="40.0" />
-                        </VBox.margin>
-                    </Separator>
-               <HBox prefHeight="100.0" prefWidth="200.0">
-                  <children>
-                     <Label fx:id="lblNome1" alignment="CENTER" prefHeight="40.0" prefWidth="700.0" styleClass=".lbl-titulo" text="Avistamentos:">
-                        <font>
-                           <Font name="DejaVu Sans Bold" size="20.0" />
-                        </font>
-                        <HBox.margin>
-                           <Insets bottom="10.0" />
-                        </HBox.margin>
-                     </Label>
-                  </children>
-               </HBox>
+               <HBox prefHeight="100.0" prefWidth="200.0" />
                <VBox fx:id="vboxGrid" alignment="TOP_CENTER" prefHeight="300.0" prefWidth="700.0" spacing="10.0">
                   <padding>
                      <Insets top="5.0" />

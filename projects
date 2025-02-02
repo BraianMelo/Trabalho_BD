@@ -29,9 +29,9 @@ long_line_column=72
 
 [files]
 current_page=2
-FILE_NAME_0=768;Java;0;EUTF-8;1;1;0;%2Fhome%2Fbraian%2FDocumentos%2FWorkspace%2FJava%2FGedit%2FTrabalho_BD%2Fsrc%2Fcontroller%2FSightingPaneController.java;0;4
-FILE_NAME_1=771;XML;0;EUTF-8;1;1;0;%2Fhome%2Fbraian%2FDocumentos%2FWorkspace%2FJava%2FGedit%2FTrabalho_BD%2Fsrc%2Fview%2FSightingPane.fxml;0;4
-FILE_NAME_2=2709;Java;0;EUTF-8;1;1;0;%2Fhome%2Fbraian%2FDocumentos%2FWorkspace%2FJava%2FGedit%2FTrabalho_BD%2Fsrc%2Fcontroller%2FCryptidInformationPaneController.java;0;4
+FILE_NAME_0=1276;Java;0;EUTF-8;1;1;0;%2Fhome%2Fbraian%2FDocumentos%2FWorkspace%2FJava%2FGedit%2FTrabalho_BD%2Fsrc%2Fcontroller%2FSightingPaneController.java;0;4
+FILE_NAME_1=1100;None;0;EUTF-8;1;1;0;%2Fhome%2Fbraian%2FDocumentos%2FWorkspace%2FJava%2FGedit%2FTrabalho_BD%2Fprojects;0;4
+FILE_NAME_2=276;Java;0;EUTF-8;1;1;0;%2Fhome%2Fbraian%2FDocumentos%2FWorkspace%2FJava%2FGedit%2FTrabalho_BD%2Fsrc%2Fcontroller%2FWitnessPaneController.java;0;4
 
 [VTE]
 last_dir=/home/braian/Documentos/Workspace/Java/Gedit/Trabalho_BD

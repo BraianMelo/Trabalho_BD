@@ -189,10 +189,11 @@ public class MenuViewController {
 		// @FIXME: Botão de Habilitado não troca o style.
 		if(modoDark) {
 			apMenuView.getScene().getStylesheets().clear();
+			apMenuView.getScene().getStylesheets().add(getClass().getResource("/view/styles/MenuViewLightMode.css").toExternalForm());
 			tbtnDarkMode.setText("Desabilitado");
 			tbtnDarkMode.setStyle("-fx-background-color: #D32F2F; -fx-text-fill: #E0E0E0; -fx-cursor: hand;");
 		} else {
-			apMenuView.getScene().getStylesheets().add(getClass().getResource("/view/styles/MenuView.css").toExternalForm());
+			apMenuView.getScene().getStylesheets().add(getClass().getResource("/view/styles/MenuViewDarkMode.css").toExternalForm());
 			tbtnDarkMode.setText("Habilitado");
 			tbtnDarkMode.setStyle("-fx-background-color: #388E3C; -fx-text-fill: #ffffff; -fx-cursor: hand;");
 		}
