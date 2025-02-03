@@ -2,6 +2,8 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.Button;
+
 import model.enums.Genero;
 import model.Testemunha;
 
@@ -21,6 +23,12 @@ public class WitnessPaneController {
 	
 	@FXML
 	private Label lblEmail;
+	
+	@FXML
+    private Button btnExcluir;
+    
+    @FXML
+    private Button btnEditar;
 	
 	public void setDados(Testemunha testemunha){
 		
@@ -45,6 +53,17 @@ public class WitnessPaneController {
 			
 		if(testemunha.getEmail() != null)
 			lblEmail.setText(testemunha.getEmail());
+	}
+	
+	@FXML
+    void onBtnExcluirAction() {
+        System.out.println("Excluir");
+    }
+    
+    @FXML
+    void onBtnEditarAction() {
+		System.out.println("Editar");
+		//menuViewController.adicionarAbaEdicao(criptideo);
 	}
 	
 	

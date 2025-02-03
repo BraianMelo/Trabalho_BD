@@ -102,6 +102,29 @@ public class MenuViewController {
 		}
 	}
 
+	// TODO: Add tab mais genérico
+	public FXMLLoader adicionarAba(String caminho, String titulo) {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(caminho));
+			Node conteudo = loader.load();
+			
+			Tab novaAba = new Tab(titulo);
+			
+			novaAba.setContent(conteudo);
+			
+			tabPane.getTabs().add(novaAba);
+			
+			tabPane.getSelectionModel().select(novaAba);
+			
+			return loader;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+            System.out.println("Erro ao carregar o arquivo editar.fxml");
+            
+		}
+		return null;
+	}
     
     public void adicionarAbaEdicao(Criptideo criptideo) {
         try {
@@ -139,7 +162,7 @@ public class MenuViewController {
             tabPane.getSelectionModel().select(novaAba);
             
             CryptidInformationPaneController controller = loader.getController();
-            controller.setDados(criptideo, idsAvistamentos);
+            controller.setDados(criptideo, idsAvistamentos, this);
             
         } catch (Exception e) {
             e.printStackTrace();
@@ -186,16 +209,13 @@ public class MenuViewController {
     
 	@FXML
     void onTbtnDarkModeAction() {
-		// @FIXME: Botão de Habilitado não troca o style.
 		if(modoDark) {
 			apMenuView.getScene().getStylesheets().clear();
 			apMenuView.getScene().getStylesheets().add(getClass().getResource("/view/styles/MenuViewLightMode.css").toExternalForm());
 			tbtnDarkMode.setText("Desabilitado");
-			tbtnDarkMode.setStyle("-fx-background-color: #D32F2F; -fx-text-fill: #E0E0E0; -fx-cursor: hand;");
 		} else {
 			apMenuView.getScene().getStylesheets().add(getClass().getResource("/view/styles/MenuViewDarkMode.css").toExternalForm());
 			tbtnDarkMode.setText("Habilitado");
-			tbtnDarkMode.setStyle("-fx-background-color: #388E3C; -fx-text-fill: #ffffff; -fx-cursor: hand;");
 		}
 		
 		modoDark = !modoDark;

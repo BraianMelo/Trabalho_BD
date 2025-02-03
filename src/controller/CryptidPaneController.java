@@ -1,6 +1,7 @@
 package controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -90,7 +91,13 @@ public class CryptidPaneController {
     
     @FXML
     void onBtnEditarAction() {
-		menuViewController.adicionarAbaEdicao(criptideo);
+		FXMLLoader loader = menuViewController.adicionarAba("/view/EditCryptidPane.fxml", "Editar "+ criptideo.getNome());
+		
+		if( loader != null) {
+			 EditCryptidPaneController controller = loader.getController();
+	         controller.setDados(criptideo, menuViewController);
+		}
+		
 	}
     
     //TODO: Excluir Criptideo
@@ -102,7 +109,8 @@ public class CryptidPaneController {
             try {
 				CriptideoDAO criptideoDAO = new CriptideoDAO();
 				criptideoDAO.excluir(criptideo.getIdCriptideo());
-				System.out.println("Exclusão realizada com sucesso.");
+				
+				menuViewController.carregarGridCriptideos();
 				
 			} catch (Exception e) {
 				System.err.println("Erro ao excluir: " + e.getMessage());

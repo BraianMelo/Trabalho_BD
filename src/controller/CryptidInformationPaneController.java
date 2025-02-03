@@ -23,6 +23,8 @@ import persistence.AvistamentoTestemunhaDAO;
 import controller.WitnessPaneController;
 
 public class CryptidInformationPaneController {
+	
+	private MenuViewController menuViewController;
 
     @FXML
     private Label lblNome;
@@ -51,8 +53,9 @@ public class CryptidInformationPaneController {
     }
 
     // Método para definir os dados do criptídeo
-    public void setDados(Criptideo criptideo, List<Integer> idsAvistamentos) {
-		adiocionarCriptideo(criptideo);
+    public void setDados(Criptideo criptideo, List<Integer> idsAvistamentos, MenuViewController menuViewController) {
+		this.menuViewController = menuViewController;
+    	adiocionarCriptideo(criptideo);
 		adiocionarAvistamentos(idsAvistamentos);
     }
 
@@ -105,7 +108,7 @@ public class CryptidInformationPaneController {
                 Pane pane = loader.load();
 
                 SightingPaneController controller = loader.getController();
-                controller.setDados(avistamento, numeroAvistamento);
+                controller.setDados(avistamento, numeroAvistamento, menuViewController);
 
                 vboxGrid.getChildren().add(pane);
                 

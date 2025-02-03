@@ -29,3 +29,7 @@ database/imagens
 
 # Arquivo do Geany
 projects
+
+# Arquivos Eclipse
+src/.classpath
+src/.project

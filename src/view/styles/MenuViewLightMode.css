@@ -4,6 +4,9 @@
     -fx-border-radius: 15;
     -fx-background-radius: 15; 
     -fx-border-width: 2px;
+	-fx-background-color: #D32F2F;
+	-fx-text-fill: #E0E0E0; 
+	-fx-cursor: hand;
 }
 
 /* Pane de Imagem */
@@ -72,4 +75,17 @@
 .btn-informacao:pressed {
     -fx-background-color: #2e5065;
     -fx-border-color: #223a4a;
+}
+
+.btn-salvar {
+    -fx-background-color: #1d7a8c; 
+    -fx-border-color: #155e63; 
+}
+.btn-salvar:hover {
+    -fx-background-color: #155e63; 
+    -fx-border-color: #0f4b4e;
+}
+.btn-salvar:pressed {
+    -fx-background-color: #0f4b4e; 
+    -fx-border-color: #083535; 
 }

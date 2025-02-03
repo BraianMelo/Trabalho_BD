@@ -10,7 +10,6 @@ import java.util.List;
 
 public class CriptideoDAO {
 
-    // Inserir um novo criptídeo no banco de dados
     public void inserir(Criptideo criptideo) {
         String sql = "INSERT INTO Criptideo (Nome, Descricao, Tipo, Status_cr, ImagemCaminho) VALUES (?, ?, ?, ?, ?)";
 
@@ -27,7 +26,7 @@ public class CriptideoDAO {
             if (affectedRows > 0) {
                 try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
                     if (generatedKeys.next()) {
-                        criptideo.setIdCriptideo(generatedKeys.getInt(1)); // Obtendo o ID gerado
+                        criptideo.setIdCriptideo(generatedKeys.getInt(1)); // Para obter id gerado
                     }
                 }
             }
@@ -36,7 +35,6 @@ public class CriptideoDAO {
         }
     }
 
-    // Atualizar um criptídeo existente no banco de dados
     public void atualizar(Criptideo criptideo) {
         String sql = "UPDATE Criptideo SET Nome = ?, Descricao = ?, Tipo = ?, Status_cr = ?, Imagem_Caminho = ? WHERE ID_Criptideo = ?";
 
@@ -56,7 +54,6 @@ public class CriptideoDAO {
         }
     }
 
-    // Excluir um criptídeo do banco de dados
     public void excluir(int idCriptideo) {
         String sql = "DELETE FROM Criptideo WHERE ID_Criptideo = ?";
 
@@ -70,7 +67,6 @@ public class CriptideoDAO {
         }
     }
 
-    // Consultar um criptídeo por ID
     public Criptideo consultarPorId(int idCriptideo) {
         String sql = "SELECT * FROM Criptideo WHERE ID_Criptideo = ?";
         Criptideo criptideo = null;
@@ -88,7 +84,7 @@ public class CriptideoDAO {
                         rs.getString("Descricao"),
                         Tipo.valueOf(rs.getString("Tipo")),
                         StatusCriptideo.valueOf(rs.getString("Status_cr")),
-                        rs.getString("ImagemCaminho") // Recuperando o caminho da imagem
+                        rs.getString("ImagemCaminho")
                 );
             }
         } catch (SQLException e) {
@@ -98,7 +94,6 @@ public class CriptideoDAO {
         return criptideo;
     }
 
-    // Listar todos os criptídeos do banco de dados
     public List<Criptideo> listarTodos() {
         String sql = "SELECT * FROM Criptideo";
         List<Criptideo> criptideos = new ArrayList<>();
@@ -115,7 +110,7 @@ public class CriptideoDAO {
                         rs.getString("Descricao"),
                         Tipo.valueOf(rs.getString("Tipo")),
                         StatusCriptideo.valueOf(rs.getString("Status_cr")),
-                        rs.getString("Imagem_Caminho") // Recuperando o caminho da imagem
+                        rs.getString("Imagem_Caminho")
                 );
                 criptideos.add(criptideo);
             }
