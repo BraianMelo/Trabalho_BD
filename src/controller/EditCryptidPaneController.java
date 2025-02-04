@@ -73,6 +73,7 @@ public class EditCryptidPaneController {
         CriptideoDAO criptideoDAO = new CriptideoDAO();
         criptideoDAO.atualizar(criptideo);
         menuController.carregarGridCriptideos();
+        menuController.fecharAba();
 
     }
 

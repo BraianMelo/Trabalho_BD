@@ -133,7 +133,7 @@ public class CryptidInformationPaneController {
 				Pane pane = loader.load();
 						
 				WitnessPaneController controller = loader.getController();
-				controller.setDados(testemunha);
+				controller.setDados(testemunha, menuViewController);
 						
 				vboxGrid.getChildren().add(pane);
 			}

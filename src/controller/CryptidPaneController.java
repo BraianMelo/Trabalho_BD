@@ -12,8 +12,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
 import model.Criptideo;
+import persistence.AvistamentoDAO;
+import persistence.AvistamentoTestemunhaDAO;
 import persistence.CriptideoAvistamentoDAO;
 import persistence.CriptideoDAO;
+import persistence.TestemunhaDAO;
 import util.WindowsUtil;
 
 public class CryptidPaneController {
@@ -96,18 +99,33 @@ public class CryptidPaneController {
     @FXML
     void onBtnExcluirAction() {
 		WindowsUtil windows = new WindowsUtil();
-		boolean confirmacao = windows.mostrarAlertaConfirmacao("Excluir "+criptideo.getNome()); 
-        if (confirmacao) {
-            try {
+		boolean resposta = windows.mostrarAlertaConfirmacao("Excluir "+criptideo.getNome()); 
+        
+		if (resposta) {
 				CriptideoDAO criptideoDAO = new CriptideoDAO();
+				CriptideoAvistamentoDAO caDAO = new CriptideoAvistamentoDAO();
+				AvistamentoDAO avistamentoDAO = new AvistamentoDAO();
+		        AvistamentoTestemunhaDAO atDAO = new AvistamentoTestemunhaDAO();
+		        TestemunhaDAO testemunhaDAO = new TestemunhaDAO();
+				
+				List<Integer> idsAvistamento = caDAO.buscarIdsAvistamentosPorCriptideo(criptideo.getIdCriptideo());
+				
+				for(Integer idAvistamento: idsAvistamento) {
+			        
+			        List<Integer> idsTestemunhas = atDAO.buscarIdsTestemunhasPorAvistamento(idAvistamento);
+			        
+			        for(Integer idTestemunha: idsTestemunhas) {
+			        	atDAO.excluirRelacao(idAvistamento, idTestemunha);
+			        	testemunhaDAO.excluirTestemunha(idTestemunha);
+			        }
+			        
+			        avistamentoDAO.excluir(idAvistamento);
+				}
+				
 				criptideoDAO.excluir(criptideo.getIdCriptideo());
 				
-				menuViewController.carregarGridCriptideos();
 				
-			} catch (Exception e) {
-				System.err.println("Erro ao excluir: " + e.getMessage());
-				windows.mostrarAlertaErro("Não foi possível excluir o "+ criptideo.getNome());
-			}
+				menuViewController.carregarGridCriptideos();
         } 
     }
     

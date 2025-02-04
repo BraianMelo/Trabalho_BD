@@ -33,3 +33,4 @@ projects
 # Arquivos Eclipse
 src/.classpath
 src/.project
+.project

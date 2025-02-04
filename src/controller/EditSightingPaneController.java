@@ -25,7 +25,7 @@ public class EditSightingPaneController {
 		this.avistamento = avistamento;
 		
 		txtfLocal.setText(avistamento.getLocal());
-		dtpData.setPromptText(avistamento.getData().toString());
+		dtpData.setValue(avistamento.getData());
 		txtfPais.setText(avistamento.getPais());
 	}
 	
@@ -37,6 +37,10 @@ public class EditSightingPaneController {
 		
 		AvistamentoDAO avistamentoDAO = new AvistamentoDAO();
 		avistamentoDAO.atualizar(avistamento);
+		
+		menuViewController.fecharAba();
+		
+		
 	}
 
 }

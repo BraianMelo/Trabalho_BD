@@ -1,13 +1,20 @@
 package controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 
 import model.enums.Genero;
+import persistence.TestemunhaDAO;
+import util.WindowsUtil;
 import model.Testemunha;
 
 public class WitnessPaneController {
+	
+	 private MenuViewController menuViewController;
+	 private Testemunha testemunha;
+	
 	
 	@FXML
 	private Label lblNome;
@@ -30,7 +37,9 @@ public class WitnessPaneController {
     @FXML
     private Button btnEditar;
 	
-	public void setDados(Testemunha testemunha){
+	public void setDados(Testemunha testemunha, MenuViewController menuViewController){
+		this.testemunha = testemunha;
+		this.menuViewController = menuViewController;
 		
 		lblNome.setText(testemunha.getNome());
 		lblSobrenome.setText(testemunha.getSobrenome());
@@ -57,13 +66,24 @@ public class WitnessPaneController {
 	
 	@FXML
     void onBtnExcluirAction() {
-        System.out.println("Excluir");
+    	WindowsUtil windowsUtil = new WindowsUtil();
+    	boolean resposta = windowsUtil.mostrarAlertaConfirmacao("Quer mesmo apagar esse avistamento?");
+    	    	
+    	if (!resposta)
+    		return;
+    	
+		TestemunhaDAO testemunhaDAO = new TestemunhaDAO();
+		testemunhaDAO.excluirTestemunha(testemunha.getIdTestemunha());
     }
     
     @FXML
     void onBtnEditarAction() {
-		System.out.println("Editar");
-		//menuViewController.adicionarAbaEdicao(criptideo);
+		FXMLLoader loader = menuViewController.adicionarAba("/view/EditWitnessPane.fxml", "Editar Testemunha");
+		
+		if( loader != null) {
+			 EditWitnessPaneController controller = loader.getController();
+	         controller.setDados(testemunha, menuViewController);
+		}
 	}
 	
 	

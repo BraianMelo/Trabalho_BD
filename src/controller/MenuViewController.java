@@ -104,28 +104,12 @@ public class MenuViewController {
 		}
 		return null;
 	}
-    
-    public void adicionarAbaEdicao(Criptideo criptideo) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/EditCryptidPane.fxml"));
-            Node conteudo = loader.load();
-
-            Tab novaAba = new Tab("Editar "+ criptideo.getNome());
-
-            novaAba.setContent(conteudo);
-
-            tabPane.getTabs().add(novaAba);
-
-            tabPane.getSelectionModel().select(novaAba);
-            
-            EditCryptidPaneController controller = loader.getController();
-            controller.setDados(criptideo, this);
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("Erro ao carregar o arquivo editar.fxml");
-        }
+	
+	public void fecharAba() {
+		tabPane.getTabs().remove(tabPane.getSelectionModel().getSelectedIndex());
 	}
+    
+
 	
 	public void adicionarAbaInformacao(Criptideo criptideo, List<Integer> idsAvistamentos) {
         try {
