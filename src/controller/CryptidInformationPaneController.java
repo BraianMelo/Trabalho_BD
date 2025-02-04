@@ -20,7 +20,6 @@ import model.Testemunha;
 import persistence.AvistamentoDAO;
 import persistence.TestemunhaDAO;
 import persistence.AvistamentoTestemunhaDAO;
-import controller.WitnessPaneController;
 
 public class CryptidInformationPaneController {
 	
@@ -47,19 +46,16 @@ public class CryptidInformationPaneController {
     @FXML
     private VBox vboxGrid;
 
-    // Inicialização do controlador
     public void initialize() {
         configurarImagemRedonda();
     }
 
-    // Método para definir os dados do criptídeo
     public void setDados(Criptideo criptideo, List<Integer> idsAvistamentos, MenuViewController menuViewController) {
 		this.menuViewController = menuViewController;
     	adiocionarCriptideo(criptideo);
 		adiocionarAvistamentos(idsAvistamentos);
     }
 
-    // Configura a borda arredondada da imagem
     private void configurarImagemRedonda() {
         Rectangle clip = new Rectangle(120, 120);
         clip.setArcWidth(25);  // Raio das bordas arredondadas
@@ -67,7 +63,7 @@ public class CryptidInformationPaneController {
         imagemRedonda.setClip(clip); // Aplica o recorte arredondado na imagem
     }
     
-        // Método auxiliar para formatar o texto do Enum
+    // Método auxiliar para formatar o texto do Enum
     private String formatarEnum(String texto) {
         if (texto == null || texto.isEmpty()) {
             return texto;

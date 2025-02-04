@@ -1,19 +1,16 @@
 package util;
 
+import java.io.IOException;
+import java.util.Optional;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.stage.Stage;
-
-import javafx.scene.control.ButtonType;
-import java.util.Optional;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-
-import java.io.IOException;
-
-import model.Criptideo;
+import javafx.scene.control.ButtonType;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 
 public class WindowsUtil {
 

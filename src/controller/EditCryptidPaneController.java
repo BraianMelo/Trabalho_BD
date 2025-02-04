@@ -1,14 +1,11 @@
 package controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
-import javafx.event.ActionEvent;
-
-import controller.MenuViewController;
 import model.Criptideo;
 import model.enums.StatusCriptideo;
 import model.enums.Tipo;

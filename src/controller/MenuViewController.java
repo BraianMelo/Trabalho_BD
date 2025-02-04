@@ -1,42 +1,21 @@
 package controller;
 
-import java.awt.Desktop;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
+import java.util.List;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.Node;
-import javafx.scene.image.Image;
-import javafx.stage.Stage;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.layout.Pane;
-
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.control.Hyperlink;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.control.Slider;
-import javafx.scene.control.TabPane;
 import javafx.scene.control.Tab;
-import javafx.scene.control.ScrollPane;
-
-import javafx.scene.input.MouseEvent;
-
-import controller.CryptidPaneController;
-import controller.CryptidInformationPaneController;
-import controller.EditCryptidPaneController;
+import javafx.scene.control.TabPane;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import model.Criptideo;
 import persistence.CriptideoDAO;
-import util.WindowsUtil;
-
-import java.util.List;
 
 public class MenuViewController {
 	

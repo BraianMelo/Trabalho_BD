@@ -1,33 +1,25 @@
 package controller;
 
+import java.io.File;
+import java.util.List;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.control.Button;
-
-import java.io.File;
-import java.util.List; 
-import java.util.ArrayList;   
-
-import util.WindowsUtil;
 import model.Criptideo;
-import model.Avistamento;
-import model.Testemunha;
-import persistence.TestemunhaDAO;
-import persistence.AvistamentoTestemunhaDAO;
-import persistence.CriptideoDAO;
-import persistence.AvistamentoDAO;
 import persistence.CriptideoAvistamentoDAO;
-import controller.MenuViewController;
+import persistence.CriptideoDAO;
+import util.WindowsUtil;
 
 public class CryptidPaneController {
 	
 	private Criptideo criptideo;
-	private MenuViewController menuViewController = null;
+	private MenuViewController menuViewController;
 
     @FXML
     private Label lblNome;

@@ -16,6 +16,7 @@ public class SightingPaneController {
     private final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd MMMM yyyy", new Locale("pt", "BR"));
     
     private MenuViewController menuViewController;
+    private Avistamento avistamento;
     
     @FXML
     private Label lblAvistamento;
@@ -40,7 +41,8 @@ public class SightingPaneController {
     
 
     public void setDados(Avistamento avistamento, int numeroAvistamento, MenuViewController menuViewController) {
-        this.menuViewController = menuViewController;
+        this.avistamento = avistamento;
+    	this.menuViewController = menuViewController;
     	
     	if (avistamento == null) {
             System.err.println("Erro: Avistamento recebido é nulo.");
@@ -68,8 +70,8 @@ public class SightingPaneController {
 		FXMLLoader loader = menuViewController.adicionarAba("/view/EditSightingPane.fxml", "Editar Avistamento");
 		
 		if( loader != null) {
-			 //EditS controller = loader.getController();
-	         //controller.setDados(criptideo, menuViewController);
+			 EditSightingPaneController controller = loader.getController();
+	         controller.setDados(avistamento, menuViewController);
 		}
 	}
     

@@ -1,7 +1,5 @@
 package model;
 
-import model.enums.Tipo;
-import model.enums.StatusCriptideo;
 import model.enums.Genero;
 
 public class Pesquisador extends Testemunha {
