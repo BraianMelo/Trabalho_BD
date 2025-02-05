@@ -7,6 +7,7 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import model.Criptideo;
+import model.enums.ModeloAba;
 import model.enums.StatusCriptideo;
 import model.enums.Tipo;
 import persistence.CriptideoDAO;
@@ -15,6 +16,7 @@ public class EditCryptidPaneController {
 	
 	private MenuViewController menuController;
 	private Criptideo criptideo;
+	private ModeloAba modelo;
 
     @FXML
     private TextField txtfNomeCriptideo;
@@ -31,16 +33,19 @@ public class EditCryptidPaneController {
     @FXML
     private Button btnSalvar;
     
-	public void setDados(Criptideo criptideo, MenuViewController menuController) {
+	public void setDados(Criptideo criptideo, ModeloAba modelo, MenuViewController menuController) {
 		this.menuController = menuController;
 		this.criptideo = criptideo;
+		this.modelo = modelo;
 		
-		if (criptideo != null) {
-			txtfNomeCriptideo.setText(criptideo.getNome());
-			txtfCaminhoFoto.setText(criptideo.getImagemCaminho());
-			selecionarMenuItem(mbtnStatus, criptideo.getStatusCr().ordinal());
-			selecionarMenuItem(mbtnTipo, criptideo.getTipo().ordinal());
+		if(modelo.equals(ModeloAba.ADICIONAR)) {
+			return;
 		}
+		
+		txtfNomeCriptideo.setText(criptideo.getNome());
+		txtfCaminhoFoto.setText(criptideo.getImagemCaminho());
+		selecionarMenuItem(mbtnStatus, criptideo.getStatusCr().ordinal());
+		selecionarMenuItem(mbtnTipo, criptideo.getTipo().ordinal());
 	}
 	
 	private void selecionarMenuItem(MenuButton menuButton, int valor) {
@@ -68,10 +73,22 @@ public class EditCryptidPaneController {
         criptideo.setNome(txtfNomeCriptideo.getText());
         criptideo.setTipo(Tipo.valueOf(mbtnTipo.getText().toUpperCase()));
         criptideo.setStatusCr(StatusCriptideo.valueOf(mbtnStatus.getText().toUpperCase()));
-        criptideo.setImagemCaminho(txtfCaminhoFoto.getText());
-
+        
+        if(txtfCaminhoFoto.getText() != null)
+        	criptideo.setImagemCaminho(txtfCaminhoFoto.getText());
+        else
+        	criptideo.setImagemCaminho(null);
+        
         CriptideoDAO criptideoDAO = new CriptideoDAO();
-        criptideoDAO.atualizar(criptideo);
+        
+        if(modelo.equals(ModeloAba.ADICIONAR)) {
+        	criptideoDAO.inserir(criptideo);
+        	menuController.addCriptideoAlterado(criptideo.getIdCriptideo());
+        	
+        } else {
+            criptideoDAO.atualizar(criptideo);
+        }
+
         menuController.carregarGridCriptideos();
         menuController.fecharAba();
 

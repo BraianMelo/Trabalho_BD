@@ -12,12 +12,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
 import model.Criptideo;
+import model.enums.ModeloAba;
 import persistence.AvistamentoDAO;
 import persistence.AvistamentoTestemunhaDAO;
 import persistence.CriptideoAvistamentoDAO;
 import persistence.CriptideoDAO;
 import persistence.TestemunhaDAO;
-import util.WindowsUtil;
+import util.Utils;
 
 public class CryptidPaneController {
 	
@@ -90,7 +91,7 @@ public class CryptidPaneController {
 		
 		if( loader != null) {
 			 EditCryptidPaneController controller = loader.getController();
-	         controller.setDados(criptideo, menuViewController);
+	         controller.setDados(criptideo, ModeloAba.EDITAR, menuViewController);
 		}
 		
 	}
@@ -98,7 +99,7 @@ public class CryptidPaneController {
     //TODO: Excluir Criptideo
     @FXML
     private void onBtnExcluirAction() {
-		WindowsUtil windows = new WindowsUtil();
+		Utils windows = new Utils();
 		boolean resposta = windows.mostrarAlertaConfirmacao("Excluir "+criptideo.getNome()); 
         
 		if (resposta) {
@@ -126,19 +127,16 @@ public class CryptidPaneController {
 				
 				
 				menuViewController.carregarGridCriptideos();
-				new WindowsUtil().mostrarAlertaMensagem("Criptídeo apagado", "O criptídeo foi apagado");
+				new Utils().mostrarAlertaMensagem("Criptídeo apagado", "O criptídeo foi apagado");
         } 
     }
     
 	@FXML
 	private void onBtnInformacaoAction() {
-		CriptideoAvistamentoDAO caDAO = new CriptideoAvistamentoDAO();
-
-		List<Integer> idsAvistamentos = caDAO.buscarIdsAvistamentosPorCriptideo(criptideo.getIdCriptideo());
 		FXMLLoader loader = menuViewController.adicionarAba("/view/CryptidInformationsPane.fxml", criptideo.getNome());
 		
         CryptidInformationPaneController controller = loader.getController();
-        controller.setDados(criptideo, idsAvistamentos, menuViewController);
+        controller.setDados(criptideo, menuViewController);
 	}
 
 

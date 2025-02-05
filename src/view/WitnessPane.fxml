@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="220.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.WitnessPaneController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.WitnessPaneController">
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="220.0" prefWidth="600.0">
          <children>
@@ -158,7 +158,7 @@
                   <Insets />
                </opaqueInsets>
                <VBox.margin>
-                  <Insets right="40.0" />
+                  <Insets left="50.0" right="50.0" />
                </VBox.margin>
             </HBox>
          </children>

@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javafx.fxml.FXML;
@@ -14,12 +15,19 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import model.Criptideo;
+import model.enums.ModeloAba;
+import persistence.AvistamentoDAO;
+import persistence.AvistamentoTestemunhaDAO;
+import persistence.CriptideoAvistamentoDAO;
 import persistence.CriptideoDAO;
 
 public class MenuViewController {
 	
 	private boolean modoDark = true;
+	private Stage stage;
+	private List<Integer> idsCriptideosAlterados = new ArrayList<>();
 
 	@FXML
 	private AnchorPane apMenuView;
@@ -47,21 +55,28 @@ public class MenuViewController {
     
     @FXML
     private Slider sldTamanhoFont;
-
-
+    
     @FXML
     public void initialize() {
-        // Carrega os dados da lista de Criptídeos e mostra no grid
         carregarGridCriptideos();
-        
+    }
+    
+    public void setDados(Stage stage) {
+    	this.stage = stage;
+    	
+    	// sempre rodará esse método antes de fechar a janela:
+    	 if (this.stage != null) {
+             this.stage.setOnCloseRequest(event -> {
+            	 System.out.println("Tá aqui");
+                 apagarEntidadeSemRelacoes();
+             });
+         }
     }
 
 	public void carregarGridCriptideos() {
-		// Cria o DAO e obtém a lista de Criptídeos
 		CriptideoDAO criptideoDAO = new CriptideoDAO();
 		List<Criptideo> listaCriptideos = criptideoDAO.listarTodos();
 
-		// Limpa o grid antes de recarregar
 		vboxGrid.getChildren().clear(); 
 
 		try {
@@ -72,7 +87,6 @@ public class MenuViewController {
 				CryptidPaneController controller = loader.getController();
 				controller.setDados(criptideo, this);
 
-				// Adiciona o novo item ao grid
 				vboxGrid.getChildren().add(pane);
 			}
 		} catch (IOException e) {
@@ -81,7 +95,6 @@ public class MenuViewController {
 		}
 	}
 
-	// TODO: Add tab mais genérico
 	public FXMLLoader adicionarAba(String caminho, String titulo) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(caminho));
@@ -123,8 +136,60 @@ public class MenuViewController {
             }
         } catch (IOException e) {
             e.printStackTrace();
+        }
     }
-}
+    
+    public void addCriptideoAlterado(Integer idCriptideo) {
+    	if(!idsCriptideosAlterados.contains(idCriptideo))
+    		idsCriptideosAlterados.add(idCriptideo);
+    }
+    
+    
+    /* Um criptídeo só pode existir caso exista um avistamento.
+     * Este só pode existir caso tenha testemunhas.
+     */
+    private void apagarEntidadeSemRelacoes() {
+    	CriptideoAvistamentoDAO caDAO = new CriptideoAvistamentoDAO();
+    	AvistamentoTestemunhaDAO atDAO = new AvistamentoTestemunhaDAO();
+    	AvistamentoDAO avistamaneotDAO = new AvistamentoDAO();
+    	CriptideoDAO criptideoDAO = new CriptideoDAO();
+    	
+    	
+    	for(Integer idCriptideo: idsCriptideosAlterados) {
+    		System.out.println(idCriptideo);
+    		List<Integer> idsAvistamentos = caDAO.buscarIdsAvistamentosPorCriptideo(idCriptideo);    		
+    		
+    		for(Integer idAvistamento: idsAvistamentos) {
+    			List<Integer> idsTestemunhas = atDAO.buscarIdsTestemunhasPorAvistamento(idAvistamento);
+    			
+    			if(idsTestemunhas.size() == 0) {
+    				avistamaneotDAO.excluir(idAvistamento);
+    				caDAO.excluirRelacao(idCriptideo, idAvistamento);
+    				System.out.println("Avistamento: "+ idAvistamento + " excluido");
+    			}
+    		}
+    	}
+    	
+    	for(Integer idCriptideo: idsCriptideosAlterados) {
+    		List<Integer> idsAvistamentos = caDAO.buscarIdsAvistamentosPorCriptideo(idCriptideo);    	
+    		
+    		if(idsAvistamentos.size() == 0) {
+    			criptideoDAO.excluir(idCriptideo);
+    			System.out.println("Criptideo: "+ idCriptideo + " excluido");
+    		}
+    	}
+    	
+    }
+    
+    @FXML
+    private void onBtnAdicionarCriptideoAction() {
+		FXMLLoader loader = adicionarAba("/view/EditCryptidPane.fxml", "Edicionar Criptideo");
+		
+		if( loader != null) {
+			 EditCryptidPaneController controller = loader.getController();
+	         controller.setDados(new Criptideo(), ModeloAba.ADICIONAR, this);
+		}
+    }
     
     @FXML
     void onHpBraianGithubAction() {
@@ -162,11 +227,8 @@ public class MenuViewController {
 	
 	@FXML
 	void onSldTamanhoFontMouseRelease() {
-		// Obtém o valor do slider
 		int tamanhoFonte = (int) sldTamanhoFont.getValue();
 		
-
-		// Define o estilo para todos os elementos com a classe "text-id"
 		apMenuView.lookupAll(".text-id").forEach(node -> {
 			node.setStyle("-fx-font-size: " + tamanhoFonte + "px;");
 		});

@@ -12,14 +12,15 @@ import model.enums.Genero;
 import model.enums.ModeloAba;
 import persistence.AvistamentoTestemunhaDAO;
 import persistence.TestemunhaDAO;
-import util.WindowsUtil;
+import util.Utils;
 
 public class EditWitnessPaneController {
 	
+	private SightingPaneController sightingPaneController;
 	private MenuViewController menuViewController;
-	private ModeloAba modelo;
 	private Testemunha testemunha;
 	private Integer idAvistamento;
+	private ModeloAba modelo;
 	
 	@FXML
 	private TextField txtfNome;
@@ -42,14 +43,15 @@ public class EditWitnessPaneController {
 	@FXML
 	private ImageView imgBotao;
 	
-	public void setDados(Testemunha testemunha, Integer idAvistamento,  MenuViewController menuViewController,  ModeloAba modelo) {
+	public void setDados(Testemunha testemunha, Integer idAvistamento,  ModeloAba modelo,  SightingPaneController sightingPaneController, MenuViewController menuViewController) {
 		this.menuViewController = menuViewController;
-		this.modelo = modelo;
-		this.testemunha = testemunha;
+		this.sightingPaneController = sightingPaneController;
 		this.idAvistamento = idAvistamento;
+		this.testemunha = testemunha;
+		this.modelo = modelo;
 		
 		if(modelo.equals(ModeloAba.ADICIONAR)) {
-			Image icone = new Image(WindowsUtil.class.getResourceAsStream("/view/images/Icone_Adicionar.png"));
+			Image icone = new Image(Utils.class.getResourceAsStream("/view/images/Icone_Adicionar.png"));
 			imgBotao.setImage(icone);
 			return;
 			
@@ -133,6 +135,8 @@ public class EditWitnessPaneController {
 			testemunhaDAO.atualizarTestemunha(testemunha);
 		}
 		
+		sightingPaneController.carregarGrid();
+		sightingPaneController.reportarAlteracao();
 		menuViewController.fecharAba();
 	}
 

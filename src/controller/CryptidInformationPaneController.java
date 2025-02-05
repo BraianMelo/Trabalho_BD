@@ -15,12 +15,14 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import model.Avistamento;
 import model.Criptideo;
+import model.enums.ModeloAba;
 import persistence.AvistamentoDAO;
-import persistence.AvistamentoTestemunhaDAO;
+import persistence.CriptideoAvistamentoDAO;
 
 public class CryptidInformationPaneController {
 	
 	private MenuViewController menuViewController;
+	private Criptideo criptideo;
 
     @FXML
     private Label lblNome;
@@ -47,10 +49,12 @@ public class CryptidInformationPaneController {
         configurarImagemRedonda();
     }
 
-    public void setDados(Criptideo criptideo, List<Integer> idsAvistamentos, MenuViewController menuViewController) {
+    public void setDados(Criptideo criptideo, MenuViewController menuViewController) {
 		this.menuViewController = menuViewController;
+		this.criptideo = criptideo;
+		
     	adiocionarCriptideo(criptideo);
-		adiocionarAvistamentos(idsAvistamentos);
+		carregarGridAvistamentos();
     }
 
     private void configurarImagemRedonda() {
@@ -87,23 +91,27 @@ public class CryptidInformationPaneController {
         }
 	}
     
-    private void adiocionarAvistamentos(List<Integer> idsAvistamentos){
-		AvistamentoTestemunhaDAO atDAO = new AvistamentoTestemunhaDAO();
+    public void carregarGridAvistamentos(){
+    	CriptideoAvistamentoDAO caDAO = new CriptideoAvistamentoDAO();
 		AvistamentoDAO avistamentoDAO = new AvistamentoDAO();
 		Avistamento avistamento;
+		
+		vboxGrid.getChildren().clear();
+		
+		List<Integer> idsAvistamentos = caDAO.buscarIdsAvistamentosPorCriptideo(criptideo.getIdCriptideo());
 		
         int numeroAvistamento = 1;
         
         try {
 			for (int idAvistamento : idsAvistamentos) {
 				avistamento = avistamentoDAO.consultarPorId(idAvistamento);
+				
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/SightingPane.fxml"));
                 Pane pane = loader.load();
                 
-                List<Integer> idsTestemunhas = atDAO.buscarIdsTestemunhasPorAvistamento(idAvistamento);
 
                 SightingPaneController controller = loader.getController();
-                controller.setDados(avistamento, numeroAvistamento, menuViewController, idsTestemunhas);
+                controller.setDados(avistamento, numeroAvistamento, this, menuViewController);
 
                 vboxGrid.getChildren().add(pane);
                 
@@ -114,7 +122,20 @@ public class CryptidInformationPaneController {
             System.err.println("Erro ao carregar SightingPane.fxml: " + e.getMessage());
         }
     }
-	
     
+    @FXML
+    private void onBtnAdicionarAvistamentoAction() {
+		FXMLLoader loader = menuViewController.adicionarAba("/view/EditSightingPane.fxml", "Editar Avistamento");
+		
+		if( loader != null) {
+			 EditSightingPaneController controller = loader.getController();
+	         controller.setDados(new Avistamento(), criptideo.getIdCriptideo(), ModeloAba.ADICIONAR, this, menuViewController);
+		}
+    }
+
+	public void reportarAlteracao() {
+		menuViewController.addCriptideoAlterado(criptideo.getIdCriptideo());
+		
+	}
 
 }

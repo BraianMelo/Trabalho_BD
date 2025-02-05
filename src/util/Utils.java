@@ -3,6 +3,7 @@ package util;
 import java.io.IOException;
 import java.util.Optional;
 
+import controller.MenuViewController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -12,20 +13,20 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-public class WindowsUtil {
+public class Utils {
 
     private static final boolean REDIMENSIONAVEL = false;
 
 	public static void abrirJanela(String caminhoFXML, String caminhoCss, String titulo, String iconePath) {
 		try {
-			FXMLLoader loader = new FXMLLoader(WindowsUtil.class.getResource(caminhoFXML));
+			FXMLLoader loader = new FXMLLoader(Utils.class.getResource(caminhoFXML));
 			Parent parent = loader.load();
 
 			Scene scene = new Scene(parent);
 
 			// Adiciona o CSS à cena, se o caminho for fornecido
 			if (caminhoCss != null && !caminhoCss.isEmpty()) {
-				scene.getStylesheets().add(WindowsUtil.class.getResource(caminhoCss).toExternalForm());
+				scene.getStylesheets().add(Utils.class.getResource(caminhoCss).toExternalForm());
 			}
 
 			Stage stage = new Stage();
@@ -33,13 +34,16 @@ public class WindowsUtil {
 
 			// Configura o ícone, se fornecido
 			if (iconePath != null && !iconePath.isEmpty()) {
-				Image icone = new Image(WindowsUtil.class.getResourceAsStream(iconePath));
+				Image icone = new Image(Utils.class.getResourceAsStream(iconePath));
 				stage.getIcons().add(icone);
 			}
 
 			stage.setTitle(titulo);
 			stage.setResizable(REDIMENSIONAVEL);
 			stage.show();
+			
+			MenuViewController controller = loader.getController();
+			controller.setDados(stage);
 
 		} catch (IOException e) {
 			e.printStackTrace();

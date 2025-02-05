@@ -11,7 +11,7 @@ import java.util.List;
 public class CriptideoDAO {
 
     public void inserir(Criptideo criptideo) {
-        String sql = "INSERT INTO Criptideo (Nome, Descricao, Tipo, Status_cr, ImagemCaminho) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Criptideo (Nome, Descricao, Tipo, Status_cr, Imagem_Caminho) VALUES (?, ?, ?, ?, ?)";
 
         try (Connection conn = ConexaoBD.getConexao();
              PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {

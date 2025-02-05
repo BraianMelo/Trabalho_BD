@@ -9,7 +9,8 @@ public class Avistamento {
     private String pais;
     private LocalDate data;
 
-    // Construtor
+    public Avistamento() {}
+    
     public Avistamento(int idAvistamento, String local, String pais, LocalDate data) {
         this.idAvistamento = idAvistamento;
         this.local = local;
@@ -17,7 +18,7 @@ public class Avistamento {
         this.data = data;
     }
 
-    // Getters e Setters
+	// Getters e Setters
     public int getIdAvistamento() {
         return idAvistamento;
     }

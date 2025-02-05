@@ -2,19 +2,19 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Label;
 import javafx.scene.control.Button;
-
+import javafx.scene.control.Label;
+import model.Testemunha;
 import model.enums.Genero;
 import model.enums.ModeloAba;
 import persistence.AvistamentoTestemunhaDAO;
 import persistence.TestemunhaDAO;
-import util.WindowsUtil;
-import model.Testemunha;
+import util.Utils;
 
 public class WitnessPaneController {
 	
 	 private MenuViewController menuViewController;
+	 private SightingPaneController sightingPaneController;
 	 private Testemunha testemunha;
 	 private Integer idAvistamento;
 	
@@ -43,9 +43,10 @@ public class WitnessPaneController {
     @FXML
     private Button btnEditar;
 	
-	public void setDados(Testemunha testemunha, Integer idAvistamento, MenuViewController menuViewController){
+	public void setDados(Testemunha testemunha, Integer idAvistamento, SightingPaneController sightingPaneController, MenuViewController menuViewController){
 		this.testemunha = testemunha;
 		this.menuViewController = menuViewController;
+		this.sightingPaneController = sightingPaneController;
 		this.idAvistamento = idAvistamento;
 		
 		lblNome.setText(testemunha.getNome());
@@ -75,7 +76,7 @@ public class WitnessPaneController {
 	
 	@FXML
 	private void onBtnExcluirAction() {
-    	WindowsUtil windowsUtil = new WindowsUtil();
+    	Utils windowsUtil = new Utils();
     	boolean resposta = windowsUtil.mostrarAlertaConfirmacao("Quer mesmo apagar esse avistamento?");
     	    	
     	if (!resposta)
@@ -86,6 +87,9 @@ public class WitnessPaneController {
 		
 		AvistamentoTestemunhaDAO atDAO = new AvistamentoTestemunhaDAO();
 		atDAO.excluirRelacao(idAvistamento, testemunha.getIdTestemunha());
+		
+		sightingPaneController.carregarGrid();
+		sightingPaneController.reportarAlteracao();
     }
     
     @FXML
@@ -94,7 +98,7 @@ public class WitnessPaneController {
 		
 		if( loader != null) {
 			 EditWitnessPaneController controller = loader.getController();
-	         controller.setDados(testemunha, null, menuViewController, ModeloAba.EDITAR);
+	         controller.setDados(testemunha, null, ModeloAba.EDITAR, sightingPaneController, menuViewController);
 		}
     }
 	

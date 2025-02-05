@@ -11,7 +11,8 @@ public class Criptideo {
     private StatusCriptideo statusCr; 
     private String imagemCaminho; 
 
-    // Construtor
+    public Criptideo() {}
+    
     public Criptideo(int idCriptideo, String nome, String descricao, Tipo tipo, StatusCriptideo statusCr, String imagemCaminho) {
         this.idCriptideo = idCriptideo;
         this.nome = nome;
@@ -21,7 +22,7 @@ public class Criptideo {
         this.imagemCaminho = imagemCaminho;
     }
 
-    // Getters e Setters
+	// Getters e Setters
     public int getIdCriptideo() {
         return idCriptideo;
     }
@@ -70,17 +71,6 @@ public class Criptideo {
         this.imagemCaminho = imagemCaminho;
     }
 
-    // Método para exibir informações
-    public void exibirInformacoes() {
-        System.out.println("ID: " + idCriptideo);
-        System.out.println("Nome: " + nome);
-        System.out.println("Descrição: " + descricao);
-        System.out.println("Tipo: " + tipo);
-        System.out.println("Status: " + statusCr);
-        System.out.println("Imagem: " + imagemCaminho); 
-    }
-
-    // toString
     @Override
     public String toString() {
         return String.format("%d - %s: %s | Tipo: %s | Status: %s | Imagem: %s", 

@@ -17,12 +17,13 @@ import model.enums.ModeloAba;
 import persistence.AvistamentoDAO;
 import persistence.AvistamentoTestemunhaDAO;
 import persistence.TestemunhaDAO;
-import util.WindowsUtil;
+import util.Utils;
 
 public class SightingPaneController {
     
-    private final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd MMMM yyyy", new Locale("pt", "BR"));
+    private final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd MMMM yyyy", Locale.of("pt", "BR"));
     
+    private CryptidInformationPaneController cryptidInformationPaneController;
     private MenuViewController menuViewController;
     private Avistamento avistamento;
     
@@ -51,9 +52,10 @@ public class SightingPaneController {
     private VBox vboxGrid;
     
 
-    public void setDados(Avistamento avistamento, int numeroAvistamento, MenuViewController menuViewController, List<Integer> idsTestemunhas) {
+    public void setDados(Avistamento avistamento, int numeroAvistamento, CryptidInformationPaneController cryptidInformationPaneController, MenuViewController menuViewController) {
         this.avistamento = avistamento;
     	this.menuViewController = menuViewController;
+    	this.cryptidInformationPaneController = cryptidInformationPaneController;
     	
     	if (avistamento == null) {
             System.err.println("Erro: Avistamento recebido é nulo.");
@@ -70,12 +72,21 @@ public class SightingPaneController {
             lblData.setText("Data desconhecida");
         }
         
-        adiocionarTestemunhas(idsTestemunhas);
+        carregarGrid();
     }
     
-    private void adiocionarTestemunhas(List<Integer> idsTestemunhas){
+    public void reportarAlteracao() {
+    	cryptidInformationPaneController.reportarAlteracao();
+    }
+    
+    public void carregarGrid(){
+    	AvistamentoTestemunhaDAO atDAO = new AvistamentoTestemunhaDAO();
 		TestemunhaDAO testemunhaDAO = new TestemunhaDAO();
 		Testemunha testemunha;
+
+		List<Integer> idsTestemunhas = atDAO.buscarIdsTestemunhasPorAvistamento(avistamento.getIdAvistamento());
+		
+		vboxGrid.getChildren().clear();
 		
 		try {
 			for(int idTestemunha: idsTestemunhas) {
@@ -85,18 +96,20 @@ public class SightingPaneController {
 				Pane pane = loader.load();
 						
 				WitnessPaneController controller = loader.getController();
-				controller.setDados(testemunha, avistamento.getIdAvistamento(), menuViewController);
+				controller.setDados(testemunha, avistamento.getIdAvistamento(), this, menuViewController);
 						
 				vboxGrid.getChildren().add(pane);
 			}
 		} catch (IOException e) {
             System.err.println("Erro ao carregar WitnessPane.fxml: " + e.getMessage());
         }
+    
+		
 	}
     
     @FXML
     private void onBtnExcluirAction() {
-    	WindowsUtil windowsUtil = new WindowsUtil();
+    	Utils windowsUtil = new Utils();
     	boolean resposta = windowsUtil.mostrarAlertaConfirmacao("Quer mesmo apagar esse avistamento?");
     	    	
     	if (!resposta)
@@ -115,7 +128,9 @@ public class SightingPaneController {
         	testemunhaDAO.excluirTestemunha(idTestemunha);
         }
         
-        menuViewController.fecharAba();
+        cryptidInformationPaneController.carregarGridAvistamentos();
+        cryptidInformationPaneController.reportarAlteracao();
+        
     }
     
     @FXML
@@ -124,7 +139,7 @@ public class SightingPaneController {
 		
 		if( loader != null) {
 			 EditSightingPaneController controller = loader.getController();
-	         controller.setDados(avistamento, menuViewController);
+	         controller.setDados(avistamento, null, ModeloAba.EDITAR, null, menuViewController);
 		}
 	}
     
@@ -134,7 +149,7 @@ public class SightingPaneController {
 		
 		if( loader != null) {
 			 EditWitnessPaneController controller = loader.getController();
-	         controller.setDados(new Testemunha(), avistamento.getIdAvistamento(), menuViewController, ModeloAba.ADICIONAR);
+	         controller.setDados(new Testemunha(), avistamento.getIdAvistamento(), ModeloAba.ADICIONAR, this, menuViewController);
 		}
     }
     
