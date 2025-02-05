@@ -89,3 +89,17 @@
     -fx-background-color: #0f4b4e; 
     -fx-border-color: #083535; 
 }
+
+/* Botão Adicionar - Azul */
+.btn-adicionar {
+    -fx-background-color: #0077b6;
+    -fx-border-color: #005f8c;
+}
+.btn-adicionar:hover {
+    -fx-background-color: #005f8c;
+    -fx-border-color: #00456b;
+}
+.btn-adicionar:pressed {
+    -fx-background-color: #00456b;
+    -fx-border-color: #00314b;
+}

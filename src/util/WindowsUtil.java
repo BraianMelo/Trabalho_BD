@@ -47,13 +47,13 @@ public class WindowsUtil {
 	}
 	
 	public boolean mostrarAlertaConfirmacao(String titulo){
-		Alert alert = new Alert(AlertType.CONFIRMATION);
-        alert.setTitle("Confirmação");
-        alert.setHeaderText(titulo);
-        alert.setContentText("Escolha OK para continuar ou Cancelar para sair.");
+		Alert alerta = new Alert(AlertType.CONFIRMATION);
+        alerta.setTitle("Confirmação");
+        alerta.setHeaderText(titulo);
+        alerta.setContentText("Escolha OK para continuar ou Cancelar para sair.");
 
         // Exibindo o alerta e aguardando a resposta
-        Optional<ButtonType> result = alert.showAndWait();
+        Optional<ButtonType> result = alerta.showAndWait();
 
         // Verificando a resposta
         if (result.isPresent() && result.get() == ButtonType.OK)
@@ -63,10 +63,17 @@ public class WindowsUtil {
 	}
 	
 	public void mostrarAlertaErro(String texto) {
-		Alert errorAlert = new Alert(AlertType.ERROR);
-		errorAlert.setTitle("Erro");
-		errorAlert.setHeaderText(texto);
-		errorAlert.showAndWait();
+		Alert alertaErro = new Alert(AlertType.ERROR);
+		alertaErro.setTitle("Erro");
+		alertaErro.setHeaderText(texto);
+		alertaErro.showAndWait();
+	}
+	
+	public void mostrarAlertaMensagem(String titulo, String texto) {
+		Alert alertaMensagem = new Alert(AlertType.INFORMATION);
+		alertaMensagem.setTitle(titulo);
+		alertaMensagem.setHeaderText(texto);
+		alertaMensagem.showAndWait();
 	}
     
     public String formatarEnum(String enumStr){

@@ -109,30 +109,6 @@ public class MenuViewController {
 		tabPane.getTabs().remove(tabPane.getSelectionModel().getSelectedIndex());
 	}
     
-
-	
-	public void adicionarAbaInformacao(Criptideo criptideo, List<Integer> idsAvistamentos) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/CryptidInformationsPane.fxml"));
-            Node conteudo = loader.load();
-
-            Tab novaAba = new Tab("Informações do "+ criptideo.getNome());
-
-            novaAba.setContent(conteudo);
-
-            tabPane.getTabs().add(novaAba);
-
-            tabPane.getSelectionModel().select(novaAba);
-            
-            CryptidInformationPaneController controller = loader.getController();
-            controller.setDados(criptideo, idsAvistamentos, this);
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("Erro ao carregar o arquivo editar.fxml");
-        }
-	}
-    
     public void abrirLink(String url) {
         try {
             String os = System.getProperty("os.name").toLowerCase();

@@ -1,24 +1,21 @@
 package controller;
 
-import javafx.scene.layout.VBox;
-import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
-import javafx.scene.shape.Rectangle;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.FXML;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-import model.Criptideo;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.shape.Rectangle;
 import model.Avistamento;
-import model.Testemunha;
+import model.Criptideo;
 import persistence.AvistamentoDAO;
-import persistence.TestemunhaDAO;
 import persistence.AvistamentoTestemunhaDAO;
 
 public class CryptidInformationPaneController {
@@ -102,17 +99,15 @@ public class CryptidInformationPaneController {
 				avistamento = avistamentoDAO.consultarPorId(idAvistamento);
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/SightingPane.fxml"));
                 Pane pane = loader.load();
+                
+                List<Integer> idsTestemunhas = atDAO.buscarIdsTestemunhasPorAvistamento(idAvistamento);
 
                 SightingPaneController controller = loader.getController();
-                controller.setDados(avistamento, numeroAvistamento, menuViewController);
+                controller.setDados(avistamento, numeroAvistamento, menuViewController, idsTestemunhas);
 
                 vboxGrid.getChildren().add(pane);
                 
                 ++numeroAvistamento;
-                
-                List<Integer> idsTestemunhas = atDAO.buscarIdsTestemunhasPorAvistamento(idAvistamento);
-                
-				adiocionarTestemunhas(idsTestemunhas);
 			}
  
         } catch (IOException e) {
@@ -121,24 +116,5 @@ public class CryptidInformationPaneController {
     }
 	
     
-    private void adiocionarTestemunhas(List<Integer> idsTestemunhas){
-		TestemunhaDAO testemunhaDAO = new TestemunhaDAO();
-		Testemunha testemunha;
-		
-		try {
-			for(int idTestemunha: idsTestemunhas) {
-				testemunha = testemunhaDAO.buscarTestemunhaPorId(idTestemunha);
-						
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/WitnessPane.fxml"));
-				Pane pane = loader.load();
-						
-				WitnessPaneController controller = loader.getController();
-				controller.setDados(testemunha, menuViewController);
-						
-				vboxGrid.getChildren().add(pane);
-			}
-		} catch (IOException e) {
-            System.err.println("Erro ao carregar WitnessPane.fxml: " + e.getMessage());
-        }
-	}
+
 }

@@ -5,14 +5,21 @@ import javafx.fxml.FXML;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import model.Testemunha;
 import model.enums.Genero;
+import model.enums.ModeloAba;
+import persistence.AvistamentoTestemunhaDAO;
 import persistence.TestemunhaDAO;
+import util.WindowsUtil;
 
 public class EditWitnessPaneController {
 	
 	private MenuViewController menuViewController;
+	private ModeloAba modelo;
 	private Testemunha testemunha;
+	private Integer idAvistamento;
 	
 	@FXML
 	private TextField txtfNome;
@@ -32,9 +39,21 @@ public class EditWitnessPaneController {
 	@FXML
 	private TextField txtfTelefone;
 	
-	public void setDados(Testemunha testemunha, MenuViewController menuViewController) {
+	@FXML
+	private ImageView imgBotao;
+	
+	public void setDados(Testemunha testemunha, Integer idAvistamento,  MenuViewController menuViewController,  ModeloAba modelo) {
 		this.menuViewController = menuViewController;
+		this.modelo = modelo;
 		this.testemunha = testemunha;
+		this.idAvistamento = idAvistamento;
+		
+		if(modelo.equals(ModeloAba.ADICIONAR)) {
+			Image icone = new Image(WindowsUtil.class.getResourceAsStream("/view/images/Icone_Adicionar.png"));
+			imgBotao.setImage(icone);
+			return;
+			
+		}
 		
 		txtfNome.setText(testemunha.getNome());
 		txtfSobrenome.setText(testemunha.getSobrenome());
@@ -104,7 +123,15 @@ public class EditWitnessPaneController {
 			testemunha.setTelefone(null);
 		
 		TestemunhaDAO testemunhaDAO = new TestemunhaDAO();
-		testemunhaDAO.atualizarTestemunha(testemunha);
+		AvistamentoTestemunhaDAO atDAO = new AvistamentoTestemunhaDAO();
+		
+		if(modelo.equals(ModeloAba.ADICIONAR)) {
+			testemunhaDAO.inserirTestemunha(testemunha);
+			atDAO.inserirRelacao(idAvistamento, testemunha.getIdTestemunha());
+			
+		} else {
+			testemunhaDAO.atualizarTestemunha(testemunha);
+		}
 		
 		menuViewController.fecharAba();
 	}

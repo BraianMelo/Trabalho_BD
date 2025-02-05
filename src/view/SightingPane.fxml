@@ -12,8 +12,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="panePrincipal" maxHeight="240.0" maxWidth="650.0" minHeight="240.0" minWidth="650.0" prefHeight="240.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SightingPaneController">
-    <VBox alignment="TOP_CENTER" prefHeight="230.0" prefWidth="650.0" spacing="5.0">
+<Pane fx:id="panePrincipal" minWidth="650.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SightingPaneController">
+    <VBox alignment="TOP_CENTER" prefWidth="650.0" spacing="5.0">
         <children>
          <Separator prefWidth="200.0">
             <VBox.margin>
@@ -27,7 +27,7 @@
             </Label>
          <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="590.0" spacing="15.0">
             <children>
-               <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="40.0" text="País:">
+               <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" text="País:">
                   <font>
                      <Font name="DejaVu Sans Bold" size="16.0" />
                   </font>
@@ -44,7 +44,7 @@
          </HBox>
          <HBox alignment="CENTER_LEFT" prefHeight="40.0" spacing="15.0">
             <children>
-               <Label alignment="CENTER_RIGHT" prefHeight="40.0" text="Data:">
+               <Label alignment="CENTER_RIGHT" text="Data:">
                   <font>
                      <Font name="DejaVu Sans Bold" size="16.0" />
                   </font>
@@ -61,12 +61,12 @@
          </HBox>
          <HBox alignment="CENTER_LEFT" prefHeight="40.0" spacing="15.0">
             <children>
-               <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="40.0" text="Local:">
+               <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" text="Local:">
                   <font>
                      <Font name="DejaVu Sans Bold" size="16.0" />
                   </font>
                </Label>
-               <Label fx:id="lblLocal" prefHeight="40.0" text="Pará">
+               <Label fx:id="lblLocal" text="Pará">
                   <font>
                      <Font name="DejaVu Sans" size="16.0" />
                   </font>
@@ -76,27 +76,8 @@
                <Insets left="30.0" right="30.0" />
             </VBox.margin>
          </HBox>
-         <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="610.0" spacing="10.0">
+         <HBox alignment="CENTER_RIGHT" prefHeight="40.0" spacing="10.0">
             <children>
-               <Button fx:id="btnEditar" mnemonicParsing="false" onAction="#onBtnEditarAction" prefHeight="40.0" prefWidth="40.0" styleClass="btn-editar">
-                  <font>
-                     <Font name="DejaVu Sans Bold" size="14.0" />
-                  </font>
-                  <graphic>
-                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                           <Image url="@images/Icone_Editar.png" />
-                        </image>
-                     </ImageView>
-                  </graphic>
-                  <tooltip>
-                     <Tooltip consumeAutoHidingEvents="false" contentDisplay="CENTER" height="40.0" text="Editar informações" textAlignment="CENTER" width="100.0">
-                        <font>
-                           <Font name="DejaVu Sans Oblique" size="14.0" />
-                        </font>
-                     </Tooltip>
-                  </tooltip>
-               </Button>
                <Button fx:id="btnExcluir" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onBtnExcluirAction" prefHeight="40.0" prefWidth="40.0" styleClass="btn-apagar">
                   <font>
                      <Font name="DejaVu Sans Bold" size="14.0" />
@@ -116,6 +97,44 @@
                      </Tooltip>
                   </tooltip>
                </Button>
+               <Button fx:id="btnEditar" mnemonicParsing="false" onAction="#onBtnEditarAction" prefHeight="40.0" prefWidth="40.0" styleClass="btn-editar">
+                  <font>
+                     <Font name="DejaVu Sans Bold" size="14.0" />
+                  </font>
+                  <graphic>
+                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@images/Icone_Editar.png" />
+                        </image>
+                     </ImageView>
+                  </graphic>
+                  <tooltip>
+                     <Tooltip consumeAutoHidingEvents="false" contentDisplay="CENTER" height="40.0" text="Editar informações" textAlignment="CENTER" width="100.0">
+                        <font>
+                           <Font name="DejaVu Sans Oblique" size="14.0" />
+                        </font>
+                     </Tooltip>
+                  </tooltip>
+               </Button>
+               <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onBtnAdicionarTestemunhaAction" prefHeight="40.0" prefWidth="40.0" styleClass="btn-adicionar">
+                  <font>
+                     <Font name="DejaVu Sans Bold" size="14.0" />
+                  </font>
+                  <graphic>
+                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@images/Icone_Adicionar.png" />
+                        </image>
+                     </ImageView>
+                  </graphic>
+                  <tooltip>
+                     <Tooltip consumeAutoHidingEvents="false" contentDisplay="CENTER" height="40.0" text="Adicionar avistamento" textAlignment="CENTER" width="100.0">
+                        <font>
+                           <Font name="DejaVu Sans Oblique" size="14.0" />
+                        </font>
+                     </Tooltip>
+                  </tooltip>
+               </Button>
             </children>
             <opaqueInsets>
                <Insets />
@@ -129,10 +148,18 @@
                <Font name="DejaVu Sans Bold" size="21.0" />
             </font>
          </Label>
+         <VBox fx:id="vboxGrid" alignment="TOP_CENTER" prefWidth="700.0" spacing="10.0">
+            <padding>
+               <Insets left="10.0" right="10.0" top="5.0" />
+            </padding>
+            <VBox.margin>
+               <Insets />
+            </VBox.margin>
+         </VBox>
          
         </children>
         <padding>
-            <Insets top="10.0" />
+            <Insets left="10.0" top="10.0" />
         </padding>
     </VBox>
 </Pane>

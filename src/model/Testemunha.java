@@ -11,6 +11,9 @@ public class Testemunha {
     private Genero genero;
     private String email;
     private String telefone;
+    
+    public Testemunha() {}
+
 
     public Testemunha(int idTestemunha, String nome, String sobrenome, int idade, Genero genero, String email, String telefone) {
         this.idTestemunha = idTestemunha;  
@@ -22,7 +25,7 @@ public class Testemunha {
         this.telefone = telefone;
     }
 
-    public int getIdTestemunha() {
+	public int getIdTestemunha() {
         return idTestemunha;
     }
 

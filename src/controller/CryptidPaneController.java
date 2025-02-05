@@ -85,7 +85,7 @@ public class CryptidPaneController {
     }
     
     @FXML
-    void onBtnEditarAction() {
+    private void onBtnEditarAction() {
 		FXMLLoader loader = menuViewController.adicionarAba("/view/EditCryptidPane.fxml", "Editar "+ criptideo.getNome());
 		
 		if( loader != null) {
@@ -97,7 +97,7 @@ public class CryptidPaneController {
     
     //TODO: Excluir Criptideo
     @FXML
-    void onBtnExcluirAction() {
+    private void onBtnExcluirAction() {
 		WindowsUtil windows = new WindowsUtil();
 		boolean resposta = windows.mostrarAlertaConfirmacao("Excluir "+criptideo.getNome()); 
         
@@ -126,6 +126,7 @@ public class CryptidPaneController {
 				
 				
 				menuViewController.carregarGridCriptideos();
+				new WindowsUtil().mostrarAlertaMensagem("Criptídeo apagado", "O criptídeo foi apagado");
         } 
     }
     
@@ -134,8 +135,10 @@ public class CryptidPaneController {
 		CriptideoAvistamentoDAO caDAO = new CriptideoAvistamentoDAO();
 
 		List<Integer> idsAvistamentos = caDAO.buscarIdsAvistamentosPorCriptideo(criptideo.getIdCriptideo());
-		menuViewController.adicionarAbaInformacao(criptideo, idsAvistamentos);
+		FXMLLoader loader = menuViewController.adicionarAba("/view/CryptidInformationsPane.fxml", criptideo.getNome());
 		
+        CryptidInformationPaneController controller = loader.getController();
+        controller.setDados(criptideo, idsAvistamentos, menuViewController);
 	}
 
 

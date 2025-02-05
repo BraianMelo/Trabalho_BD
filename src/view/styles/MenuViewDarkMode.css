@@ -142,15 +142,15 @@
     -fx-border-color: #223a4a;
 }
 
-.btn-salvar {
+.btn-salvar, .btn-adicionar {
     -fx-background-color: #1d7a8c; 
     -fx-border-color: #155e63; 
 }
-.btn-salvar:hover {
+.btn-salvar:hover, .btn-adicionar:hover {
     -fx-background-color: #155e63; 
     -fx-border-color: #0f4b4e;
 }
-.btn-salvar:pressed {
+.btn-salvar:pressed, .btn-adicionar:pressed {
     -fx-background-color: #0f4b4e; 
     -fx-border-color: #083535; 
 }
