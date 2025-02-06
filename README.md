@@ -6,20 +6,20 @@ Este projeto consiste em um sistema de gerenciamento de banco de dados com inter
 
 ```
 Trabalho_BD/
-├── database/          # Scripts relacionados ao banco de dados
-├── bin/               # Arquivos compilados
-├── src/               # Código-fonte do projeto
-│   ├── application/   # Ponto de entrada da aplicação
-│   ├── controller/    # Controladores responsáveis pela lógica da interface
-│   ├── view/          # Arquivos relacionados à interface gráfica
-│   │   ├── images/    # Recursos gráficos (ícones e imagens)
-│   │   └── styles/    # Estilos para a interface gráfica
-│   ├── model/         # Classes relacionadas aos dados e regras de negócio
-│   │   └── enums/     # Enumerações utilizadas no projeto
-│   ├── persistence/   # Classes de acesso a dados
-│   └── util/          # Utilitários gerais do projeto
-├── Makefile           # Automação de compilação e execução
-└── README.md          # Documentação do projeto
+├── database/         # Scripts do banco de dados
+├── bin/              # Arquivos compilados
+├── src/              # Código-fonte do projeto
+│   ├── app/          # Ponto de entrada da aplicação
+│   ├── controle/     # Controladores da interface
+│   ├── visao/        # Interface gráfica
+│   │   ├── imagens/  # Ícones e imagens
+│   │   └── estilos/  # Estilos visuais
+│   ├── modelo/       # Dados e regras de negócio
+│   │   └── enums/    # Enumerações
+│   ├── persistencia/ # Acesso a dados
+│   └── util/         # Utilitários gerais
+├── Makefile          # Automação de compilação e execução
+└── README.md         # Documentação do projeto
 
 ```
 

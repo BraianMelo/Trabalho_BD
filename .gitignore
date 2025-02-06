@@ -26,6 +26,8 @@ replay_pid*
 # Ignora toda a pasta
 bin/
 database/imagens
+libs/
+
 
 # Arquivo do Geany
 projects

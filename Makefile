@@ -8,13 +8,13 @@ BIN_DIR = bin
 MAIN_SRC = $(SRC_DIR)/app/Aplicacao.java
 MAIN_CLASS = app.Aplicacao
 
+# Caminho dos JARs
+LIBS_DIR = libs
+JAVAFX_LIB = $(LIBS_DIR)/javafx-sdk-21.0.5/lib
+MYSQL_JAR = $(LIBS_DIR)/mysql-connector-j-9.0.0.jar
+
 # Caminho do JavaFX
-JAVAFX_LIB = /home/braian/Documentos/Workspace/Libraries/openjfx-21.0.5_linux-x64_bin-sdk/javafx-sdk-21.0.5/lib
 JAVAFX_FLAGS = --module-path $(JAVAFX_LIB) --add-modules javafx.controls,javafx.fxml
-
-# Caminho do MySQL Connector
-MYSQL_JAR = /home/braian/Documentos/Workspace/Libraries/mysql-connector-j_9.0.0-1ubuntu22.04_all/usr/share/java/mysql-connector-java-9.0.0.jar
-
 
 # Alvo padrão
 all: compile copy_resources
@@ -38,11 +38,11 @@ copy_resources:
 	cp -r $(SRC_DIR)/visao/imagens/* $(BIN_DIR)/visao/imagens/
 	cp -r $(SRC_DIR)/visao/estilos/*.css $(BIN_DIR)/visao/estilos/
 
-
 # Executa o programa
 execute:
 	@echo "\nExecutando o programa..."
 	$(JAVA) $(JAVAFX_FLAGS) -cp $(BIN_DIR):$(MYSQL_JAR) $(MAIN_CLASS)
+
 
 # Limpa os arquivos compilados
 clean:
