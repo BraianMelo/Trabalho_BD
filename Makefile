@@ -5,8 +5,8 @@ JAVA = java
 # Diretórios e arquivos
 SRC_DIR = src
 BIN_DIR = bin
-MAIN_SRC = $(SRC_DIR)/application/Main.java
-MAIN_CLASS = application.Main
+MAIN_SRC = $(SRC_DIR)/app/Aplicacao.java
+MAIN_CLASS = app.Aplicacao
 
 # Caminho do JavaFX
 JAVAFX_LIB = /home/braian/Documentos/Workspace/Libraries/openjfx-21.0.5_linux-x64_bin-sdk/javafx-sdk-21.0.5/lib
@@ -23,20 +23,20 @@ all: compile copy_resources
 compile:
 	@echo "\nCompilando..."
 	$(JAVAC) $(JAVAFX_FLAGS) -cp $(SRC_DIR):$(MYSQL_JAR) -d $(BIN_DIR) \
-		$(SRC_DIR)/application/*.java \
-		$(SRC_DIR)/model/enums/*.java \
-		$(SRC_DIR)/model/*.java \
-		$(SRC_DIR)/persistence/*.java \
-		$(SRC_DIR)/controller/*.java \
-		$(SRC_DIR)/util/*.java
+		$(SRC_DIR)/app/*.java \
+		$(SRC_DIR)/modelo/enums/*.java \
+		$(SRC_DIR)/modelo/*.java \
+		$(SRC_DIR)/persistencia/*.java \
+		$(SRC_DIR)/controle/*.java \
+		$(SRC_DIR)/utilitario/*.java
 
 # Copia os fxmls, css e as imagens para a pasta bin
 copy_resources:
-	@echo "\nCopiando recursos (FXML, imagens e stylesheets) para a pasta bin/view..."
-	mkdir -p $(BIN_DIR)/view $(BIN_DIR)/view/images $(BIN_DIR)/view/styles
-	cp -r $(SRC_DIR)/view/*.fxml $(BIN_DIR)/view/
-	cp -r $(SRC_DIR)/view/images/* $(BIN_DIR)/view/images/
-	cp -r $(SRC_DIR)/view/styles/*.css $(BIN_DIR)/view/styles/
+	@echo "\nCopiando recursos (FXML, imagens e stylesheets) para a pasta bin/visao..."
+	mkdir -p $(BIN_DIR)/visao $(BIN_DIR)/visao/imagens $(BIN_DIR)/visao/estilos
+	cp -r $(SRC_DIR)/visao/*.fxml $(BIN_DIR)/visao/
+	cp -r $(SRC_DIR)/visao/imagens/* $(BIN_DIR)/visao/imagens/
+	cp -r $(SRC_DIR)/visao/estilos/*.css $(BIN_DIR)/visao/estilos/
 
 
 # Executa o programa

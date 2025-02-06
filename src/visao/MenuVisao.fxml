@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="apMenuView" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controle.MenuController">
+   <children>
+      <TabPane fx:id="tabPane" prefHeight="500.0" prefWidth="700.0" rotateGraphic="true" side="BOTTOM" tabClosingPolicy="ALL_TABS" tabMaxHeight="30.0" tabMaxWidth="130.0" tabMinHeight="30.0" tabMinWidth="130.0">
+        <tabs>
+          <Tab closable="false" text="Criptozoologia">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="470.0" prefWidth="700.0">
+                     <children>
+                        <ScrollPane fitToHeight="true" hbarPolicy="NEVER" prefHeight="465.0" prefWidth="700.0" vbarPolicy="ALWAYS">
+                          <content>
+                            <AnchorPane>
+                                 <children>
+                                    <VBox alignment="CENTER" layoutY="-3.0" maxWidth="685.0" minWidth="685.0" prefHeight="700.0" prefWidth="685.0" spacing="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <ImageView fitHeight="190.0" fitWidth="700.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@imagens/Img_Kraken.jpeg" />
+                                             </image>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </ImageView>
+                                          <Label alignment="CENTER" prefHeight="40.0" prefWidth="685.0" styleClass="lbl-titulo" text="Oque é Criptozoologia?" textOverrun="CLIP">
+                                             <font>
+                                                <Font name="DejaVu Sans Bold" size="25.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <Text lineSpacing="2.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-id" text="&quot;A criptozoologia é o estudo de criptídeos, ou seja, animais que se acredita existirem, mas ainda não foram cientificamente comprovados. O termo deriva do grego &quot;kryptós&quot; (oculto) e &quot;zoologia&quot; (estudo dos animais)." textAlignment="JUSTIFY" wrappingWidth="661.0">
+                                             <font>
+                                                <Font name="DejaVu Sans" size="16.0" />
+                                             </font>
+                                          </Text>
+                                          <Label alignment="CENTER" prefHeight="40.0" prefWidth="685.0" styleClass="lbl-titulo" text="Como ela surgiu?" textOverrun="CLIP">
+                                             <font>
+                                                <Font name="DejaVu Sans Bold" size="25.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <Text lineSpacing="2.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-id" text="A criptozoologia surgiu no século XX como idéia dos pesquisadores Bernard Heuvelmans e Ivan Sanderson. Eles propuseram uma abordagem científica para investigar relatos desses criptídeos, coletando e analisando evidências, como pegadas, registros visuais e relatos de testemunhas oculares. " textAlignment="JUSTIFY" wrappingWidth="661.0">
+                                             <font>
+                                                <Font name="DejaVu Sans" size="16.0" />
+                                             </font>
+                                          </Text>
+                                          <Label alignment="CENTER" prefHeight="40.0" prefWidth="685.0" styleClass="lbl-titulo" text="A criptozooligia é uma Ciência?" textOverrun="CLIP">
+                                             <font>
+                                                <Font name="DejaVu Sans Bold" size="25.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <Text lineSpacing="2.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-id" text="Apesar de alguns relatos terem se mostrado verdadeiros, como o Kraken, que possivelmente era uma versão exagerada da lula-gigante, a criptozoologia é considerada uma pseudociência, pois não atende aos critérios e métodos rigorosos exigidos pela ciência." textAlignment="JUSTIFY" wrappingWidth="660.0">
+                                             <font>
+                                                <Font name="DejaVu Sans" size="16.0" />
+                                             </font>
+                                          </Text>
+                                          <Label alignment="CENTER" prefHeight="40.0" prefWidth="685.0" styleClass="lbl-titulo" text="Porque esse assunto?" textOverrun="CLIP">
+                                             <font>
+                                                <Font name="DejaVu Sans Bold" size="25.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <Text lineSpacing="2.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-id" text="A criptozoologia nos convida a explorar mitos e lendas de criaturas misteriosas. Apesar de a maioria esmagadora dessas histórias permanecer no campo do folclore, é interessante e curioso conhecer alguns dos relatos mais famosos dessa área." textAlignment="JUSTIFY" wrappingWidth="660.0">
+                                             <font>
+                                                <Font name="DejaVu Sans" size="16.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </Text>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                                       </padding>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </ScrollPane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab closable="false" text="Criptideos">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ScrollPane fitToHeight="true" hbarPolicy="NEVER" prefHeight="464.0" prefWidth="700.0">
+                          <content>
+                            <AnchorPane prefHeight="460.0" prefWidth="699.0">
+                                 <children>
+                                    <VBox fx:id="vboxGrid1" alignment="TOP_CENTER" layoutX="-1.0" prefHeight="458.0" prefWidth="700.0" spacing="10.0" AnchorPane.topAnchor="20.0">
+                                       <children>
+                                          <Label styleClass="lbl-titulo" text="Criptídeos:">
+                                             <font>
+                                                <Font name="DejaVu Sans Bold" size="25.0" />
+                                             </font>
+                                          </Label>
+                                          <Text lineSpacing="2.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-id" text="Aqui está todos os criptídeos presente em nosso banco de dados. Caso queira adicionar um criptídeo, clique no batão abaixo:" textAlignment="JUSTIFY" wrappingWidth="570.0">
+                                             <font>
+                                                <Font name="DejaVu Sans" size="16.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </Text>
+                                          <HBox alignment="CENTER_RIGHT" minHeight="50.0" prefHeight="50.0" prefWidth="700.0" spacing="10.0">
+                                             <children>
+                                                <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onBtnAdicionarCriptideoAction" prefHeight="40.0" prefWidth="40.0" styleClass="btn-adicionar">
+                                                   <font>
+                                                      <Font name="DejaVu Sans Bold" size="14.0" />
+                                                   </font>
+                                                   <graphic>
+                                                      <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@imagens/Icone_Adicionar.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                   <tooltip>
+                                                      <Tooltip consumeAutoHidingEvents="false" contentDisplay="CENTER" height="40.0" text="Adicionar Criptídeo" textAlignment="CENTER" width="100.0">
+                                                         <font>
+                                                            <Font name="DejaVu Sans Oblique" size="14.0" />
+                                                         </font>
+                                                      </Tooltip>
+                                                   </tooltip>
+                                                </Button>
+                                             </children>
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                             <padding>
+                                                <Insets left="70.0" right="65.0" />
+                                             </padding>
+                                          </HBox>
+                                          <VBox fx:id="vboxGrid" alignment="TOP_CENTER" prefWidth="700.0" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </ScrollPane>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+            <Tab closable="false" text="Desenvolvedores">
+               <content>
+                  <AnchorPane fx:id="ultimoPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="159.0" layoutY="172.0" styleClass="lbl-titulo" text="Integrantes do Trabalho">
+                           <font>
+                              <Font name="DejaVu Sans Bold" size="30.0" />
+                           </font>
+                        </Label>
+                        <Hyperlink fx:id="hpBraianGithub1" alignment="CENTER" contentDisplay="CENTER" layoutX="164.0" layoutY="225.0" onAction="#onHpBraianGithubAction" prefHeight="33.0" prefWidth="400.0" text="Braian Melo - (BraianMelo)" underline="true">
+                           <font>
+                              <Font name="DejaVu Sans Bold" size="20.0" />
+                           </font>
+                           <tooltip>
+                              <Tooltip consumeAutoHidingEvents="false" contentDisplay="CENTER" height="40.0" text="https://github.com/BraianMelo" textAlignment="CENTER" width="100.0">
+                                 <font>
+                                    <Font name="DejaVu Sans Oblique" size="14.0" />
+                                 </font>
+                              </Tooltip>
+                           </tooltip>
+                        </Hyperlink>
+                        <Separator layoutX="140.0" layoutY="217.0" prefHeight="1.0" prefWidth="450.0" />
+                        <Separator layoutX="139.0" layoutY="264.0" prefHeight="1.0" prefWidth="450.0" />
+                        <Separator layoutX="139.0" layoutY="309.0" prefHeight="1.0" prefWidth="450.0" />
+                        <Hyperlink fx:id="hpGustavoGithub1" alignment="CENTER" contentDisplay="CENTER" layoutX="165.0" layoutY="270.0" onAction="#onHpGustavoGithubAction" prefHeight="33.0" prefWidth="399.0" text="Gustavo Henrique  - (GustavoH-C)" underline="true">
+                           <font>
+                              <Font name="DejaVu Sans Bold" size="20.0" />
+                           </font>
+                           <tooltip>
+                              <Tooltip consumeAutoHidingEvents="false" contentDisplay="CENTER" text="https://github.com/GustavoH-C">
+                                 <font>
+                                    <Font name="DejaVu Sans Oblique" size="14.0" />
+                                 </font>
+                              </Tooltip>
+                           </tooltip>
+                        </Hyperlink>
+                        <Hyperlink fx:id="hpYuriGithub1" alignment="CENTER" contentDisplay="CENTER" layoutX="168.0" layoutY="315.0" onAction="#onHpYuriGithubAction" prefHeight="33.0" prefWidth="400.0" text="Yuri Sillas - (YuriDrumond)" underline="true">
+                           <font>
+                              <Font name="DejaVu Sans Bold" size="20.0" />
+                           </font>
+                           <tooltip>
+                              <Tooltip consumeAutoHidingEvents="false" contentDisplay="CENTER" text="https://github.com/YuriDrumond">
+                                 <font>
+                                    <Font name="DejaVu Sans Oblique" size="14.0" />
+                                 </font>
+                              </Tooltip>
+                           </tooltip>
+                        </Hyperlink>
+                        <ImageView fitHeight="226.0" fitWidth="224.0" layoutX="238.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imagens/Icone_Monstro_Lago_Ness.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="24.0" fitWidth="15.0" layoutX="140.0" layoutY="234.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imagens/Icone_Github.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="24.0" fitWidth="15.0" layoutX="140.0" layoutY="279.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imagens/Icone_Github.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="24.0" fitWidth="15.0" layoutX="140.0" layoutY="324.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imagens/Icone_Github.png" />
+                           </image>
+                        </ImageView>
+                        <Label id="lbl-link-id" layoutX="212.0" layoutY="428.0" styleClass="lbl-link-id" text="O trabalho completo está disponível">
+                           <font>
+                              <Font name="DejaVu Sans" size="14.0" />
+                           </font>
+                        </Label>
+                        <Hyperlink fx:id="hpProjetoGithub1" layoutX="466.0" layoutY="425.0" onAction="#onHpProjectoGithubAction" text="aqui.">
+                           <font>
+                              <Font name="DejaVu Sans Bold" size="14.0" />
+                           </font>
+                           <tooltip>
+                              <Tooltip contentDisplay="CENTER" text="https://github.com/BraianMelo/Trabalho_BD">
+                                 <font>
+                                    <Font name="DejaVu Sans Oblique" size="14.0" />
+                                 </font>
+                              </Tooltip>
+                           </tooltip>
+                        </Hyperlink>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab closable="false" text="Opções">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <VBox alignment="TOP_CENTER" prefHeight="465.0" prefWidth="700.0" spacing="10.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Label styleClass="lbl-titulo" text="Modo Dark:">
+                                 <font>
+                                    <Font name="DejaVu Sans Bold" size="25.0" />
+                                 </font>
+                              </Label>
+                              <Text lineSpacing="2.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-id" text="O modo dark oferece conforto visual e uma aparência moderna, ideal para ambientes com pouca luz. A paleta combina tons escuros e neutros com destaques sutis para garantir contraste e legibilidade: " textAlignment="JUSTIFY" wrappingWidth="661.0">
+                                 <font>
+                                    <Font name="DejaVu Sans" size="16.0" />
+                                 </font>
+                              </Text>
+                              <ToggleButton fx:id="tbtnDarkMode" mnemonicParsing="false" onAction="#onTbtnDarkModeAction" prefWidth="200.0" selected="true" style="-fx-cursor: hand;" text="Habilitado">
+                                 <padding>
+                                    <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                                 </padding>
+                                 <font>
+                                    <Font name="DejaVu Sans" size="20.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" />
+                                 </VBox.margin>
+                              </ToggleButton>
+                              <Separator prefWidth="200.0">
+                                 <padding>
+                                    <Insets left="10.0" right="10.0" />
+                                 </padding>
+                              </Separator>
+                              <Label styleClass="lbl-titulo" text="Tamanho dos Textos:">
+                                 <font>
+                                    <Font name="DejaVu Sans Bold" size="25.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Slider fx:id="sldTamanhoFont" blockIncrement="2.0" majorTickUnit="2.0" max="20.0" maxWidth="300.0" min="12.0" minWidth="300.0" minorTickCount="0" onMouseReleased="#onSldTamanhoFontMouseRelease" prefWidth="300.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="16.0" VBox.vgrow="ALWAYS" />
+                           </children>
+                           <padding>
+                              <Insets left="20.0" right="20.0" top="30.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

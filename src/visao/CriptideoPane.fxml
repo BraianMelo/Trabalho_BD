@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controle.CriptideoController">
+   <children>
+      <VBox alignment="TOP_CENTER" prefHeight="300.0" prefWidth="650.0" spacing="10.0">
+         <children>
+            <Separator>
+               <VBox.margin>
+                  <Insets left="40.0" right="40.0" />
+               </VBox.margin>
+            </Separator>
+            <Label fx:id="lblNome" alignment="CENTER" prefHeight="40.0" prefWidth="650.0" styleClass=".lbl-titulo" text="Nome">
+               <font>
+                  <Font name="DejaVu Sans Bold" size="20.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Label>
+            <HBox alignment="CENTER" prefHeight="130.0" prefWidth="650.0">
+               <children>
+                  <StackPane prefHeight="120.0" prefWidth="120.0" styleClass="pane-imagem">
+                     <children>
+                        <ImageView fx:id="imagemRedonda" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" styleClass="img-criptideo">
+                           <image>
+                              <Image url="@imagens/Icone_Sem_Imagem.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </StackPane>
+                  <VBox alignment="CENTER" prefHeight="130.0" prefWidth="300.0">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="600.0" spacing="15.0">
+                           <children>
+                              <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="40.0" prefWidth="200.0" text="Tipo:">
+                                 <font>
+                                    <Font name="DejaVu Sans Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lblTipo" prefHeight="40.0" prefWidth="200.0" styleClass="text-id" text="Voador">
+                                 <font>
+                                    <Font name="DejaVu Sans" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="100.0" spacing="15.0">
+                           <children>
+                              <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="200.0" text="Status:">
+                                 <font>
+                                    <Font name="DejaVu Sans Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lblStatus" prefHeight="40.0" prefWidth="200.0" styleClass="text-id" text="Desconhecido">
+                                 <font>
+                                    <Font name="DejaVu Sans" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <Label fx:id="lblDescricao" alignment="CENTER" prefHeight="20.0" prefWidth="600.0" styleClass="text-id" text="Descricao" textAlignment="CENTER" VBox.vgrow="SOMETIMES">
+               <font>
+                  <Font name="DejaVu Sans Oblique" size="16.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Label>
+            <HBox alignment="CENTER_RIGHT" prefHeight="150.0" prefWidth="610.0" spacing="10.0">
+               <children>
+                  <Button fx:id="btnInformacao" mnemonicParsing="false" onAction="#onBtnInformacaoAction" prefHeight="40.0" prefWidth="40.0" styleClass="btn-informacao">
+                     <font>
+                        <Font name="DejaVu Sans Bold" size="14.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imagens/Icone_Informacao.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <tooltip>
+                        <Tooltip consumeAutoHidingEvents="false" contentDisplay="CENTER" height="40.0" text="Informações do avistamento" textAlignment="CENTER" width="100.0">
+                           <font>
+                              <Font name="DejaVu Sans Oblique" size="14.0" />
+                           </font>
+                        </Tooltip>
+                     </tooltip>
+                  </Button>
+                  <Button fx:id="btnEditar" mnemonicParsing="false" onAction="#onBtnEditarAction" prefHeight="40.0" prefWidth="40.0" styleClass="btn-editar">
+                     <font>
+                        <Font name="DejaVu Sans Bold" size="14.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imagens/Icone_Editar.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <tooltip>
+                        <Tooltip consumeAutoHidingEvents="false" contentDisplay="CENTER" height="40.0" text="Editar informações" textAlignment="CENTER" width="100.0">
+                           <font>
+                              <Font name="DejaVu Sans Oblique" size="14.0" />
+                           </font>
+                        </Tooltip>
+                     </tooltip>
+                  </Button>
+                  <Button fx:id="btnExcluir" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onBtnExcluirAction" prefHeight="40.0" prefWidth="40.0" styleClass="btn-apagar">
+                     <font>
+                        <Font name="DejaVu Sans Bold" size="14.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imagens/Icone_Lixeira.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <tooltip>
+                        <Tooltip consumeAutoHidingEvents="false" contentDisplay="CENTER" height="40.0" text="Deletar Criptídeo" textAlignment="CENTER" width="100.0">
+                           <font>
+                              <Font name="DejaVu Sans Oblique" size="14.0" />
+                           </font>
+                        </Tooltip>
+                     </tooltip>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets right="40.0" />
+               </VBox.margin>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </HBox>
+         </children>
+         <padding>
+            <Insets top="5.0" />
+         </padding>
+      </VBox>
+   </children>
+</Pane>
