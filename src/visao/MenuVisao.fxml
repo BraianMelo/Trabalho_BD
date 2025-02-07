@@ -49,7 +49,7 @@
                                                 <Insets top="10.0" />
                                              </VBox.margin>
                                           </Label>
-                                          <Text lineSpacing="2.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-id" text="&quot;A criptozoologia é o estudo de criptídeos, ou seja, animais que se acredita existirem, mas ainda não foram cientificamente comprovados. O termo deriva do grego &quot;kryptós&quot; (oculto) e &quot;zoologia&quot; (estudo dos animais)." textAlignment="JUSTIFY" wrappingWidth="661.0">
+                                          <Text lineSpacing="2.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-id" text="A criptozoologia é o estudo de criptídeos, ou seja, animais que se acredita existirem, mas ainda não foram cientificamente comprovados. O termo deriva do grego &quot;kryptós&quot; (oculto) e &quot;zoologia&quot; (estudo dos animais)." textAlignment="JUSTIFY" wrappingWidth="661.0">
                                              <font>
                                                 <Font name="DejaVu Sans" size="16.0" />
                                              </font>
@@ -117,7 +117,7 @@
                           <content>
                             <AnchorPane prefHeight="460.0" prefWidth="699.0">
                                  <children>
-                                    <VBox fx:id="vboxGrid1" alignment="TOP_CENTER" layoutX="-1.0" prefHeight="458.0" prefWidth="700.0" spacing="10.0" AnchorPane.topAnchor="20.0">
+                                    <VBox fx:id="vboxGrid1" alignment="TOP_CENTER" layoutX="-1.0" prefHeight="458.0" prefWidth="700.0" spacing="10.0" AnchorPane.topAnchor="0.0">
                                        <children>
                                           <Label styleClass="lbl-titulo" text="Criptídeos:">
                                              <font>
@@ -126,7 +126,7 @@
                                           </Label>
                                           <Text lineSpacing="2.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-id" text="Aqui está todos os criptídeos presente em nosso banco de dados. Caso queira adicionar um criptídeo, clique no batão abaixo:" textAlignment="JUSTIFY" wrappingWidth="570.0">
                                              <font>
-                                                <Font name="DejaVu Sans" size="16.0" />
+                                                <Font name="DejaVu Sans" size="18.0" />
                                              </font>
                                              <VBox.margin>
                                                 <Insets />
@@ -163,6 +163,9 @@
                                           </HBox>
                                           <VBox fx:id="vboxGrid" alignment="TOP_CENTER" prefWidth="700.0" />
                                        </children>
+                                       <padding>
+                                          <Insets bottom="20.0" top="20.0" />
+                                       </padding>
                                     </VBox>
                                  </children>
                               </AnchorPane>
@@ -175,12 +178,12 @@
                <content>
                   <AnchorPane fx:id="ultimoPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Label layoutX="159.0" layoutY="172.0" styleClass="lbl-titulo" text="Integrantes do Trabalho">
+                        <Label alignment="CENTER" layoutX="1.0" layoutY="172.0" prefHeight="36.0" prefWidth="700.0" styleClass="lbl-desenvolvedores" text="Integrantes do Trabalho">
                            <font>
                               <Font name="DejaVu Sans Bold" size="30.0" />
                            </font>
                         </Label>
-                        <Hyperlink fx:id="hpBraianGithub1" alignment="CENTER" contentDisplay="CENTER" layoutX="164.0" layoutY="225.0" onAction="#onHpBraianGithubAction" prefHeight="33.0" prefWidth="400.0" text="Braian Melo - (BraianMelo)" underline="true">
+                        <Hyperlink fx:id="hpBraianGithub1" alignment="CENTER" contentDisplay="CENTER" layoutX="164.0" layoutY="225.0" onAction="#onHpBraianGithubAction" prefHeight="33.0" prefWidth="400.0" styleClass="lbl-link-id" text="Braian Melo - (BraianMelo)" underline="true">
                            <font>
                               <Font name="DejaVu Sans Bold" size="20.0" />
                            </font>
@@ -195,7 +198,7 @@
                         <Separator layoutX="140.0" layoutY="217.0" prefHeight="1.0" prefWidth="450.0" />
                         <Separator layoutX="139.0" layoutY="264.0" prefHeight="1.0" prefWidth="450.0" />
                         <Separator layoutX="139.0" layoutY="309.0" prefHeight="1.0" prefWidth="450.0" />
-                        <Hyperlink fx:id="hpGustavoGithub1" alignment="CENTER" contentDisplay="CENTER" layoutX="165.0" layoutY="270.0" onAction="#onHpGustavoGithubAction" prefHeight="33.0" prefWidth="399.0" text="Gustavo Henrique  - (GustavoH-C)" underline="true">
+                        <Hyperlink fx:id="hpGustavoGithub1" alignment="CENTER" contentDisplay="CENTER" layoutX="165.0" layoutY="270.0" onAction="#onHpGustavoGithubAction" prefHeight="33.0" prefWidth="399.0" styleClass="lbl-link-id" text="Gustavo Henrique  - (GustavoH-C)" underline="true">
                            <font>
                               <Font name="DejaVu Sans Bold" size="20.0" />
                            </font>
@@ -207,7 +210,7 @@
                               </Tooltip>
                            </tooltip>
                         </Hyperlink>
-                        <Hyperlink fx:id="hpYuriGithub1" alignment="CENTER" contentDisplay="CENTER" layoutX="168.0" layoutY="315.0" onAction="#onHpYuriGithubAction" prefHeight="33.0" prefWidth="400.0" text="Yuri Sillas - (YuriDrumond)" underline="true">
+                        <Hyperlink fx:id="hpYuriGithub1" alignment="CENTER" contentDisplay="CENTER" layoutX="168.0" layoutY="315.0" onAction="#onHpYuriGithubAction" prefHeight="33.0" prefWidth="400.0" styleClass="lbl-link-id" text="Yuri Sillas - (YuriDrumond)" underline="true">
                            <font>
                               <Font name="DejaVu Sans Bold" size="20.0" />
                            </font>
@@ -239,23 +242,27 @@
                               <Image url="@imagens/Icone_Github.png" />
                            </image>
                         </ImageView>
-                        <Label id="lbl-link-id" layoutX="212.0" layoutY="428.0" styleClass="lbl-link-id" text="O trabalho completo está disponível">
-                           <font>
-                              <Font name="DejaVu Sans" size="14.0" />
-                           </font>
-                        </Label>
-                        <Hyperlink fx:id="hpProjetoGithub1" layoutX="466.0" layoutY="425.0" onAction="#onHpProjectoGithubAction" text="aqui.">
-                           <font>
-                              <Font name="DejaVu Sans Bold" size="14.0" />
-                           </font>
-                           <tooltip>
-                              <Tooltip contentDisplay="CENTER" text="https://github.com/BraianMelo/Trabalho_BD">
+                        <HBox alignment="CENTER" layoutY="423.0" prefHeight="20.0" prefWidth="700.0">
+                           <children>
+                              <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" styleClass="lbl-link-subtitulo" text="O trabalho completo está disponível">
                                  <font>
-                                    <Font name="DejaVu Sans Oblique" size="14.0" />
+                                    <Font name="DejaVu Sans" size="14.0" />
                                  </font>
-                              </Tooltip>
-                           </tooltip>
-                        </Hyperlink>
+                              </Label>
+                              <Hyperlink fx:id="hpProjetoGithub1" alignment="BASELINE_CENTER" onAction="#onHpProjectoGithubAction" styleClass=".lbl-link-github-projeto" text="aqui.">
+                                 <font>
+                                    <Font name="DejaVu Sans Bold" size="14.0" />
+                                 </font>
+                                 <tooltip>
+                                    <Tooltip contentDisplay="CENTER" text="https://github.com/BraianMelo/Trabalho_BD">
+                                       <font>
+                                          <Font name="DejaVu Sans Oblique" size="14.0" />
+                                       </font>
+                                    </Tooltip>
+                                 </tooltip>
+                              </Hyperlink>
+                           </children>
+                        </HBox>
                      </children>
                   </AnchorPane>
                </content>
@@ -300,7 +307,7 @@
                                     <Insets top="10.0" />
                                  </VBox.margin>
                               </Label>
-                              <Slider fx:id="sldTamanhoFont" blockIncrement="2.0" majorTickUnit="2.0" max="20.0" maxWidth="300.0" min="12.0" minWidth="300.0" minorTickCount="0" onMouseReleased="#onSldTamanhoFontMouseRelease" prefWidth="300.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="16.0" VBox.vgrow="ALWAYS" />
+                              <Slider fx:id="sldTamanhoFont" blockIncrement="2.0" majorTickUnit="2.0" max="20.0" maxWidth="300.0" min="12.0" minWidth="300.0" minorTickCount="0" onMouseReleased="#onSldTamanhoFontMouseRelease" prefWidth="300.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="18.0" VBox.vgrow="ALWAYS" />
                            </children>
                            <padding>
                               <Insets left="20.0" right="20.0" top="30.0" />

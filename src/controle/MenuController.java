@@ -17,11 +17,16 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import modelo.Criptideo;
+import modelo.CriptideoConfirmado;
 import modelo.enums.ModeloAba;
+import modelo.enums.StatusCriptideo;
 import persistencia.AvistamentoDAO;
 import persistencia.AvistamentoTestemunhaDAO;
 import persistencia.CriptideoAvistamentoDAO;
+import persistencia.CriptideoConfirmadoDAO;
 import persistencia.CriptideoDAO;
+import persistencia.PesquisadorDAO;
+import persistencia.TestemunhaDAO;
 
 public class MenuController {
 	
@@ -67,7 +72,6 @@ public class MenuController {
     	// sempre rodará esse método antes de fechar a janela:
     	 if (this.stage != null) {
              this.stage.setOnCloseRequest(event -> {
-            	 System.out.println("Tá aqui");
                  apagarEntidadeSemRelacoes();
              });
          }
@@ -149,37 +153,74 @@ public class MenuController {
      * Este só pode existir caso tenha testemunhas.
      */
     private void apagarEntidadeSemRelacoes() {
-    	CriptideoAvistamentoDAO caDAO = new CriptideoAvistamentoDAO();
-    	AvistamentoTestemunhaDAO atDAO = new AvistamentoTestemunhaDAO();
-    	AvistamentoDAO avistamaneotDAO = new AvistamentoDAO();
-    	CriptideoDAO criptideoDAO = new CriptideoDAO();
-    	
-    	
-    	for(Integer idCriptideo: idsCriptideosAlterados) {
-    		System.out.println(idCriptideo);
-    		List<Integer> idsAvistamentos = caDAO.buscarIdsAvistamentosPorCriptideo(idCriptideo);    		
-    		
-    		for(Integer idAvistamento: idsAvistamentos) {
-    			List<Integer> idsTestemunhas = atDAO.buscarIdsTestemunhasPorAvistamento(idAvistamento);
-    			
-    			if(idsTestemunhas.size() == 0) {
-    				avistamaneotDAO.excluir(idAvistamento);
-    				caDAO.excluirRelacao(idCriptideo, idAvistamento);
-    				System.out.println("Avistamento: "+ idAvistamento + " excluido");
-    			}
-    		}
-    	}
-    	
-    	for(Integer idCriptideo: idsCriptideosAlterados) {
-    		List<Integer> idsAvistamentos = caDAO.buscarIdsAvistamentosPorCriptideo(idCriptideo);    	
-    		
-    		if(idsAvistamentos.size() == 0) {
-    			criptideoDAO.excluir(idCriptideo);
-    			System.out.println("Criptideo: "+ idCriptideo + " excluido");
-    		}
-    	}
-    	
+        CriptideoAvistamentoDAO caDAO = new CriptideoAvistamentoDAO();
+        AvistamentoTestemunhaDAO atDAO = new AvistamentoTestemunhaDAO();
+        AvistamentoDAO avistamentoDAO = new AvistamentoDAO();
+        CriptideoDAO criptideoDAO = new CriptideoDAO();
+        CriptideoConfirmadoDAO cripConfirmadoDAO = new CriptideoConfirmadoDAO();
+        PesquisadorDAO pesquisadorDAO = new PesquisadorDAO();
+
+        for (Integer idCriptideo : idsCriptideosAlterados) {
+            excluirAvistamentosSemTestemunhas(idCriptideo, caDAO, atDAO, avistamentoDAO);
+            excluirCriptideoSemAvistamentos(idCriptideo, caDAO, criptideoDAO);
+            verificarCriptideoConfirmado(idCriptideo, caDAO, atDAO, pesquisadorDAO, criptideoDAO, cripConfirmadoDAO);
+        }
     }
+
+    private void excluirAvistamentosSemTestemunhas(Integer idCriptideo, CriptideoAvistamentoDAO caDAO, 
+                                                   AvistamentoTestemunhaDAO atDAO, AvistamentoDAO avistamentoDAO) {
+        List<Integer> idsAvistamentos = caDAO.buscarIdsAvistamentosPorCriptideo(idCriptideo);
+
+        idsAvistamentos.stream()
+            .filter(idAvistamento -> atDAO.buscarIdsTestemunhasPorAvistamento(idAvistamento).isEmpty())
+            .forEach(idAvistamento -> {
+                avistamentoDAO.excluir(idAvistamento);
+                caDAO.excluirRelacao(idCriptideo, idAvistamento);
+            });
+    }
+
+    private void excluirCriptideoSemAvistamentos(Integer idCriptideo, CriptideoAvistamentoDAO caDAO, 
+                                                 CriptideoDAO criptideoDAO) {
+        if (caDAO.buscarIdsAvistamentosPorCriptideo(idCriptideo).isEmpty()) {
+            criptideoDAO.excluir(idCriptideo);
+        }
+    }
+
+    private void verificarCriptideoConfirmado(Integer idCriptideo, CriptideoAvistamentoDAO caDAO, 
+    		AvistamentoTestemunhaDAO atDAO, PesquisadorDAO pesquisadorDAO,
+            CriptideoDAO criptideoDAO, CriptideoConfirmadoDAO cripConfirmadoDAO) {
+			Criptideo criptideo = criptideoDAO.consultarPorId(idCriptideo);
+			
+			if (criptideo == null) {
+				System.err.println("Erro: Nenhum Criptídeo encontrado para o ID " + idCriptideo);
+				return;
+			}
+			
+			if (criptideo.getStatusCr() != StatusCriptideo.CONFIRMADO) return;
+			
+				CriptideoConfirmado cripConfirmado = cripConfirmadoDAO.consultarPorIdCriptideo(idCriptideo);
+				
+				if (cripConfirmado == null) {
+				criptideo.setStatusCr(StatusCriptideo.AVISTADO);
+				criptideoDAO.atualizar(criptideo);
+				return;
+			}
+			
+			boolean achouUmPesquisador = caDAO.buscarIdsAvistamentosPorCriptideo(idCriptideo)
+				.stream()
+				.flatMap(idAvistamento -> atDAO.buscarIdsTestemunhasPorAvistamento(idAvistamento).stream())
+				.anyMatch(idTestemunha -> pesquisadorDAO.consultarPorIdTestemunha(idTestemunha) != null);
+			
+			if (!achouUmPesquisador) {
+				cripConfirmadoDAO.excluir(cripConfirmado.getIdConfirmado());
+				criptideo.setStatusCr(StatusCriptideo.AVISTADO);
+				criptideoDAO.atualizar(criptideo);
+			}
+    }
+
+
+
+
     
     @FXML
     private void onBtnAdicionarCriptideoAction() {

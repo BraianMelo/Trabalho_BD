@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Amarante&family=Faculty+Glyphic&display=swap');
 
 /* Toggle Button */
 .toggle-button {
@@ -17,13 +18,55 @@
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0, 2, 2);
 }
 
-/* Botões */
-.button {
-    -fx-border-radius: 10px;
-    -fx-background-radius: 10px;
-    -fx-cursor: hand;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 4, 0, 2, 2);
-    -fx-border-width: 1px;
+.tab.header {
+	-fx-font-family: "Purple Purse";
+	-fx-font-size: 25px;
+	-fx-font-weight: bolder;
+}
+
+.tab { 
+	-fx-font-family: "Amarante";
+    -fx-font-weight: bolder;
+	-fx-font-size: 16px;
+}
+
+.lbl-titulo {
+	-fx-font-family: "Amarante";
+	-fx-font-size: 25px;
+	-fx-font-weight: bolder;
+}
+
+.lbl-subtitulo {
+	-fx-font-family: "Amarante";
+	-fx-font-size: 18px;
+	-fx-font-weight: bolder;
+}
+
+.text-id {
+	-fx-font-family: "Faculty Glyphic";
+	-fx-font-size: 18px;
+	-fx-font-weight: lighter;
+}
+
+.lbl-desenvolvedores {
+	-fx-font-family: "Amarante";
+	-fx-font-size: 30px;
+	-fx-font-weight: bolder;
+}
+
+.lbl-link-id {
+	-fx-font-family: "Amarante";
+	-fx-font-size: 20px;
+}
+
+.lbl-link-subtitulo {
+	-fx-font-family: "Amarante";
+	-fx-font-size: 18px;
+}
+
+.lbl-link-github-projeto {
+	-fx-font-family: "Amarante";
+	-fx-font-size: 18px;
 }
 
 /* Estilo base para botões */
@@ -34,6 +77,7 @@
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 4, 0, 2, 2);
     -fx-text-fill: white;
     -fx-border-width: 1px;
+    -fx-text-family: "Faculty Glyphic";
 }
 
 /* Botão Apagar - Vermelho */

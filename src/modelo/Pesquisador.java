@@ -16,6 +16,13 @@ public class Pesquisador extends Testemunha {
         this.areaAtuacao = areaAtuacao;
         this.instituicao = instituicao;
     }
+    
+    public Pesquisador(int idPesquisador, int idTestemunha, String areaAtuacao, String instituicao) {
+        this.idPesquisador = idPesquisador;
+        this.idTestemunha = idTestemunha;
+        this.areaAtuacao = areaAtuacao;
+        this.instituicao = instituicao;
+    }
 
     public int getIdPesquisador() {
         return idPesquisador;

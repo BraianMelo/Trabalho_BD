@@ -20,14 +20,14 @@
          <children>
             <VBox prefHeight="440.0" prefWidth="660.0" spacing="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="40.0" prefWidth="642.0" text="Editar Criptideo">
+                  <Label alignment="CENTER" prefHeight="40.0" prefWidth="642.0" styleClass="lbl-titulo" text="Editar Criptideo">
                      <font>
                         <Font name="DejaVu Sans Bold" size="18.0" />
                      </font>
                   </Label>
                   <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="20.0">
                      <children>
-                        <Label prefHeight="18.0" prefWidth="170.0" text="Nome do Criptídeo:">
+                        <Label prefHeight="18.0" prefWidth="170.0" styleClass="lbl-subtitulo" text="Nome do Criptídeo:">
                            <font>
                               <Font name="DejaVu Sans Bold" size="14.0" />
                            </font>
@@ -44,7 +44,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="20.0">
                      <children>
-                        <Label prefHeight="18.0" prefWidth="170.0" text="Tipo do Criptideo:">
+                        <Label prefHeight="18.0" prefWidth="170.0" styleClass="lbl-subtitulo" text="Tipo do Criptideo:">
                            <font>
                               <Font name="DejaVu Sans Bold" size="14.0" />
                            </font>
@@ -63,7 +63,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="20.0">
                      <children>
-                        <Label prefHeight="18.0" prefWidth="170.0" text="Tipo do Criptideo:">
+                        <Label prefHeight="18.0" prefWidth="170.0" styleClass="lbl-subtitulo" text="Tipo do Criptideo:">
                            <font>
                               <Font name="DejaVu Sans Bold" size="14.0" />
                            </font>
@@ -81,12 +81,29 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="20.0">
                      <children>
-                        <Label prefHeight="18.0" prefWidth="170.0" text="Caminho da foto:">
+                        <Label prefHeight="18.0" prefWidth="170.0" styleClass="lbl-subtitulo" text="Caminho da foto:">
                            <font>
                               <Font name="DejaVu Sans Bold" size="14.0" />
                            </font>
                         </Label>
                         <TextField fx:id="txtfCaminhoFoto" maxWidth="300.0" prefHeight="36.0" prefWidth="300.0" promptText="/home/usuario/imagem.jpg" styleClass="text-fields">
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                           <font>
+                              <Font name="DejaVu Sans" size="14.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="20.0">
+                     <children>
+                        <Label prefHeight="18.0" prefWidth="170.0" styleClass="lbl-subtitulo" text="Descriçao:">
+                           <font>
+                              <Font name="DejaVu Sans Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtfDescricao" maxWidth="300.0" prefHeight="36.0" prefWidth="300.0" promptText="Descrição" styleClass="text-fields">
                            <padding>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </padding>
@@ -106,7 +123,7 @@
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </padding>
                            <graphic>
-                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imgBotao" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@imagens/Icone_Salvar.png" />
                                  </image>

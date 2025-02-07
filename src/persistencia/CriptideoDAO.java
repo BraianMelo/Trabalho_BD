@@ -84,7 +84,7 @@ public class CriptideoDAO {
                         rs.getString("Descricao"),
                         Tipo.valueOf(rs.getString("Tipo")),
                         StatusCriptideo.valueOf(rs.getString("Status_cr")),
-                        rs.getString("ImagemCaminho")
+                        rs.getString("Imagem_Caminho")
                 );
             }
         } catch (SQLException e) {

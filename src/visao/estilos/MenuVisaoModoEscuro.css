@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Amarante&family=Faculty+Glyphic&display=swap');
+
 .scroll-pane {
    -fx-background: #1E1E1E;
    -fx-background-color: #1E1E1E;
@@ -29,6 +31,9 @@
     -fx-background-color: #3A3A3A; /* Cor de fundo das abas não selecionadas */
     -fx-text-base-color: #E0E0E0; /* Cor do texto das abas não selecionadas */
     -fx-border-color: transparent;
+    -fx-font-family: "Amarante";
+    -fx-font-weight: bolder;
+	-fx-font-size: 16px;
 }
 
 
@@ -37,7 +42,7 @@
     -fx-text-base-color: #E0E0E0;        /* Cor do texto da aba selecionada */
     -fx-border-color: transparent;
     -fx-focus-color: transparent;
-     -fx-faint-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
 }
 
 .root {
@@ -45,15 +50,47 @@
 }
 
 .lbl-titulo {
-	-fx-text-fill: #E0E0E0;
+	-fx-font-family: "Amarante";
+	-fx-font-size: 25px;
+	-fx-font-weight: bold;
+	-fx-text-fill: #ffffff;
+}
+
+.lbl-subtitulo {
+	-fx-font-family: "Amarante";
+	-fx-font-size: 18px;
+	-fx-font-weight: bold;
+	-fx-text-fill: #ffffff;
 }
 
 .text-id {
+	-fx-font-family: "Faculty Glyphic";
+	-fx-font-size: 18px;
+	-fx-font-weight: normal;
 	-fx-fill: #E0E0E0;
 }
 
-.lbl-link-id {
+.lbl-desenvolvedores {
+	-fx-font-family: "Amarante";
+	-fx-font-size: 30px;
+	-fx-font-weight: bolder;
 	-fx-text-fill: #E0E0E0;
+}
+
+.lbl-link-id {
+	-fx-font-family: "Faculty Glyphic";
+	-fx-font-size: 20px;
+}
+
+.lbl-link-subtitulo {
+	-fx-font-family: "Faculty Glyphic";
+	-fx-font-size: 18px;
+	-fx-text-fill: #E0E0E0;
+}
+
+.lbl-link-github-projeto {
+	-fx-font-family: "Faculty Glyphic";
+	-fx-font-size: 18px;
 }
 
 .table-view {
@@ -99,6 +136,7 @@
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 4, 0, 2, 2);
     -fx-text-fill: white;
     -fx-border-width: 1px;
+    -fx-text-family: "Faculty Glyphic";
 }
 
 /* Botão Apagar - Vermelho */
@@ -170,4 +208,8 @@
     -fx-border-color: #e0e0e0; 
     -fx-background-color: #f5f5f5; 
     -fx-text-fill: #aaa;
+}
+
+.tooltip {
+	-fx-font-family: "Original Surfer";
 }

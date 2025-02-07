@@ -20,19 +20,19 @@
                <Insets left="20.0" right="20.0" />
             </VBox.margin>
          </Separator>
-            <Label fx:id="lblAvistamento" alignment="CENTER" prefHeight="40.0" prefWidth="650.0" styleClass=".lbl-titulo" text="Avistamanetos">
+            <Label fx:id="lblAvistamento" alignment="CENTER" prefHeight="40.0" prefWidth="650.0" styleClass="lbl-titulo" text="Avistamanetos">
                 <font>
                     <Font name="DejaVu Sans Bold" size="20.0" />
                 </font>
             </Label>
          <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="590.0" spacing="15.0">
             <children>
-               <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" text="País:">
+               <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" styleClass="lbl-subtitulo" text="País:">
                   <font>
                      <Font name="DejaVu Sans Bold" size="16.0" />
                   </font>
                </Label>
-               <Label fx:id="lblPais" text="Brasil">
+               <Label fx:id="lblPais" styleClass="text-id" text="Brasil">
                   <font>
                      <Font name="DejaVu Sans" size="16.0" />
                   </font>
@@ -44,12 +44,12 @@
          </HBox>
          <HBox alignment="CENTER_LEFT" prefHeight="40.0" spacing="15.0">
             <children>
-               <Label alignment="CENTER_RIGHT" text="Data:">
+               <Label alignment="CENTER_RIGHT" styleClass="lbl-subtitulo" text="Data:">
                   <font>
                      <Font name="DejaVu Sans Bold" size="16.0" />
                   </font>
                </Label>
-               <Label fx:id="lblData" text="10 de janeiro">
+               <Label fx:id="lblData" styleClass="text-id" text="10 de janeiro">
                   <font>
                      <Font name="DejaVu Sans" size="16.0" />
                   </font>
@@ -61,12 +61,12 @@
          </HBox>
          <HBox alignment="CENTER_LEFT" prefHeight="40.0" spacing="15.0">
             <children>
-               <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" text="Local:">
+               <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" styleClass="lbl-subtitulo" text="Local:">
                   <font>
                      <Font name="DejaVu Sans Bold" size="16.0" />
                   </font>
                </Label>
-               <Label fx:id="lblLocal" text="Pará">
+               <Label fx:id="lblLocal" styleClass="text-id" text="Pará">
                   <font>
                      <Font name="DejaVu Sans" size="16.0" />
                   </font>
@@ -143,7 +143,7 @@
                <Insets right="20.0" />
             </VBox.margin>
          </HBox>
-         <Label fx:id="lblAvistamento1" alignment="CENTER" prefHeight="40.0" prefWidth="650.0" styleClass=".lbl-titulo" text="Testemunhas:">
+         <Label fx:id="lblAvistamento1" alignment="CENTER" prefHeight="40.0" prefWidth="650.0" styleClass="lbl-titulo" text="Testemunhas:">
             <font>
                <Font name="DejaVu Sans Bold" size="21.0" />
             </font>

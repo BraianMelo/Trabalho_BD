@@ -6,6 +6,7 @@ import java.util.List;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -15,9 +16,12 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import modelo.Avistamento;
 import modelo.Criptideo;
+import modelo.CriptideoConfirmado;
 import modelo.enums.ModeloAba;
+import modelo.enums.StatusCriptideo;
 import persistencia.AvistamentoDAO;
 import persistencia.CriptideoAvistamentoDAO;
+import persistencia.CriptideoConfirmadoDAO;
 
 public class InformacoesCriptideoController {
 	
@@ -41,9 +45,15 @@ public class InformacoesCriptideoController {
 
     @FXML
     private ImageView imagemRedonda;
+    
+    @FXML
+    private Button btnConfirmar;
 
     @FXML
     private VBox vboxGrid;
+    
+    @FXML
+    private VBox vboxCriptideoReal;
 
     public void initialize() {
         configurarImagemRedonda();
@@ -54,6 +64,9 @@ public class InformacoesCriptideoController {
 		this.criptideo = criptideo;
 		
     	adiocionarCriptideo(criptideo);
+    	
+    	carregarCriptideoConfirmadoPane(criptideo.getStatusCr());
+    	
 		carregarGridAvistamentos();
     }
 
@@ -93,6 +106,48 @@ public class InformacoesCriptideoController {
         }
 	}
     
+    public void carregarCriptideoConfirmadoPane(StatusCriptideo status) {
+    	
+    	if(status.equals(StatusCriptideo.AVISTADO)) {
+    		if(vboxCriptideoReal.getChildren().size() == 1)
+    			vboxCriptideoReal.getChildren().clear();
+    		
+    		lblStatus.setText(status.toString());
+    		lblStatus.requestLayout();
+    		
+    		btnConfirmar.setDisable(false);
+    		btnConfirmar.requestLayout();
+    		
+    		return;
+    	}
+    	
+    	
+    	try { 
+    		CriptideoConfirmadoDAO cripConfimadoDAO = new CriptideoConfirmadoDAO();
+    		CriptideoConfirmado cripConfirmado = cripConfimadoDAO.consultarPorIdCriptideo(criptideo.getIdCriptideo());
+    	    		
+    		vboxCriptideoReal.getChildren().clear();
+    		
+    		FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/CriptideoRealPane.fxml"));
+    		Pane pane = loader.load();
+    		
+    		CriptideoRealController cripRealController = loader.getController();
+    		cripRealController.setDados(cripConfirmado, this, menuController);
+    		
+    		vboxCriptideoReal.getChildren().add(pane);
+    		
+    		btnConfirmar.setDisable(true);
+    		btnConfirmar.requestLayout();
+    		
+    		lblStatus.setText(formatarEnum(status.toString()));
+    		lblStatus.requestLayout();
+    		
+    		
+    	} catch(Exception e) {
+    		 System.err.println("Erro ao carregar CriptideoRealPane.fxml: " + e.getMessage());
+    	}
+    }
+    
     public void carregarGridAvistamentos(){
     	CriptideoAvistamentoDAO caDAO = new CriptideoAvistamentoDAO();
 		AvistamentoDAO avistamentoDAO = new AvistamentoDAO();
@@ -121,7 +176,7 @@ public class InformacoesCriptideoController {
 			}
  
         } catch (IOException e) {
-            System.err.println("Erro ao carregar SightingPane.fxml: " + e.getMessage());
+            System.err.println("Erro ao abrir AvistamanentoPane.fxml: " + e.getMessage());
         }
     }
     
@@ -138,6 +193,19 @@ public class InformacoesCriptideoController {
 	public void reportarAlteracao() {
 		menuController.addCriptideoAlterado(criptideo.getIdCriptideo());
 		
+	}
+	
+	@FXML
+	private void onBtnConfirmarCriptideoAction() {
+		FXMLLoader loader = menuController.adicionarAba("/visao/EditarCriptideoRealPane.fxml", "Confirmar Criptídeo");
+		
+		CriptideoConfirmado cripConfirmado = new CriptideoConfirmado();
+		cripConfirmado.setIdCriptideo(criptideo.getIdCriptideo());
+		
+		if( loader != null) {
+			 EditarCriptideoRealController controller = loader.getController();
+	         controller.setDados(cripConfirmado, ModeloAba.ADICIONAR, this, menuController);
+		}
 	}
 
 }

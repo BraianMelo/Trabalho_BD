@@ -2,36 +2,44 @@ package modelo;
 
 import java.time.LocalDate;
 
-import modelo.enums.StatusCriptideo;
-import modelo.enums.Tipo;
-
-public class CriptideoConfirmado extends Criptideo {
+public class CriptideoConfirmado{
 
     private int idConfirmado;
+    private int idCriptideo;
     private String nomeCientifico;
     private LocalDate dataConfirmacao;
     private String fonte;
     private String observacoes;
 
+    public CriptideoConfirmado() {}
+    	
     // Construtor
-    public CriptideoConfirmado(int idConfirmado, int idCriptideo, String nome, String descricao, Tipo tipo, StatusCriptideo statusCr, String imagemCaminho, String nomeCientifico, LocalDate dataConfirmacao, String fonte, String observacoes) {
-        // Chama o construtor da classe pai Criptideo
-        super(idCriptideo, nome, descricao, tipo, statusCr, imagemCaminho);
+    public CriptideoConfirmado(int idConfirmado, int idCriptideo,String nomeCientifico, LocalDate dataConfirmacao, String fonte, String observacoes) {
         this.idConfirmado = idConfirmado;
+        this.idCriptideo = idCriptideo;
         this.nomeCientifico = nomeCientifico;
         this.dataConfirmacao = dataConfirmacao;
         this.fonte = fonte;
         this.observacoes = observacoes;
     }
 
-    // Getters e Setters
+	// Getters e Setters
     public int getIdConfirmado() {
         return idConfirmado;
     }
-
+    
     public void setIdConfirmado(int idConfirmado) {
         this.idConfirmado = idConfirmado;
     }
+    
+    public int getIdCriptideo() {
+    	return idCriptideo;
+    }
+
+    public void setIdCriptideo(int idCriptideo) {
+    	this.idCriptideo = idCriptideo;
+    }
+
 
     public String getNomeCientifico() {
         return nomeCientifico;
@@ -68,11 +76,9 @@ public class CriptideoConfirmado extends Criptideo {
     // toString
     @Override
     public String toString() {
-        return String.format("CriptideoConfirmado{idConfirmado=%d, idCriptideo=%d, nome='%s', descricao='%s', " +
-                             "tipo=%s, status=%s, imagemCaminho='%s', nomeCientifico='%s', dataConfirmacao=%s, " +
+        return String.format("CriptideoConfirmado{idConfirmado=%d, idCriptideo=%d, nomeCientifico='%s', dataConfirmacao=%s, " +
                              "fonte='%s', observacoes='%s'}",
-                             getIdCriptideo(), idConfirmado, getNome(), getDescricao(), getTipo(), getStatusCr(), 
-                             getImagemCaminho(), nomeCientifico, dataConfirmacao, fonte, observacoes);
+                             idConfirmado, getIdCriptideo(), nomeCientifico, dataConfirmacao, fonte, observacoes);
     }
 }
 

@@ -6,11 +6,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import modelo.Criptideo;
 import modelo.enums.ModeloAba;
 import modelo.enums.StatusCriptideo;
 import modelo.enums.Tipo;
 import persistencia.CriptideoDAO;
+import utilitario.Utilitario;
 
 public class EditarCriptideoController {
 	
@@ -29,9 +32,15 @@ public class EditarCriptideoController {
 
     @FXML
     private TextField txtfCaminhoFoto;
-
+    
+    @FXML 
+    private TextField txtfDescricao; 
+	
     @FXML
     private Button btnSalvar;
+    
+	@FXML
+	private ImageView imgBotao;
     
 	public void setDados(Criptideo criptideo, ModeloAba modelo, MenuController menuController) {
 		this.menuController = menuController;
@@ -39,11 +48,14 @@ public class EditarCriptideoController {
 		this.modelo = modelo;
 		
 		if(modelo.equals(ModeloAba.ADICIONAR)) {
+			Image icone = new Image(Utilitario.class.getResourceAsStream("/visao/imagens/Icone_Adicionar.png"));
+			imgBotao.setImage(icone);
 			return;
 		}
 		
 		txtfNomeCriptideo.setText(criptideo.getNome());
 		txtfCaminhoFoto.setText(criptideo.getImagemCaminho());
+		txtfDescricao.setText(criptideo.getDescricao());
 		selecionarMenuItem(mbtnStatus, criptideo.getStatusCr().ordinal());
 		selecionarMenuItem(mbtnTipo, criptideo.getTipo().ordinal());
 	}
@@ -78,6 +90,11 @@ public class EditarCriptideoController {
         	criptideo.setImagemCaminho(txtfCaminhoFoto.getText());
         else
         	criptideo.setImagemCaminho(null);
+        
+        criptideo.setDescricao(txtfDescricao.getText());
+        if(criptideo.getDescricao() == "" ) {
+        	criptideo.setDescricao(null);
+        }
         
         CriptideoDAO criptideoDAO = new CriptideoDAO();
         

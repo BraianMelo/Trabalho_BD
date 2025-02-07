@@ -3,10 +3,13 @@ package controle;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import modelo.Avistamento;
 import modelo.enums.ModeloAba;
 import persistencia.AvistamentoDAO;
 import persistencia.CriptideoAvistamentoDAO;
+import utilitario.Utilitario;
 
 public class EditarAvistamentoController {
 	
@@ -25,6 +28,9 @@ public class EditarAvistamentoController {
 	@FXML
 	private TextField txtfPais;
 	
+	@FXML
+	private ImageView imgBotao;
+	
 	public void setDados(Avistamento avistamento, Integer idCriptideo, ModeloAba modelo, InformacoesCriptideoController cryptidInformationPaneController, MenuController menuViewController) {
 		this.infoCriptideoController = cryptidInformationPaneController;
 		this.menuController = menuViewController;
@@ -32,8 +38,11 @@ public class EditarAvistamentoController {
 		this.idCriptideo = idCriptideo;
 		this.modelo = modelo;
 		
-		if(modelo.equals(ModeloAba.ADICIONAR))
+		if(modelo.equals(ModeloAba.ADICIONAR)) {
+			Image icone = new Image(Utilitario.class.getResourceAsStream("/visao/imagens/Icone_Adicionar.png"));
+			imgBotao.setImage(icone);
 			return;
+		}
 		
 		txtfLocal.setText(avistamento.getLocal());
 		dtpData.setValue(avistamento.getData());

@@ -23,12 +23,12 @@
             </Separator>
             <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="15.0">
                <children>
-                  <Label fx:id="lblNome" text="Nome">
+                  <Label fx:id="lblNome" styleClass="lbl-titulo" text="Nome">
                      <font>
                         <Font name="DejaVu Sans Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lblSobrenome" text="Sobrenome">
+                  <Label fx:id="lblSobrenome" styleClass="lbl-titulo" text="Sobrenome">
                      <font>
                         <Font name="DejaVu Sans Bold" size="20.0" />
                      </font>
@@ -39,12 +39,12 @@
                <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="293.0" spacing="10.0">
                      <children>
-                        <Label prefHeight="40.0" text="Genero:">
+                        <Label prefHeight="40.0" styleClass="lbl-subtitulo" text="Genero:">
                            <font>
                               <Font name="DejaVu Sans Bold" size="16.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lblGenero" prefHeight="40.0" text="Masculino">
+                        <Label fx:id="lblGenero" prefHeight="40.0" styleClass="text-id" text="Masculino">
                            <font>
                               <Font name="DejaVu Sans" size="16.0" />
                            </font>
@@ -56,12 +56,12 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="40.0" prefWidth="300.0" spacing="10.0">
                      <children>
-                        <Label prefHeight="40.0" text="Idade:">
+                        <Label prefHeight="40.0" styleClass="lbl-subtitulo" text="Idade:">
                            <font>
                               <Font name="DejaVu Sans Bold" size="16.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lblIdade" prefHeight="40.0" text="20">
+                        <Label fx:id="lblIdade" prefHeight="40.0" styleClass="text-id" text="20">
                            <font>
                               <Font name="DejaVu Sans" size="16.0" />
                            </font>
@@ -75,12 +75,12 @@
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0" spacing="15.0">
                <children>
-                  <Label prefHeight="40.0" text="Telefone:">
+                  <Label prefHeight="40.0" styleClass="lbl-subtitulo" text="Telefone:">
                      <font>
                         <Font name="DejaVu Sans Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lblTelefone" prefHeight="40.0" text="Nenhum Telefone informado">
+                  <Label fx:id="lblTelefone" prefHeight="40.0" styleClass="text-id" text="Nenhum Telefone informado">
                      <font>
                         <Font name="DejaVu Sans" size="16.0" />
                      </font>
@@ -95,12 +95,12 @@
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0" spacing="15.0">
                <children>
-                  <Label prefHeight="40.0" text="Email:">
+                  <Label prefHeight="40.0" styleClass="lbl-subtitulo" text="Email:">
                      <font>
                         <Font name="DejaVu Sans Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lblEmail" prefHeight="40.0" text="Nenhum Email informado">
+                  <Label fx:id="lblEmail" prefHeight="40.0" styleClass="text-id" text="Nenhum Email informado">
                      <font>
                         <Font name="DejaVu Sans" size="16.0" />
                      </font>
