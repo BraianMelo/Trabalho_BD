@@ -75,9 +75,17 @@ public class Utilitario {
 	
 	public void mostrarAlertaMensagem(String titulo, String texto) {
 		Alert alertaMensagem = new Alert(AlertType.INFORMATION);
-		alertaMensagem.setTitle(titulo);
-		alertaMensagem.setHeaderText(texto);
+		alertaMensagem.setTitle("Mensagem");
+		alertaMensagem.setHeaderText(titulo);
+		alertaMensagem.setContentText(texto);
 		alertaMensagem.showAndWait();
+	}
+	
+	public void mostrarAlertaAviso(String texto) {
+		Alert alertaErro = new Alert(AlertType.WARNING);
+		alertaErro.setTitle("Erro");
+		alertaErro.setHeaderText(texto);
+		alertaErro.showAndWait();
 	}
     
     public String formatarEnum(String enumStr){

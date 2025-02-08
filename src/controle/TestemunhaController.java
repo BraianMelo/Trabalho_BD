@@ -1,13 +1,19 @@
 package controle;
 
+import java.io.IOException;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import modelo.Pesquisador;
 import modelo.Testemunha;
 import modelo.enums.Genero;
 import modelo.enums.ModeloAba;
 import persistencia.AvistamentoTestemunhaDAO;
+import persistencia.PesquisadorDAO;
 import persistencia.TestemunhaDAO;
 import utilitario.Utilitario;
 
@@ -38,10 +44,16 @@ public class TestemunhaController {
 	private Label lblEmail;
 	
 	@FXML
+	private Button btnPesquisador;
+	
+	@FXML
     private Button btnExcluir;
     
     @FXML
     private Button btnEditar;
+    
+    @FXML
+    private VBox vboxTestemunha;
 	
 	public void setDados(Testemunha testemunha, Integer idAvistamento, AvistamentoController avistamentoController, MenuController menuController){
 		this.testemunha = testemunha;
@@ -49,6 +61,11 @@ public class TestemunhaController {
 		this.avistamentoController = avistamentoController;
 		this.idAvistamento = idAvistamento;
 		
+		preencherTestemunha(testemunha);
+		carregarPesquisador();
+	}
+	
+	private void preencherTestemunha(Testemunha testemunha) {
 		lblNome.setText(testemunha.getNome());
 		lblSobrenome.setText(testemunha.getSobrenome());
 		
@@ -72,6 +89,30 @@ public class TestemunhaController {
 			
 		if(testemunha.getEmail() != null)
 			lblEmail.setText(testemunha.getEmail());
+	}
+	
+	public void carregarPesquisador() {
+		PesquisadorDAO pesquisadorDAO = new PesquisadorDAO();
+		Pesquisador pesquisador = pesquisadorDAO.consultarPorIdTestemunha(testemunha.getIdTestemunha());
+		
+		if(pesquisador != null) {
+			try {
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/PesquisadorPane.fxml"));
+				Pane pane = loader.load();;
+			
+				PesquisadorController controller = loader.getController();
+				controller.setDados(pesquisador, this, menuController);
+
+				if(vboxTestemunha.getChildren().getLast() == pane)
+					vboxTestemunha.getChildren().removeLast();
+					
+				vboxTestemunha.getChildren().addLast(pane);
+				
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+		}
 	}
 	
 	@FXML
@@ -100,6 +141,11 @@ public class TestemunhaController {
 			 EditarTestemunhaController controller = loader.getController();
 	         controller.setDados(testemunha, null, ModeloAba.EDITAR, avistamentoController, menuController);
 		}
+    }
+    
+    @FXML
+    private void onBtnPesquisadorAction() {
+    	System.out.println("Pesquisador");
     }
 	
 }

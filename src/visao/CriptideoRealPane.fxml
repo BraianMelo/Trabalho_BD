@@ -40,7 +40,7 @@
                         <Font name="DejaVu Sans Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lblFonte" prefHeight="40.0" prefWidth="200.0" styleClass="text-id" text="Nacional">
+                  <Label fx:id="lblFonte" prefHeight="40.0" styleClass="text-id" text="Nacional">
                      <font>
                         <Font name="DejaVu Sans" size="16.0" />
                      </font>

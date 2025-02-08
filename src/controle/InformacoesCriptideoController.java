@@ -112,7 +112,7 @@ public class InformacoesCriptideoController {
     		if(vboxCriptideoReal.getChildren().size() == 1)
     			vboxCriptideoReal.getChildren().clear();
     		
-    		lblStatus.setText(status.toString());
+    		lblStatus.setText(formatarEnum(status.toString()));
     		lblStatus.requestLayout();
     		
     		btnConfirmar.setDisable(false);
@@ -130,6 +130,7 @@ public class InformacoesCriptideoController {
     		
     		FXMLLoader loader = new FXMLLoader(getClass().getResource("/visao/CriptideoRealPane.fxml"));
     		Pane pane = loader.load();
+  
     		
     		CriptideoRealController cripRealController = loader.getController();
     		cripRealController.setDados(cripConfirmado, this, menuController);

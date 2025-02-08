@@ -26,7 +26,7 @@ import persistencia.CriptideoAvistamentoDAO;
 import persistencia.CriptideoConfirmadoDAO;
 import persistencia.CriptideoDAO;
 import persistencia.PesquisadorDAO;
-import persistencia.TestemunhaDAO;
+import utilitario.Utilitario;
 
 public class MenuController {
 	
@@ -126,7 +126,7 @@ public class MenuController {
 		tabPane.getTabs().remove(tabPane.getSelectionModel().getSelectedIndex());
 	}
     
-    public void abrirLink(String url) {
+    private void abrirLink(String url) {
         try {
             String os = System.getProperty("os.name").toLowerCase();
             if (os.contains("linux")) {
@@ -170,12 +170,19 @@ public class MenuController {
     private void excluirAvistamentosSemTestemunhas(Integer idCriptideo, CriptideoAvistamentoDAO caDAO, 
                                                    AvistamentoTestemunhaDAO atDAO, AvistamentoDAO avistamentoDAO) {
         List<Integer> idsAvistamentos = caDAO.buscarIdsAvistamentosPorCriptideo(idCriptideo);
-
+        
         idsAvistamentos.stream()
             .filter(idAvistamento -> atDAO.buscarIdsTestemunhasPorAvistamento(idAvistamento).isEmpty())
             .forEach(idAvistamento -> {
                 avistamentoDAO.excluir(idAvistamento);
                 caDAO.excluirRelacao(idCriptideo, idAvistamento);
+                
+                Utilitario utils = new Utilitario();
+                
+                utils.mostrarAlertaMensagem("Avistamento Excluído",
+                		"Você adicionou um avistamento sem nenhuma testemunha. \n"
+                		+ "O avistamento n. "+ idAvistamento +"° do criptídeo n. "+ idCriptideo +"° "
+                				+ "foi excluído!");
             });
     }
 
@@ -183,6 +190,12 @@ public class MenuController {
                                                  CriptideoDAO criptideoDAO) {
         if (caDAO.buscarIdsAvistamentosPorCriptideo(idCriptideo).isEmpty()) {
             criptideoDAO.excluir(idCriptideo);
+            
+            Utilitario utils = new Utilitario();
+            
+            utils.mostrarAlertaMensagem("Criptídeo Excluído",
+            		"Você adicionou um criptídeo sem nenhum avistamento. \n"
+            		+ "O criptídeo n. "+ idCriptideo +"° foi excluído!");
         }
     }
 
@@ -191,16 +204,14 @@ public class MenuController {
             CriptideoDAO criptideoDAO, CriptideoConfirmadoDAO cripConfirmadoDAO) {
 			Criptideo criptideo = criptideoDAO.consultarPorId(idCriptideo);
 			
-			if (criptideo == null) {
-				System.err.println("Erro: Nenhum Criptídeo encontrado para o ID " + idCriptideo);
+			if (criptideo == null) {;
 				return;
 			}
 			
 			if (criptideo.getStatusCr() != StatusCriptideo.CONFIRMADO) return;
-			
 				CriptideoConfirmado cripConfirmado = cripConfirmadoDAO.consultarPorIdCriptideo(idCriptideo);
 				
-				if (cripConfirmado == null) {
+			if (cripConfirmado == null) {
 				criptideo.setStatusCr(StatusCriptideo.AVISTADO);
 				criptideoDAO.atualizar(criptideo);
 				return;
@@ -215,12 +226,15 @@ public class MenuController {
 				cripConfirmadoDAO.excluir(cripConfirmado.getIdConfirmado());
 				criptideo.setStatusCr(StatusCriptideo.AVISTADO);
 				criptideoDAO.atualizar(criptideo);
+				
+	            Utilitario utils = new Utilitario();
+	            
+	            utils.mostrarAlertaMensagem("Criptídeo Confirmado Excluído",
+	            		"Você confirmou um criptídeo sem nenhum pesquisador envolvido. \n"
+	            		+ "O criptídeo confirmado n. "+ cripConfirmado.getIdConfirmado() +"°"
+	            				+ " foi excluído!");
 			}
     }
-
-
-
-
     
     @FXML
     private void onBtnAdicionarCriptideoAction() {
@@ -233,27 +247,27 @@ public class MenuController {
     }
     
     @FXML
-    void onHpBraianGithubAction() {
+    private void onHpBraianGithubAction() {
         abrirLink("https://github.com/BraianMelo"); 
     }
     
     @FXML
-    void onHpGustavoGithubAction() {
+    private void onHpGustavoGithubAction() {
 		abrirLink("https://github.com/GustavoH-C");
     }
     
     @FXML
-    void onHpYuriGithubAction() {
+    private void onHpYuriGithubAction() {
 		abrirLink("https://github.com/YuriDrumond");
     }
     
     @FXML
-    void onHpProjectoGithubAction() {
+    private void onHpProjectoGithubAction() {
 		abrirLink("https://github.com/BraianMelo/Trabalho_BD");
     }
     
 	@FXML
-    void onTbtnDarkModeAction() {
+	private void onTbtnDarkModeAction() {
 		if(modoDark) {
 			apMenuView.getScene().getStylesheets().clear();
 			apMenuView.getScene().getStylesheets().add(getClass().getResource("/visao/estilos/MenuVisaoModoClaro.css").toExternalForm());
@@ -267,7 +281,7 @@ public class MenuController {
 	}
 	
 	@FXML
-	void onSldTamanhoFontMouseRelease() {
+	private void onSldTamanhoFontMouseRelease() {
 		int tamanhoFonte = (int) sldTamanhoFont.getValue();
 		
 		apMenuView.lookupAll(".text-id").forEach(node -> {

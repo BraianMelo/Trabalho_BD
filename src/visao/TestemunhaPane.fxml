@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controle.TestemunhaController">
+<Pane xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controle.TestemunhaController">
    <children>
-      <VBox alignment="TOP_CENTER" prefHeight="220.0" prefWidth="600.0">
+      <VBox fx:id="vboxTestemunha" alignment="TOP_CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="600.0">
          <children>
             <Separator prefWidth="200.0">
                <VBox.margin>
@@ -115,6 +115,25 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="610.0" spacing="10.0">
                <children>
+                  <Button fx:id="btnPesquisador" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onBtnPesquisadorAction" prefHeight="40.0" prefWidth="40.0" styleClass="btn-salvar">
+                     <font>
+                        <Font name="DejaVu Sans Bold" size="14.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@imagens/Icone_Pesquisador.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <tooltip>
+                        <Tooltip consumeAutoHidingEvents="false" contentDisplay="CENTER" height="40.0" text="Adicionar Pesquisador" textAlignment="CENTER" width="100.0">
+                           <font>
+                              <Font name="DejaVu Sans Oblique" size="14.0" />
+                           </font>
+                        </Tooltip>
+                     </tooltip>
+                  </Button>
                   <Button fx:id="btnExcluir" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onBtnExcluirAction" prefHeight="40.0" prefWidth="40.0" styleClass="btn-apagar">
                      <font>
                         <Font name="DejaVu Sans Bold" size="14.0" />
