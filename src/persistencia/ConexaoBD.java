@@ -1,22 +1,47 @@
 package persistencia;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
 public class ConexaoBD {
-	
-	// @TODO: BD.properties
+    private static String url;
+    private static String usuario;
+    private static String senha;
 
-    private static final String URL = "jdbc:mysql://localhost:3306/Trabalho_BD"; // Altere para o seu banco
-    private static final String USUARIO = "root"; // Altere para o seu usuário
-    private static final String SENHA = "root"; // Altere para a sua senha
+    static {
+        carregarConfiguracoes();
+    }
+
+    private static void carregarConfiguracoes() {
+        Properties propriedades = new Properties();
+
+        try (FileInputStream fis = new FileInputStream("database/BD.properties")) {
+            propriedades.load(fis);
+
+            url = propriedades.getProperty("db.url");
+            usuario = propriedades.getProperty("db.usuario");
+            senha = propriedades.getProperty("db.senha");
+
+        } catch (IOException e) {
+            throw new RuntimeException("Erro ao carregar o arquivo BD.properties", e);
+        }
+    }
 
     public static Connection getConexao() throws SQLException {
-        try {
-            return DriverManager.getConnection(URL, USUARIO, SENHA);
-        } catch (SQLException e) {
-            throw new SQLException("Erro ao conectar ao banco de dados", e);
+        return DriverManager.getConnection(url, usuario, senha);
+    }
+
+    public static void fecharConexao(Connection conexao) {
+        if (conexao != null) {
+            try {
+                conexao.close();
+            } catch (SQLException e) {
+                System.err.println("Erro ao fechar a conexão com o banco de dados: " + e.getMessage());
+            }
         }
     }
 }

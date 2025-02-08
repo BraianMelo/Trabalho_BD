@@ -1,8 +1,8 @@
-# Projeto: Sistema de Gerenciamento de Banco de Dados - Criptozoologia
+# Sistema de Gerenciamento de Banco de Dados - Criptozoologia
 
-Este projeto consiste em um sistema de gerenciamento de banco de dados com interface gráfica desenvolvido em Java utilizando JavaFX. Ele foi projetado para gerenciar informações relacionadas ao tema de criptozoologia.
+Este projeto é um sistema de gerenciamento de banco de dados com interface gráfica desenvolvido em **Java** utilizando **JavaFX** e **JDBC**. Ele permite a administração de informações relacionadas à **criptozoologia**, incluindo registros de avistamentos, pesquisadores, testemunhas e criptídeos confirmados.
 
-## Estrutura do Projeto
+## 📁 Estrutura do Projeto
 
 ```
 Trabalho_BD/
@@ -16,54 +16,60 @@ Trabalho_BD/
 │   │   └── estilos/  # Estilos visuais
 │   ├── modelo/       # Dados e regras de negócio
 │   │   └── enums/    # Enumerações
-│   ├── persistencia/ # Acesso a dados
+│   ├── persistencia/ # Acesso a dados (JDBC, DAOs)
 │   └── util/         # Utilitários gerais
 ├── Makefile          # Automação de compilação e execução
-└── README.md         # Documentação do projeto
-
+├── README.md         # Documentação do projeto
+└── .gitignore        # Arquivos ignorados pelo Git
 ```
 
-## Requisitos
+## 🛠️ Tecnologias Utilizadas
 
-- **Java Development Kit (JDK)**: Versão 21 ou superior.
-- **JavaFX SDK**: Versão compatível com o JDK instalado.
+- **Java (JDK 21+)**
+- **JavaFX** (Interface gráfica)
+- **JDBC** (Conexão com o banco de dados)
+- **MySQL** (Banco de dados relacional)
+- **Makefile** (Automação de compilação e execução)
 
-## Configuração do Ambiente
+## 🚀 Configuração do Ambiente
 
-1. **Instalar o JDK**: Certifique-se de que o JDK está instalado e configurado corretamente no PATH.
-2. **Instalar o JavaFX SDK**: Baixe o JavaFX SDK e extraia os arquivos em um diretório de sua preferência.
-3. **Configurar o Projeto**:
-   - Atualize o caminho do JavaFX no `Makefile`:
-     ```
-     JAVAFX_LIB = /caminho/para/javafx-sdk/lib
-     ```
+1. **Instalar o JDK**: Certifique-se de que o JDK 21 ou superior está instalado e configurado corretamente no PATH.
+2. **Instalar o JavaFX SDK**: Baixe o JavaFX SDK e extraia os arquivos para um diretório de sua preferência.
+3. **Configurar o caminho do JavaFX no `Makefile`**:
+   ```make
+   JAVAFX_LIB = /caminho/para/javafx-sdk/lib
+   ```
+4. **Configurar o Banco de Dados**:
+   - Certifique-se de que o **MySQL** está instalado e rodando.
+   - Crie o banco de dados utilizando os scripts na pasta `database/`.
+   - Configure a conexão no `database/BD.properties`.
 
-## Como Executar
+## ▶️ Como Executar
 
-### Compilar o Projeto
-
-Use o comando abaixo para compilar o projeto:
+### 📌 Compilar o Projeto
+Execute o seguinte comando no terminal:
 ```bash
 make
 ```
 
-### Executar o Projeto
-
-Após a compilação, execute o projeto com o comando:
+### 📌 Executar o Projeto
+Após a compilação, rode:
 ```bash
-make run
+make execute
 ```
 
-### Limpar Arquivos Compilados
-
-Para remover os arquivos compilados, utilize:
+### 📌 Limpar Arquivos Compilados
+Para remover os arquivos gerados na compilação:
 ```bash
 make clean
 ```
 
-## Autores
+## 👥 Autores
 
-- **GitHub do Braian**: [https://github.com/BraianMelo](https://github.com/BraianMelo)
-- **GitHub do Gustavo**: [https://github.com/GustavoH-C](https://github.com/GustavoH-C)
-- **GitHub do Yuri**: [https://github.com/YuriDrumond](https://github.com/YuriDrumond)
-- **Repositório do Projeto**: [https://github.com/BraianMelo/Trabalho_BD](https://github.com/BraianMelo/Trabalho_BD)
+- **Braian Melo**: [GitHub](https://github.com/BraianMelo)
+- **Gustavo H.**: [GitHub](https://github.com/GustavoH-C)
+- **Yuri Drumond**: [GitHub](https://github.com/YuriDrumond)
+- **Repositório do Projeto**: [GitHub](https://github.com/BraianMelo/Trabalho_BD)
+
+---
+📌 *Este projeto foi desenvolvido para fins acadêmicos e de aprendizado.* 🎓
