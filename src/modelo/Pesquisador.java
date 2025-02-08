@@ -24,7 +24,10 @@ public class Pesquisador extends Testemunha {
         this.instituicao = instituicao;
     }
 
-    public int getIdPesquisador() {
+    public Pesquisador() {
+	}
+
+	public int getIdPesquisador() {
         return idPesquisador;
     }
 

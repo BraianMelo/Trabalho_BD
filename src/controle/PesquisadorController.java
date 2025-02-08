@@ -1,9 +1,12 @@
 package controle;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import modelo.Pesquisador;
+import modelo.enums.ModeloAba;
+import persistencia.PesquisadorDAO;
 
 public class PesquisadorController {
 	
@@ -33,12 +36,19 @@ public class PesquisadorController {
 	
 	@FXML
 	private void onBtnExcluirAction() {
-		System.out.println("Excluir");
+		PesquisadorDAO pesquisadorDAO = new PesquisadorDAO();
+		pesquisadorDAO.excluir(pesquisador.getIdPesquisador());
+		testemunhaController.carregarPesquisador();
 	}
 	
 	@FXML
 	private void onBtnEditarAction() {
-		System.out.println("Editar");
+		FXMLLoader loader = menuController.adicionarAba("/visao/EditarPesquisadorPane.fxml", "Editar Pesquisador");
+		
+		if( loader != null) {
+			 EditarPesquisadorController controller = loader.getController();
+	         controller.setDados(pesquisador, ModeloAba.EDITAR, testemunhaController, menuController);
+		}
 	}
 	
 

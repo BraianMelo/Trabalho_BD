@@ -44,7 +44,7 @@ public class TestemunhaController {
 	private Label lblEmail;
 	
 	@FXML
-	private Button btnPesquisador;
+	private Button btnAddPesquisador;
 	
 	@FXML
     private Button btnExcluir;
@@ -103,15 +103,35 @@ public class TestemunhaController {
 				PesquisadorController controller = loader.getController();
 				controller.setDados(pesquisador, this, menuController);
 
-				if(vboxTestemunha.getChildren().getLast() == pane)
-					vboxTestemunha.getChildren().removeLast();
+				removerUltimoDoVbox();
 					
 				vboxTestemunha.getChildren().addLast(pane);
+				btnAddPesquisador.setDisable(true);
+				btnAddPesquisador.requestLayout();
+				return;
 				
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 			
+		} 
+		
+		removerUltimoDoVbox();
+		
+		if(btnAddPesquisador.isDisable()) {
+			btnAddPesquisador.setDisable(false);
+			btnAddPesquisador.requestLayout();
+		}
+
+	}
+	
+	public void reportarAlteracao() {
+		avistamentoController.reportarAlteracao();
+	}
+	
+	private void removerUltimoDoVbox() {
+		if(vboxTestemunha.getChildren().size() != 6) {
+			vboxTestemunha.getChildren().removeLast();
 		}
 	}
 	
@@ -144,8 +164,17 @@ public class TestemunhaController {
     }
     
     @FXML
-    private void onBtnPesquisadorAction() {
-    	System.out.println("Pesquisador");
+    private void onBtnAddPesquisadorAction() {
+		FXMLLoader loader = menuController.adicionarAba("/visao/EditarPesquisadorPane.fxml", "Adicionar Pesquisador");
+		
+		if( loader != null) {
+			 EditarPesquisadorController controller = loader.getController();
+
+			 Pesquisador pesquisador = new Pesquisador();
+			 pesquisador.setIdTestemunha(testemunha.getIdTestemunha());
+			 
+	         controller.setDados(pesquisador, ModeloAba.ADICIONAR, this, menuController);
+		}
     }
 	
 }

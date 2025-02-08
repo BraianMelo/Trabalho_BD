@@ -115,7 +115,7 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="610.0" spacing="10.0">
                <children>
-                  <Button fx:id="btnPesquisador" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onBtnPesquisadorAction" prefHeight="40.0" prefWidth="40.0" styleClass="btn-salvar">
+                  <Button fx:id="btnAddPesquisador" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onBtnAddPesquisadorAction" prefHeight="40.0" prefWidth="40.0" styleClass="btn-salvar">
                      <font>
                         <Font name="DejaVu Sans Bold" size="14.0" />
                      </font>

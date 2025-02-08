@@ -76,6 +76,11 @@ public class EditarCriptideoRealController {
 			infoCripController.carregarCriptideoConfirmadoPane(StatusCriptideo.CONFIRMADO);
 			infoCripController.reportarAlteracao();
 			menuController.carregarGridCriptideos();
+			
+			Utilitario utils = new Utilitario();
+			utils.mostrarAlertaAviso("Você precisa adicionar um pesquisador ao criptídeo confirmado!"
+					+ "\nCaso contrário, o criptídeo confirmado será apagado!");
+			
 		} else {
 			cripConfirmadoDAO.atualizar(cripConfirmado);
 			infoCripController.carregarCriptideoConfirmadoPane(StatusCriptideo.CONFIRMADO);
