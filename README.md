@@ -67,7 +67,7 @@ make clean
 ## 👥 Autores
 
 - **Braian Melo**: [GitHub](https://github.com/BraianMelo)
-- **Gustavo H.**: [GitHub](https://github.com/GustavoH-C)
+- **Gustavo Henrique**: [GitHub](https://github.com/GustavoH-C)
 - **Yuri Drumond**: [GitHub](https://github.com/YuriDrumond)
 - **Repositório do Projeto**: [GitHub](https://github.com/BraianMelo/Trabalho_BD)
 

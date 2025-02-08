@@ -11,10 +11,13 @@ public class ConexaoBD {
     private static String url;
     private static String usuario;
     private static String senha;
+    private static Connection conexao;
 
     static {
         carregarConfiguracoes();
     }
+
+    private ConexaoBD() {}
 
     private static void carregarConfiguracoes() {
         Properties propriedades = new Properties();
@@ -32,13 +35,21 @@ public class ConexaoBD {
     }
 
     public static Connection getConexao() throws SQLException {
-        return DriverManager.getConnection(url, usuario, senha);
+        if (conexao == null || conexao.isClosed()) {
+            try {
+                conexao = DriverManager.getConnection(url, usuario, senha);
+            } catch (SQLException e) {
+                throw new SQLException("Erro ao conectar ao banco de dados", e);
+            }
+        }
+        return conexao;
     }
 
-    public static void fecharConexao(Connection conexao) {
+    public static void fecharConexao() {
         if (conexao != null) {
             try {
                 conexao.close();
+                conexao = null; // Resetar a conexão para permitir nova abertura no futuro
             } catch (SQLException e) {
                 System.err.println("Erro ao fechar a conexão com o banco de dados: " + e.getMessage());
             }

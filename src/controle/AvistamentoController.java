@@ -12,7 +12,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import modelo.Avistamento;
-import modelo.Pesquisador;
 import modelo.Testemunha;
 import modelo.enums.ModeloAba;
 import persistencia.AvistamentoDAO;
