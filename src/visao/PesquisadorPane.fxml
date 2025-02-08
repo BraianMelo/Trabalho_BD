@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controle.PesquisadorController">
+<Pane xmlns="http://javafx.com/javafx/21.0.5" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controle.PesquisadorController">
    <children>
       <VBox alignment="TOP_CENTER" prefWidth="600.0">
          <children>
@@ -19,7 +19,7 @@
                <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="40.0" spacing="10.0">
                      <children>
-                        <Label prefHeight="40.0" styleClass="lbl-subtitulo" text="Área de atuação:">
+                        <Label prefHeight="40.0" styleClass="lbl-subtitulo" text="Área de atuação: ">
                            <font>
                               <Font name="DejaVu Sans Bold" size="16.0" />
                            </font>

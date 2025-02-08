@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controle.TestemunhaController">
+<Pane xmlns="http://javafx.com/javafx/21.0.5" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controle.TestemunhaController">
    <children>
       <VBox fx:id="vboxTestemunha" alignment="TOP_CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="600.0">
          <children>

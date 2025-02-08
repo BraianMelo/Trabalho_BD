@@ -19,7 +19,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="apMenuView" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controle.MenuController">
+<AnchorPane fx:id="apMenuView" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21.0.5" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controle.MenuController">
    <children>
       <TabPane fx:id="tabPane" prefHeight="500.0" prefWidth="700.0" rotateGraphic="true" side="BOTTOM" tabClosingPolicy="ALL_TABS" tabMaxHeight="30.0" tabMaxWidth="130.0" tabMinHeight="30.0" tabMinWidth="130.0">
         <tabs>

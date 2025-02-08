@@ -124,7 +124,6 @@ public class MenuController {
 	
 	public void fecharAba() {
 		tabPane.getTabs().remove(tabPane.getSelectionModel().getSelectedIndex());
-		tabPane.getSelectionModel().select(tabPane.getTabs().get(1));
 	}
     
     private void abrirLink(String url) {
