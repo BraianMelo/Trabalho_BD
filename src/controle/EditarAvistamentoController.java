@@ -1,17 +1,18 @@
 package controle;
 
+import app.Aplicacao;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import modelo.Avistamento;
 import modelo.enums.ModeloAba;
 import persistencia.AvistamentoDAO;
 import persistencia.CriptideoAvistamentoDAO;
-import utilitario.Utilitario;
 
-public class EditarAvistamentoController {
+public class EditarAvistamentoController extends Controller{
 	
 	private MenuController menuController;
 	private InformacoesCriptideoController infoCriptideoController;
@@ -39,18 +40,28 @@ public class EditarAvistamentoController {
 		this.modelo = modelo;
 		
 		if(modelo.equals(ModeloAba.ADICIONAR)) {
-			Image icone = new Image(Utilitario.class.getResourceAsStream("/visao/imagens/Icone_Adicionar.png"));
+			Image icone = new Image(Aplicacao.class.getResourceAsStream("/visao/imagens/Icone_Adicionar.png"));
 			imgBotao.setImage(icone);
 			return;
 		}
 		
-		txtfLocal.setText(avistamento.getLocal());
+		setTextField(txtfLocal, avistamento.getLocal());
+		setTextField(txtfPais, avistamento.getPais());
 		dtpData.setValue(avistamento.getData());
-		txtfPais.setText(avistamento.getPais());
 	}
 	
 	@FXML
 	private void onBtnSalvarAction() {
+		if(textFieldVazio(txtfLocal) || textFieldVazio(txtfPais) || dtpData.getValue().toString().equals("")) {
+			
+			mostrarAlerta(AlertType.ERROR, 
+					"Há campos vazios!", 
+					"'Avistamento' não aceita campos vazios.");
+			
+			return;
+		}
+		
+		
 		avistamento.setLocal(txtfLocal.getText());
 		avistamento.setData(dtpData.getValue());
 		avistamento.setPais(txtfPais.getText());

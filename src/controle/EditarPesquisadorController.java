@@ -1,15 +1,16 @@
 package controle;
 
+import app.Aplicacao;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import modelo.Pesquisador;
 import modelo.enums.ModeloAba;
 import persistencia.PesquisadorDAO;
-import utilitario.Utilitario;
 
-public class EditarPesquisadorController {
+public class EditarPesquisadorController extends Controller{
 	
 	private TestemunhaController testemunhaController;
 	private MenuController menuController;
@@ -33,19 +34,27 @@ public class EditarPesquisadorController {
 		this.modelo = modelo;
 		
 		if(modelo.equals(ModeloAba.ADICIONAR)) {
-			Image icone = new Image(Utilitario.class.getResourceAsStream("/visao/imagens/Icone_Adicionar.png"));
+			Image icone = new Image(Aplicacao.class.getResourceAsStream("/visao/imagens/Icone_Adicionar.png"));
 			imgBotao.setImage(icone);
 			return;
 			
 		}
 		
-		txtfAreaAtuacao.setText(pesquisador.getAreaAtuacao());
-		txtfInstituicao.setText(pesquisador.getInstituicao());
-
+		setTextField(txtfAreaAtuacao, pesquisador.getAreaAtuacao());
+		setTextField(txtfInstituicao, pesquisador.getInstituicao());
 	}
 	
 	@FXML
 	private void onBtnSalvarAction() {
+		if(textFieldVazio(txtfAreaAtuacao) || textFieldVazio(txtfInstituicao)) {
+			
+			mostrarAlerta(AlertType.ERROR, 
+					"Há campos vazios!", 
+					"'Area de Atuação' e 'Instituição' não aceitma campos vazios.");
+			
+			return;
+		}
+		
 		pesquisador.setAreaAtuacao(txtfAreaAtuacao.getText());
 		pesquisador.setInstituicao(txtfInstituicao.getText());
 		

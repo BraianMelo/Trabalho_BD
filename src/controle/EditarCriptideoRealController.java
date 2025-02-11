@@ -1,6 +1,8 @@
 package controle;
 
+import app.Aplicacao;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -11,9 +13,8 @@ import modelo.enums.ModeloAba;
 import modelo.enums.StatusCriptideo;
 import persistencia.CriptideoConfirmadoDAO;
 import persistencia.CriptideoDAO;
-import utilitario.Utilitario;
 
-public class EditarCriptideoRealController {
+public class EditarCriptideoRealController extends Controller{
 	
 	private MenuController menuController;
 	private InformacoesCriptideoController infoCripController;
@@ -42,19 +43,28 @@ public class EditarCriptideoRealController {
 		this.modelo = modelo;
 		
 		if(modelo.equals(ModeloAba.ADICIONAR)) {
-			Image icone = new Image(Utilitario.class.getResourceAsStream("/visao/imagens/Icone_Adicionar.png"));
+			Image icone = new Image(Aplicacao.class.getResourceAsStream("/visao/imagens/Icone_Adicionar.png"));
 			imgBotao.setImage(icone);
 			return;
 		}
 		
-		txtfNomeCientifico.setText(cripConfirmado.getNomeCientifico());
-		txtfFonte.setText(cripConfirmado.getFonte());
-		txtfObservacoes.setText(cripConfirmado.getObservacoes());
+		setTextField(txtfNomeCientifico, cripConfirmado.getNomeCientifico());
+		setTextField(txtfFonte, cripConfirmado.getFonte());
+		setTextField(txtfObservacoes, cripConfirmado.getObservacoes());
 		dtpDataConfirmacao.setValue(cripConfirmado.getDataConfirmacao());
 	}
 	
 	@FXML
 	private void onBtnSalvarAction() {
+		if(textFieldVazio(txtfNomeCientifico) || textFieldVazio(txtfFonte) ||  dtpDataConfirmacao.getValue().toString().equals("")) {
+			
+			mostrarAlerta(AlertType.ERROR, 
+					"Há campos vazios!", 
+					"'Nome cientídico', 'Fonte' e 'Data confirmação' não aceitma campos vazios.");
+			
+			return;
+		}
+		
 		cripConfirmado.setNomeCientifico(txtfNomeCientifico.getText());
 		cripConfirmado.setFonte(txtfFonte.getText());
 		cripConfirmado.setObservacoes(txtfObservacoes.getText());
@@ -77,9 +87,10 @@ public class EditarCriptideoRealController {
 			infoCripController.reportarAlteracao();
 			menuController.carregarGridCriptideos();
 			
-			Utilitario utils = new Utilitario();
-			utils.mostrarAlertaAviso("Você precisa adicionar um pesquisador ao criptídeo confirmado!"
-					+ "\nCaso contrário, o criptídeo confirmado será apagado!");
+
+			mostrarAlerta(AlertType.INFORMATION,
+					"Você precisa adicionar um pesquisador ao criptídeo confirmado!",
+					"Caso contrário, o criptídeo confirmado será apagado!");
 			
 		} else {
 			cripConfirmadoDAO.atualizar(cripConfirmado);

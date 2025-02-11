@@ -1,10 +1,12 @@
 package controle;
 
+import app.Aplicacao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import modelo.Testemunha;
@@ -12,9 +14,8 @@ import modelo.enums.Genero;
 import modelo.enums.ModeloAba;
 import persistencia.AvistamentoTestemunhaDAO;
 import persistencia.TestemunhaDAO;
-import utilitario.Utilitario;
 
-public class EditarTestemunhaController {
+public class EditarTestemunhaController extends Controller{
 	
 	private AvistamentoController avistamentoController;
 	private MenuController menuController;
@@ -51,15 +52,17 @@ public class EditarTestemunhaController {
 		this.modelo = modelo;
 		
 		if(modelo.equals(ModeloAba.ADICIONAR)) {
-			Image icone = new Image(Utilitario.class.getResourceAsStream("/visao/imagens/Icone_Adicionar.png"));
+			Image icone = new Image(Aplicacao.class.getResourceAsStream("/visao/imagens/Icone_Adicionar.png"));
 			imgBotao.setImage(icone);
 			return;
 			
 		}
 		
-		txtfNome.setText(testemunha.getNome());
-		txtfSobrenome.setText(testemunha.getSobrenome());
+		setTextField(txtfNome, testemunha.getNome());
+		setTextField(txtfSobrenome, testemunha.getSobrenome());
 		txtfIdade.setText(Integer.toString(testemunha.getIdade()));
+		setTextField(txtfEmail, testemunha.getEmail());
+		setTextField(txtfTelefone, testemunha.getTelefone());
 		
 		switch(testemunha.getGenero()) {
 			case M:
@@ -75,13 +78,6 @@ public class EditarTestemunhaController {
 		}
 		
 		selecionarMenuItem(mbtnGenero, testemunha.getGenero().ordinal());
-		
-		if(testemunha.getEmail() != null)
-			txtfEmail.setText(testemunha.getEmail());
-		
-		if(testemunha.getTelefone() != null)
-			txtfTelefone.setText(testemunha.getTelefone());
-		
 	}
 	
 	private void selecionarMenuItem(MenuButton menuButton, int valor) {
@@ -98,6 +94,16 @@ public class EditarTestemunhaController {
 	
 	@FXML
 	private void onBtnSalvarAction() {
+		if(textFieldVazio(txtfNome) || textFieldVazio(txtfSobrenome) || textFieldVazio(txtfIdade)) {
+			
+			mostrarAlerta(AlertType.ERROR, 
+					"Há campos vazios!", 
+					"'Nome', 'Sobrenome', 'Idade' não aceitma campos vazios.");
+			
+			return;
+		}
+		
+		
 		testemunha.setNome(txtfNome.getText());
 		testemunha.setSobrenome(txtfSobrenome.getText());
 		testemunha.setIdade(Integer.parseInt(txtfIdade.getText()));
@@ -116,13 +122,8 @@ public class EditarTestemunhaController {
 			
 		}
 		
-		testemunha.setEmail(txtfEmail.getText());
-		if(testemunha.getEmail().equals(""))
-			testemunha.setEmail(null);
-		
-		testemunha.setTelefone(txtfTelefone.getText());
-		if(testemunha.getTelefone().equals(""))
-			testemunha.setTelefone(null);
+		testemunha.setEmail(getTextField(txtfEmail));
+		testemunha.setTelefone(getTextField(txtfTelefone));
 		
 		TestemunhaDAO testemunhaDAO = new TestemunhaDAO();
 		AvistamentoTestemunhaDAO atDAO = new AvistamentoTestemunhaDAO();

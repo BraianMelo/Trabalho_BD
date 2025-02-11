@@ -17,9 +17,8 @@ import modelo.enums.ModeloAba;
 import persistencia.AvistamentoDAO;
 import persistencia.AvistamentoTestemunhaDAO;
 import persistencia.TestemunhaDAO;
-import utilitario.Utilitario;
 
-public class AvistamentoController {
+public class AvistamentoController extends Controller {
     
     private final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd MMMM yyyy", Locale.of("pt", "BR"));
     
@@ -109,8 +108,8 @@ public class AvistamentoController {
     
     @FXML
     private void onBtnExcluirAction() {
-    	Utilitario windowsUtil = new Utilitario();
-    	boolean resposta = windowsUtil.mostrarAlertaConfirmacao("Quer mesmo apagar esse avistamento?");
+        	
+    	boolean resposta = mostrarAlertaConfirmacao("Quer mesmo apagar esse avistamento?");
     	    	
     	if (!resposta)
     		return;
@@ -139,7 +138,7 @@ public class AvistamentoController {
 		
 		if( loader != null) {
 			 EditarAvistamentoController controller = loader.getController();
-	         controller.setDados(avistamento, null, ModeloAba.EDITAR, null, menuController);
+	         controller.setDados(avistamento, null, ModeloAba.EDITAR, infoCriptideoController, menuController);
 		}
 	}
     

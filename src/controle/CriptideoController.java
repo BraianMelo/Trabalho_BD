@@ -5,6 +5,7 @@ import java.util.List;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -18,9 +19,8 @@ import persistencia.AvistamentoTestemunhaDAO;
 import persistencia.CriptideoAvistamentoDAO;
 import persistencia.CriptideoDAO;
 import persistencia.TestemunhaDAO;
-import utilitario.Utilitario;
 
-public class CriptideoController {
+public class CriptideoController extends Controller{
 	
 	private Criptideo criptideo;
 	private MenuController menuController;
@@ -49,12 +49,10 @@ public class CriptideoController {
     @FXML
     private Button btnEditar;
 
-    // Inicialização do controlador
     public void initialize() {
         configurarImagemRedonda();
     }
 	
-	// Método para definir os dados do criptídeo
     public void setDados(Criptideo criptideo, MenuController menuViewController) {
 		this.menuController = menuViewController;
         this.criptideo = criptideo;
@@ -68,11 +66,13 @@ public class CriptideoController {
 		if (criptideo.getImagemCaminho() != null && !criptideo.getImagemCaminho().isEmpty()) {
 			File arquivoImagem = new File(criptideo.getImagemCaminho());
 
-			if (arquivoImagem.exists()) { // Verifica se o arquivo realmente existe
+			if (arquivoImagem.exists()) {
 				Image imagem = new Image(arquivoImagem.toURI().toString());
-				imagemRedonda.setImage(imagem); // Define a imagem no ImageView
+				imagemRedonda.setImage(imagem);
+				
 			} else {
 				imagemRedonda.setImage(new Image("/visao/imagens/Icone_Sem_Imagem.png"));
+			
 			}
 		}
     }
@@ -96,11 +96,9 @@ public class CriptideoController {
 		
 	}
     
-    //TODO: Excluir Criptideo
     @FXML
     private void onBtnExcluirAction() {
-		Utilitario windows = new Utilitario();
-		boolean resposta = windows.mostrarAlertaConfirmacao("Excluir "+criptideo.getNome()); 
+		boolean resposta =  mostrarAlertaConfirmacao("Excluir "+criptideo.getNome()); 
         
 		if (resposta) {
 				CriptideoDAO criptideoDAO = new CriptideoDAO();
@@ -127,7 +125,9 @@ public class CriptideoController {
 				
 				
 				menuController.carregarGridCriptideos();
-				new Utilitario().mostrarAlertaMensagem("Criptídeo apagado", "O criptídeo foi apagado");
+				mostrarAlerta(AlertType.INFORMATION, 
+						"Criptídeo apagado", 
+						"O criptídeo foi apagado");
         } 
     }
     
@@ -138,14 +138,4 @@ public class CriptideoController {
         InformacoesCriptideoController controller = loader.getController();
         controller.setDados(criptideo, menuController);
 	}
-
-
-
-    // Método auxiliar para formatar o texto do Enum
-    private String formatarEnum(String texto) {
-        if (texto == null || texto.isEmpty()) {
-            return texto;
-        }
-        return texto.substring(0, 1).toUpperCase() + texto.substring(1).toLowerCase();
-    }
 }

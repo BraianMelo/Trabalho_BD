@@ -28,9 +28,15 @@ public class ConexaoBD {
             url = propriedades.getProperty("db.url");
             usuario = propriedades.getProperty("db.usuario");
             senha = propriedades.getProperty("db.senha");
+            
+            if (url == null || usuario == null || senha == null) {
+            	throw new IOException("O arquivo BD.properties está imcompleto!");
+            
+            }
 
         } catch (IOException e) {
             throw new RuntimeException("Erro ao carregar o arquivo BD.properties", e);
+        
         }
     }
 
@@ -38,10 +44,13 @@ public class ConexaoBD {
         if (conexao == null || conexao.isClosed()) {
             try {
                 conexao = DriverManager.getConnection(url, usuario, senha);
+                
             } catch (SQLException e) {
                 throw new SQLException("Erro ao conectar ao banco de dados", e);
+          
             }
         }
+        
         return conexao;
     }
 
@@ -49,9 +58,11 @@ public class ConexaoBD {
         if (conexao != null) {
             try {
                 conexao.close();
-                conexao = null; // Resetar a conexão para permitir nova abertura no futuro
+                conexao = null; 
+                
             } catch (SQLException e) {
                 System.err.println("Erro ao fechar a conexão com o banco de dados: " + e.getMessage());
+            
             }
         }
     }

@@ -27,8 +27,7 @@ compile:
 		$(SRC_DIR)/modelo/enums/*.java \
 		$(SRC_DIR)/modelo/*.java \
 		$(SRC_DIR)/persistencia/*.java \
-		$(SRC_DIR)/controle/*.java \
-		$(SRC_DIR)/utilitario/*.java
+		$(SRC_DIR)/controle/*.java
 
 # Copia os fxmls, css e as imagens para a pasta bin
 copy_resources:

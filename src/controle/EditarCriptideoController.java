@@ -1,7 +1,9 @@
 package controle;
 
+import app.Aplicacao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
@@ -13,9 +15,8 @@ import modelo.enums.ModeloAba;
 import modelo.enums.StatusCriptideo;
 import modelo.enums.Tipo;
 import persistencia.CriptideoDAO;
-import utilitario.Utilitario;
 
-public class EditarCriptideoController {
+public class EditarCriptideoController extends Controller {
 	
 	private MenuController menuController;
 	private Criptideo criptideo;
@@ -48,14 +49,14 @@ public class EditarCriptideoController {
 		this.modelo = modelo;
 		
 		if(modelo.equals(ModeloAba.ADICIONAR)) {
-			Image icone = new Image(Utilitario.class.getResourceAsStream("/visao/imagens/Icone_Adicionar.png"));
+			Image icone = new Image(Aplicacao.class.getResourceAsStream("/visao/imagens/Icone_Adicionar.png"));
 			imgBotao.setImage(icone);
 			return;
 		}
 		
-		txtfNomeCriptideo.setText(criptideo.getNome());
-		txtfCaminhoFoto.setText(criptideo.getImagemCaminho());
-		txtfDescricao.setText(criptideo.getDescricao());
+		setTextField(txtfNomeCriptideo, criptideo.getNome());
+		setTextField(txtfDescricao, criptideo.getDescricao());
+		setTextField(txtfCaminhoFoto, criptideo.getImagemCaminho());
 		selecionarMenuItem(mbtnStatus, criptideo.getStatusCr().ordinal());
 		selecionarMenuItem(mbtnTipo, criptideo.getTipo().ordinal());
 	}
@@ -82,25 +83,29 @@ public class EditarCriptideoController {
     
     @FXML
     private void onBtnSalvarAction(ActionEvent event) {
-        criptideo.setNome(txtfNomeCriptideo.getText());
+    	
+        if(textFieldVazio(txtfNomeCriptideo)) {
+        	mostrarAlerta(AlertType.ERROR, "Campo vazio!",
+        			"O campo 'nome' não pode ficar vazio");
+        	return;
+        }
+        
+    	criptideo.setNome(getTextField(txtfNomeCriptideo));
         criptideo.setTipo(Tipo.valueOf(mbtnTipo.getText().toUpperCase()));
         criptideo.setStatusCr(StatusCriptideo.valueOf(mbtnStatus.getText().toUpperCase()));
-        
-        if(txtfCaminhoFoto.getText() != null)
-        	criptideo.setImagemCaminho(txtfCaminhoFoto.getText());
-        else
-        	criptideo.setImagemCaminho(null);
-        
-        criptideo.setDescricao(txtfDescricao.getText());
-        if(criptideo.getDescricao() == "" ) {
-        	criptideo.setDescricao(null);
-        }
+        criptideo.setImagemCaminho(getTextField(txtfCaminhoFoto));
+        criptideo.setDescricao(getTextField(txtfDescricao));
         
         CriptideoDAO criptideoDAO = new CriptideoDAO();
         
         if(modelo.equals(ModeloAba.ADICIONAR)) {
         	criptideoDAO.inserir(criptideo);
         	menuController.addCriptideoAlterado(criptideo.getIdCriptideo());
+        	
+        	mostrarAlerta(AlertType.WARNING,
+        			"Criptideo adicionado!", 
+        			"Caso você não adicione nenhum avistamento e nenhuma\n"
+        			+ "testemunha ao criptídeo, ele será apagado!");
         	
         } else {
             criptideoDAO.atualizar(criptideo);
@@ -110,6 +115,4 @@ public class EditarCriptideoController {
         menuController.fecharAba();
 
     }
-
-	
 }

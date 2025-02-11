@@ -7,6 +7,7 @@ import java.util.List;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Slider;
 import javafx.scene.control.Tab;
@@ -26,9 +27,8 @@ import persistencia.CriptideoAvistamentoDAO;
 import persistencia.CriptideoConfirmadoDAO;
 import persistencia.CriptideoDAO;
 import persistencia.PesquisadorDAO;
-import utilitario.Utilitario;
 
-public class MenuController {
+public class MenuController extends Controller{
 	
 	private boolean modoDark = true;
 	private Stage stage;
@@ -131,13 +131,20 @@ public class MenuController {
             String os = System.getProperty("os.name").toLowerCase();
             if (os.contains("linux")) {
                 Runtime.getRuntime().exec(new String[]{"xdg-open", url});
+                
             } else if (os.contains("windows")) {
                 Runtime.getRuntime().exec(new String[]{"cmd", "/c", "start", url});
+                
             } else if (os.contains("mac")) {
                 Runtime.getRuntime().exec(new String[]{"open", url});
+                
             } else {
-                System.out.println("Sistema operacional não suportado.");
+            	mostrarAlerta(AlertType.ERROR,
+            			"Não é possível abrir o link!", 
+            			"Sistema operacional não suportado.");
+                
             }
+            
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -177,12 +184,11 @@ public class MenuController {
                 avistamentoDAO.excluir(idAvistamento);
                 caDAO.excluirRelacao(idCriptideo, idAvistamento);
                 
-                Utilitario utils = new Utilitario();
-                
-                utils.mostrarAlertaMensagem("Avistamento Excluído",
+                mostrarAlerta(AlertType.INFORMATION,
+                		"Avistamento Excluído",
                 		"Você adicionou um avistamento sem nenhuma testemunha. \n"
                 		+ "O avistamento n. "+ idAvistamento +"° do criptídeo n. "+ idCriptideo +"° "
-                				+ "foi excluído!");
+                		+ "foi excluído!");
             });
     }
 
@@ -191,11 +197,11 @@ public class MenuController {
         if (caDAO.buscarIdsAvistamentosPorCriptideo(idCriptideo).isEmpty()) {
             criptideoDAO.excluir(idCriptideo);
             
-            Utilitario utils = new Utilitario();
-            
-            utils.mostrarAlertaMensagem("Criptídeo Excluído",
+            mostrarAlerta(AlertType.INFORMATION,
+            		"Criptídeo Excluído",
             		"Você adicionou um criptídeo sem nenhum avistamento. \n"
-            		+ "O criptídeo n. "+ idCriptideo +"° foi excluído!");
+                    + "O criptídeo n. "+ idCriptideo +"° foi excluído!");
+            
         }
     }
 
@@ -227,12 +233,11 @@ public class MenuController {
 				criptideo.setStatusCr(StatusCriptideo.AVISTADO);
 				criptideoDAO.atualizar(criptideo);
 				
-	            Utilitario utils = new Utilitario();
-	            
-	            utils.mostrarAlertaMensagem("Criptídeo Confirmado Excluído",
+				mostrarAlerta(AlertType.INFORMATION,
+	            		"Criptídeo Confirmado Excluído",
 	            		"Você confirmou um criptídeo sem nenhum pesquisador envolvido. \n"
 	            		+ "O criptídeo confirmado n. "+ cripConfirmado.getIdConfirmado() +"°"
-	            				+ " foi excluído!");
+	            		+ " foi excluído!");
 			}
     }
     

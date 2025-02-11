@@ -11,7 +11,7 @@ import modelo.enums.StatusCriptideo;
 import persistencia.CriptideoConfirmadoDAO;
 import persistencia.CriptideoDAO;
 
-public class CriptideoRealController {
+public class CriptideoRealController extends Controller{
 	
 	private MenuController menuController;
 	private InformacoesCriptideoController infoCripController;
@@ -42,6 +42,11 @@ public class CriptideoRealController {
     
     @FXML
     private void onBtnExcluirAction() {
+    	boolean resposta = mostrarAlertaConfirmacao("Quer mesmo apagar os dados de confirmação?");
+    	
+    	if (!resposta)
+    		return;
+    	
     	CriptideoConfirmadoDAO cripConfirmadoDAO = new CriptideoConfirmadoDAO();
     	CriptideoDAO criptideoDAO = new CriptideoDAO();
     	

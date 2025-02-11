@@ -15,9 +15,8 @@ import modelo.enums.ModeloAba;
 import persistencia.AvistamentoTestemunhaDAO;
 import persistencia.PesquisadorDAO;
 import persistencia.TestemunhaDAO;
-import utilitario.Utilitario;
 
-public class TestemunhaController {
+public class TestemunhaController extends Controller {
 	
 	 private MenuController menuController;
 	 private AvistamentoController avistamentoController;
@@ -137,8 +136,8 @@ public class TestemunhaController {
 	
 	@FXML
 	private void onBtnExcluirAction() {
-    	Utilitario windowsUtil = new Utilitario();
-    	boolean resposta = windowsUtil.mostrarAlertaConfirmacao("Quer mesmo apagar esse avistamento?");
+
+    	boolean resposta = mostrarAlertaConfirmacao("Quer mesmo apagar essa testemunha?");
     	    	
     	if (!resposta)
     		return;

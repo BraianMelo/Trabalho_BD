@@ -8,7 +8,7 @@ import modelo.Pesquisador;
 import modelo.enums.ModeloAba;
 import persistencia.PesquisadorDAO;
 
-public class PesquisadorController {
+public class PesquisadorController extends Controller{
 	
 	
 	 private MenuController menuController;
@@ -36,6 +36,12 @@ public class PesquisadorController {
 	
 	@FXML
 	private void onBtnExcluirAction() {
+		boolean resposta = mostrarAlertaConfirmacao("Quer excluir os dados do pesquisador?");
+		
+		if(!resposta)
+			return;
+		
+		
 		PesquisadorDAO pesquisadorDAO = new PesquisadorDAO();
 		pesquisadorDAO.excluir(pesquisador.getIdPesquisador());
 		testemunhaController.carregarPesquisador();
