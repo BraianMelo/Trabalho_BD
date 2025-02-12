@@ -12,14 +12,17 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane xmlns="http://javafx.com/javafx/21.0.5" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controle.TestemunhaController">
+<Pane maxWidth="650.0" minWidth="650.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/21.0.5" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controle.TestemunhaController">
    <children>
-      <VBox fx:id="vboxTestemunha" alignment="TOP_CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="600.0">
+      <VBox fx:id="vboxTestemunha" alignment="TOP_CENTER" maxWidth="650.0" minWidth="650.0" prefWidth="650.0">
          <children>
             <Separator prefWidth="200.0">
                <VBox.margin>
-                  <Insets left="50.0" right="50.0" />
+                  <Insets />
                </VBox.margin>
+               <padding>
+                  <Insets left="50.0" right="50.0" />
+               </padding>
             </Separator>
             <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="15.0">
                <children>
@@ -34,6 +37,9 @@
                      </font>
                   </Label>
                </children>
+               <padding>
+                  <Insets left="50.0" right="50.0" />
+               </padding>
             </HBox>
             <HBox prefHeight="40.0" spacing="15.0">
                <children>
@@ -50,9 +56,6 @@
                            </font>
                         </Label>
                      </children>
-                     <padding>
-                        <Insets left="50.0" right="50.0" />
-                     </padding>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="40.0" prefWidth="300.0" spacing="10.0">
                      <children>
@@ -72,6 +75,9 @@
                <VBox.margin>
                   <Insets />
                </VBox.margin>
+               <padding>
+                  <Insets left="50.0" right="50.0" />
+               </padding>
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0" spacing="15.0">
                <children>
@@ -86,12 +92,12 @@
                      </font>
                   </Label>
                </children>
-               <padding>
-                  <Insets left="50.0" right="50.0" />
-               </padding>
                <VBox.margin>
                   <Insets />
                </VBox.margin>
+               <padding>
+                  <Insets left="50.0" right="50.0" />
+               </padding>
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0" spacing="15.0">
                <children>
@@ -106,12 +112,12 @@
                      </font>
                   </Label>
                </children>
-               <padding>
-                  <Insets left="50.0" right="50.0" />
-               </padding>
                <VBox.margin>
                   <Insets />
                </VBox.margin>
+               <padding>
+                  <Insets left="50.0" right="50.0" />
+               </padding>
             </HBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="610.0" spacing="10.0">
                <children>

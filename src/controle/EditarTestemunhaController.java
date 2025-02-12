@@ -1,13 +1,11 @@
 package controle;
 
-import app.Aplicacao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import modelo.Testemunha;
 import modelo.enums.Genero;
@@ -21,7 +19,6 @@ public class EditarTestemunhaController extends Controller{
 	private MenuController menuController;
 	private Testemunha testemunha;
 	private Integer idAvistamento;
-	private ModeloAba modelo;
 	
 	@FXML
 	private TextField txtfNome;
@@ -44,25 +41,23 @@ public class EditarTestemunhaController extends Controller{
 	@FXML
 	private ImageView imgBotao;
 	
-	public void setDados(Testemunha testemunha, Integer idAvistamento,  ModeloAba modelo,  AvistamentoController sightingPaneController, MenuController menuViewController) {
+	public void setDados(Testemunha testemunha, Integer idAvistamento,  ModeloAba modeloAba,  AvistamentoController sightingPaneController, MenuController menuViewController) {
 		this.menuController = menuViewController;
 		this.avistamentoController = sightingPaneController;
 		this.idAvistamento = idAvistamento;
 		this.testemunha = testemunha;
-		this.modelo = modelo;
+		this.modeloAba = modeloAba;
 		
-		if(modelo.equals(ModeloAba.ADICIONAR)) {
-			Image icone = new Image(Aplicacao.class.getResourceAsStream("/visao/imagens/Icone_Adicionar.png"));
-			imgBotao.setImage(icone);
-			return;
-			
-		}
+		setImagemBotao(imgBotao);
 		
 		setTextField(txtfNome, testemunha.getNome());
 		setTextField(txtfSobrenome, testemunha.getSobrenome());
 		txtfIdade.setText(Integer.toString(testemunha.getIdade()));
 		setTextField(txtfEmail, testemunha.getEmail());
 		setTextField(txtfTelefone, testemunha.getTelefone());
+		
+		if(testemunha.getGenero() == null)
+			testemunha.setGenero(Genero.M);
 		
 		switch(testemunha.getGenero()) {
 			case M:
@@ -128,12 +123,12 @@ public class EditarTestemunhaController extends Controller{
 		TestemunhaDAO testemunhaDAO = new TestemunhaDAO();
 		AvistamentoTestemunhaDAO atDAO = new AvistamentoTestemunhaDAO();
 		
-		if(modelo.equals(ModeloAba.ADICIONAR)) {
-			testemunhaDAO.inserirTestemunha(testemunha);
+		if(modeloAba.equals(ModeloAba.ADICIONAR)) {
+			testemunhaDAO.inserir(testemunha);
 			atDAO.inserirRelacao(idAvistamento, testemunha.getIdTestemunha());
 			
 		} else {
-			testemunhaDAO.atualizarTestemunha(testemunha);
+			testemunhaDAO.atualizar(testemunha);
 		}
 		
 		avistamentoController.carregarGrid();

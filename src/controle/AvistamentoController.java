@@ -124,7 +124,7 @@ public class AvistamentoController extends Controller {
         
         for(Integer idTestemunha: idsTestemunhas) {
         	atDAO.excluirRelacao(avistamento.getIdAvistamento(), idTestemunha);
-        	testemunhaDAO.excluirTestemunha(idTestemunha);
+        	testemunhaDAO.excluir(idTestemunha);
         }
         
         infoCriptideoController.carregarGridAvistamentos();

@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 public class CriptideoAvistamentoDAO {
 
-    // Buscar o ID de Avistamento com base no ID do Criptídeo
 	public List<Integer> buscarIdsAvistamentosPorCriptideo(int idCriptideo) {
 		String sql = "SELECT ID_Avistamento " +
 					 "FROM Criptideo_Avistamento " +
@@ -30,9 +29,6 @@ public class CriptideoAvistamentoDAO {
 		return idsAvistamentos;
 	}
 
-
-
-    // Inserir um novo relacionamento Criptídeo-Avistamento
     public void inserirRelacao(int idCriptideo, int idAvistamento) {
         String sql = "INSERT INTO Criptideo_Avistamento (ID_Criptideo, ID_Avistamento) VALUES (?, ?)";
 
@@ -47,7 +43,6 @@ public class CriptideoAvistamentoDAO {
         }
     }
 
-    // Excluir um relacionamento Criptídeo-Avistamento
     public void excluirRelacao(int idCriptideo, int idAvistamento) {
         String sql = "DELETE FROM Criptideo_Avistamento WHERE ID_Criptideo = ? AND ID_Avistamento = ?";
 

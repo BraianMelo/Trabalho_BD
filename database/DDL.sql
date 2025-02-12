@@ -5,7 +5,7 @@ CREATE TABLE Criptideo (
     ID_Criptideo SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
     Nome VARCHAR(100) NOT NULL,
     Descricao TEXT,
-    Tipo ENUM('VOADOR', 'TERRESTRE', 'AQUATICO') DEFAULT 'TERRESTRE',
+    Tipo ENUM('AEREO', 'TERRESTRE', 'AQUATICO') DEFAULT 'TERRESTRE',
     Status_cr ENUM('CONFIRMADO', 'AVISTADO') DEFAULT 'AVISTADO',
     Imagem_Caminho VARCHAR(500)
 );
@@ -39,7 +39,7 @@ CREATE TABLE Pesquisador (
     ID_Pesquisador SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
     ID_Testemunha SMALLINT UNSIGNED NOT NULL,
     Area_Atuacao VARCHAR(100) NOT NULL,
-    Instituicao VARCHAR(100),
+    Instituicao VARCHAR(100) NOT NULL,
     FOREIGN KEY (ID_Testemunha) REFERENCES Testemunha(ID_Testemunha) ON DELETE CASCADE
 );
 
@@ -54,9 +54,10 @@ CREATE TABLE Avistamento_Testemunha (
 CREATE TABLE Criptideo_Confirmado (
     ID_Confirmado SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
     ID_Criptideo SMALLINT UNSIGNED NOT NULL,
-    Nome_Cientifico VARCHAR(100),
+    Nome_Cientifico VARCHAR(100) NOT NULL,
     Data_Confirmacao DATE NOT NULL,
     Fonte_Confirmacao VARCHAR(200) NOT NULL,
     Observacoes TEXT,
     FOREIGN KEY (ID_Criptideo) REFERENCES Criptideo(ID_Criptideo) ON DELETE CASCADE
 );
+

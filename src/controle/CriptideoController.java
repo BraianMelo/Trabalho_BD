@@ -115,7 +115,7 @@ public class CriptideoController extends Controller{
 			        
 			        for(Integer idTestemunha: idsTestemunhas) {
 			        	atDAO.excluirRelacao(idAvistamento, idTestemunha);
-			        	testemunhaDAO.excluirTestemunha(idTestemunha);
+			        	testemunhaDAO.excluir(idTestemunha);
 			        }
 			        
 			        avistamentoDAO.excluir(idAvistamento);

@@ -23,7 +23,7 @@ import persistencia.AvistamentoDAO;
 import persistencia.CriptideoAvistamentoDAO;
 import persistencia.CriptideoConfirmadoDAO;
 
-public class InformacoesCriptideoController {
+public class InformacoesCriptideoController extends Controller {
 	
 	private MenuController menuController;
 	private Criptideo criptideo;
@@ -77,14 +77,7 @@ public class InformacoesCriptideoController {
         imagemRedonda.setClip(clip); // Aplica o recorte arredondado na imagem
     }
     
-    // Método auxiliar para formatar o texto do Enum
-    private String formatarEnum(String texto) {
-        if (texto == null || texto.isEmpty())
-            return texto;
-        
-        return texto.substring(0, 1).toUpperCase() + texto.substring(1).toLowerCase();
-    }
-    
+
     private void adiocionarCriptideo(Criptideo criptideo){
 		lblNome.setText(criptideo.getNome());
         lblTipo.setText(formatarEnum(criptideo.getTipo().toString()));

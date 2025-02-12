@@ -12,12 +12,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="panePrincipal" minWidth="650.0" xmlns="http://javafx.com/javafx/21.0.5" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controle.AvistamentoController">
-    <VBox alignment="TOP_CENTER" prefWidth="650.0" spacing="5.0">
+<Pane fx:id="panePrincipal" maxWidth="650.0" minWidth="650.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/21.0.5" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controle.AvistamentoController">
+    <VBox alignment="TOP_CENTER" maxWidth="650.0" minWidth="650.0" prefWidth="650.0" spacing="5.0">
         <children>
-         <Separator prefWidth="200.0">
+         <Separator>
             <VBox.margin>
-               <Insets left="20.0" right="20.0" />
+               <Insets />
             </VBox.margin>
          </Separator>
             <Label fx:id="lblAvistamento" alignment="CENTER" prefHeight="40.0" prefWidth="650.0" styleClass="lbl-titulo" text="Avistamanetos">
@@ -39,8 +39,11 @@
                </Label>
             </children>
             <VBox.margin>
-               <Insets left="30.0" right="30.0" />
+               <Insets />
             </VBox.margin>
+            <padding>
+               <Insets left="10.0" right="10.0" />
+            </padding>
          </HBox>
          <HBox alignment="CENTER_LEFT" prefHeight="40.0" spacing="15.0">
             <children>
@@ -56,8 +59,11 @@
                </Label>
             </children>
             <VBox.margin>
-               <Insets left="30.0" right="30.0" />
+               <Insets />
             </VBox.margin>
+            <padding>
+               <Insets left="10.0" right="10.0" />
+            </padding>
          </HBox>
          <HBox alignment="CENTER_LEFT" prefHeight="40.0" spacing="15.0">
             <children>
@@ -73,8 +79,11 @@
                </Label>
             </children>
             <VBox.margin>
-               <Insets left="30.0" right="30.0" />
+               <Insets />
             </VBox.margin>
+            <padding>
+               <Insets left="10.0" right="10.0" />
+            </padding>
          </HBox>
          <HBox alignment="CENTER_RIGHT" prefHeight="40.0" spacing="10.0">
             <children>
@@ -140,7 +149,7 @@
                <Insets />
             </opaqueInsets>
             <VBox.margin>
-               <Insets right="20.0" />
+               <Insets />
             </VBox.margin>
          </HBox>
          <Label fx:id="lblAvistamento1" alignment="CENTER" prefHeight="40.0" prefWidth="650.0" styleClass="lbl-titulo" text="Testemunhas:">
@@ -148,7 +157,7 @@
                <Font name="DejaVu Sans Bold" size="21.0" />
             </font>
          </Label>
-         <VBox fx:id="vboxGrid" alignment="TOP_CENTER" prefWidth="700.0" spacing="10.0">
+         <VBox fx:id="vboxGrid" alignment="TOP_CENTER" spacing="10.0">
             <padding>
                <Insets left="10.0" right="10.0" top="5.0" />
             </padding>
@@ -159,7 +168,7 @@
          
         </children>
         <padding>
-            <Insets left="10.0" top="10.0" />
+            <Insets bottom="10.0" left="30.0" right="30.0" top="10.0" />
         </padding>
     </VBox>
 </Pane>

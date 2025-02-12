@@ -143,7 +143,7 @@ public class TestemunhaController extends Controller {
     		return;
     	
 		TestemunhaDAO testemunhaDAO = new TestemunhaDAO();
-		testemunhaDAO.excluirTestemunha(testemunha.getIdTestemunha());
+		testemunhaDAO.excluir(testemunha.getIdTestemunha());
 		
 		AvistamentoTestemunhaDAO atDAO = new AvistamentoTestemunhaDAO();
 		atDAO.excluirRelacao(idAvistamento, testemunha.getIdTestemunha());

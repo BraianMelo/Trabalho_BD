@@ -128,7 +128,7 @@
                      <Insets />
                   </opaqueInsets>
                   <padding>
-                     <Insets left="70.0" right="70.0" />
+                     <Insets left="50.0" right="50.0" />
                   </padding>
                </HBox>
                <VBox fx:id="vboxCriptideoReal" alignment="TOP_CENTER" minWidth="700.0" spacing="10.0">

@@ -1,6 +1,5 @@
 package controle;
 
-import app.Aplicacao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert.AlertType;
@@ -8,7 +7,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import modelo.Criptideo;
 import modelo.enums.ModeloAba;
@@ -20,7 +18,6 @@ public class EditarCriptideoController extends Controller {
 	
 	private MenuController menuController;
 	private Criptideo criptideo;
-	private ModeloAba modelo;
 
     @FXML
     private TextField txtfNomeCriptideo;
@@ -43,21 +40,25 @@ public class EditarCriptideoController extends Controller {
 	@FXML
 	private ImageView imgBotao;
     
-	public void setDados(Criptideo criptideo, ModeloAba modelo, MenuController menuController) {
+	public void setDados(Criptideo criptideo, ModeloAba modeloAba, MenuController menuController) {
 		this.menuController = menuController;
 		this.criptideo = criptideo;
-		this.modelo = modelo;
+		this.modeloAba = modeloAba;
 		
-		if(modelo.equals(ModeloAba.ADICIONAR)) {
-			Image icone = new Image(Aplicacao.class.getResourceAsStream("/visao/imagens/Icone_Adicionar.png"));
-			imgBotao.setImage(icone);
-			return;
-		}
+		setImagemBotao(imgBotao);
 		
 		setTextField(txtfNomeCriptideo, criptideo.getNome());
 		setTextField(txtfDescricao, criptideo.getDescricao());
 		setTextField(txtfCaminhoFoto, criptideo.getImagemCaminho());
+		
+		if(criptideo.getStatusCr() == null) {
+			criptideo.setStatusCr(StatusCriptideo.AVISTADO);
+		}
 		selecionarMenuItem(mbtnStatus, criptideo.getStatusCr().ordinal());
+		
+		if(criptideo.getTipo() == null) {
+			criptideo.setTipo(Tipo.TERRESTRE);
+		}
 		selecionarMenuItem(mbtnTipo, criptideo.getTipo().ordinal());
 	}
 	
@@ -98,7 +99,7 @@ public class EditarCriptideoController extends Controller {
         
         CriptideoDAO criptideoDAO = new CriptideoDAO();
         
-        if(modelo.equals(ModeloAba.ADICIONAR)) {
+        if(modeloAba.equals(ModeloAba.ADICIONAR)) {
         	criptideoDAO.inserir(criptideo);
         	menuController.addCriptideoAlterado(criptideo.getIdCriptideo());
         	

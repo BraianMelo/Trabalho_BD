@@ -16,8 +16,7 @@ Trabalho_BD/
 │   │   └── estilos/  # Estilos visuais
 │   ├── modelo/       # Dados e regras de negócio
 │   │   └── enums/    # Enumerações
-│   ├── persistencia/ # Acesso a dados (JDBC, DAOs)
-│   └── util/         # Utilitários gerais
+│   └──  persistencia/ # Acesso a dados (JDBC, DAOs)
 ├── Makefile          # Automação de compilação e execução
 ├── README.md         # Documentação do projeto
 └── .gitignore        # Arquivos ignorados pelo Git

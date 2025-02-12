@@ -9,8 +9,7 @@ import java.util.List;
 
 public class TestemunhaDAO {
 
-    // Inserir uma nova Testemunha
-    public void inserirTestemunha(Testemunha testemunha) {
+    public void inserir(Testemunha testemunha) {
         String sql = "INSERT INTO Testemunha (Nome, Sobrenome, Idade, Genero, Email, Telefone) " +
                      "VALUES (?, ?, ?, ?, ?, ?)";
 
@@ -37,8 +36,7 @@ public class TestemunhaDAO {
         }
     }
 
-    // Atualizar uma Testemunha existente
-    public void atualizarTestemunha(Testemunha testemunha) {
+    public void atualizar(Testemunha testemunha) {
         String sql = "UPDATE Testemunha SET Nome = ?, Sobrenome = ?, Idade = ?, Genero = ?, " +
                      "Email = ?, Telefone = ? WHERE ID_Testemunha = ?";
 
@@ -59,8 +57,7 @@ public class TestemunhaDAO {
         }
     }
 
-    // Excluir uma Testemunha
-    public void excluirTestemunha(int idTestemunha) {
+    public void excluir(int idTestemunha) {
         String sql = "DELETE FROM Testemunha WHERE ID_Testemunha = ?";
 
         try (Connection conn = ConexaoBD.getConexao();
@@ -73,7 +70,6 @@ public class TestemunhaDAO {
         }
     }
 
-    // Buscar uma Testemunha pelo ID
     public Testemunha buscarTestemunhaPorId(int idTestemunha) {
         String sql = "SELECT * FROM Testemunha WHERE ID_Testemunha = ?";
         Testemunha testemunha = null;
@@ -102,8 +98,7 @@ public class TestemunhaDAO {
         return testemunha;
     }
 
-    // Buscar todas as Testemunhas
-    public List<Testemunha> buscarTodasTestemunhas() {
+    public List<Testemunha> listarTodos() {
         String sql = "SELECT * FROM Testemunha";
         List<Testemunha> testemunhas = new ArrayList<>();
 

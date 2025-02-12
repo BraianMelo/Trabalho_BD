@@ -8,7 +8,6 @@ import modelo.Avistamento;
 
 public class AvistamentoDAO {
 
-    // Inserir um novo avistamento no banco de dados
     public void inserir(Avistamento avistamento) {
         String sql = "INSERT INTO Avistamento (Local_Av, Pais, Data_Av) VALUES (?, ?, ?)";
 
@@ -32,7 +31,6 @@ public class AvistamentoDAO {
         }
     }
 
-    // Atualizar um avistamento existente no banco de dados
     public void atualizar(Avistamento avistamento) {
         String sql = "UPDATE Avistamento SET Local_Av = ?, Pais = ?, Data_Av = ? WHERE ID_Avistamento = ?";
 
@@ -50,7 +48,6 @@ public class AvistamentoDAO {
         }
     }
 
-    // Excluir um avistamento do banco de dados
     public void excluir(int idAvistamento) {
         String sql = "DELETE FROM Avistamento WHERE ID_Avistamento = ?";
 
@@ -64,7 +61,6 @@ public class AvistamentoDAO {
         }
     }
 
-    // Consultar um avistamento por ID
     public Avistamento consultarPorId(int idAvistamento) {
         String sql = "SELECT * FROM Avistamento WHERE ID_Avistamento = ?";
         Avistamento avistamento = null;
@@ -90,7 +86,6 @@ public class AvistamentoDAO {
         return avistamento;
     }
 
-    // Listar todos os avistamentos do banco de dados
     public List<Avistamento> listarTodos() {
         String sql = "SELECT * FROM Avistamento";
         List<Avistamento> avistamentos = new ArrayList<>();

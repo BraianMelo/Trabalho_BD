@@ -1,10 +1,8 @@
 package controle;
 
-import app.Aplicacao;
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.image.Image;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import modelo.Pesquisador;
 import modelo.enums.ModeloAba;
@@ -15,7 +13,6 @@ public class EditarPesquisadorController extends Controller{
 	private TestemunhaController testemunhaController;
 	private MenuController menuController;
 	private Pesquisador pesquisador;
-	private ModeloAba modelo;
 	
 	@FXML
 	private TextField txtfAreaAtuacao;
@@ -26,19 +23,13 @@ public class EditarPesquisadorController extends Controller{
 	@FXML
 	private ImageView imgBotao;
 	
-	public void setDados(Pesquisador pesquisador, ModeloAba modelo, TestemunhaController testemunhaController, MenuController menuViewController) {
+	public void setDados(Pesquisador pesquisador, ModeloAba modeloAba, TestemunhaController testemunhaController, MenuController menuViewController) {
 		this.menuController = menuViewController;
 		this.testemunhaController = testemunhaController;
 		this.pesquisador = pesquisador;
-
-		this.modelo = modelo;
+		this.modeloAba = modeloAba;
 		
-		if(modelo.equals(ModeloAba.ADICIONAR)) {
-			Image icone = new Image(Aplicacao.class.getResourceAsStream("/visao/imagens/Icone_Adicionar.png"));
-			imgBotao.setImage(icone);
-			return;
-			
-		}
+		setImagemBotao(imgBotao);
 		
 		setTextField(txtfAreaAtuacao, pesquisador.getAreaAtuacao());
 		setTextField(txtfInstituicao, pesquisador.getInstituicao());
@@ -60,7 +51,7 @@ public class EditarPesquisadorController extends Controller{
 		
 		PesquisadorDAO pesquisadorDAO = new PesquisadorDAO();
 		
-		if(modelo.equals(ModeloAba.ADICIONAR)) {
+		if(modeloAba.equals(ModeloAba.ADICIONAR)) {
 			pesquisadorDAO.inserir(pesquisador);
 			
 		} else {

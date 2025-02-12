@@ -10,14 +10,14 @@ INSERT INTO Criptideo (Nome, Descricao, Tipo, Status_cr, Imagem_Caminho) VALUES
 ('Yeti', 'Uma Criatura que vive no Himalaia.', 'TERRESTRE', 'AVISTADO', '/home/braian/Documentos/Workspace/Java/Gedit/Trabalho_BD/database/imagens/Yeti.jpeg'),
 ('Ornitorrinco', 'Um mamífero que bota ovo.', 'TERRESTRE', 'CONFIRMADO', '/home/braian/Documentos/Workspace/Java/Gedit/Trabalho_BD/database/imagens/Onitorrinco.jpeg'),
 ('Monstro do lago Ness', 'Uma criptídeo aquático que habita o lago Ness.', 'AQUATICO', 'AVISTADO', '/home/braian/Documentos/Workspace/Java/Gedit/Trabalho_BD/database/imagens/Monstro_Lago_Ness.jpeg'),
-('Homem-mariposa', 'Uma criatura voadora humaniode.', 'VOADOR', 'AVISTADO', '/home/braian/Documentos/Workspace/Java/Gedit/Trabalho_BD/database/imagens/Homem_Mariposa.jpeg'),
+('Homem-mariposa', 'Uma criatura voadora humaniode.', 'AEREO', 'AVISTADO', '/home/braian/Documentos/Workspace/Java/Gedit/Trabalho_BD/database/imagens/Homem_Mariposa.jpeg'),
 ('Celacanto', 'Peixe pré-histórico considerado extinto até 1938.', 'AQUATICO', 'CONFIRMADO', '/home/braian/Documentos/Workspace/Java/Gedit/Trabalho_BD/database/imagens/Celacanto.png'),
 ('Kraken', 'Monstro marinho que ataca navios.', 'AQUATICO', 'AVISTADO', '/home/braian/Documentos/Workspace/Java/Gedit/Trabalho_BD/database/imagens/Kraken.jpg'),
 ('Ocapi', 'Uma criatura que é uma mistura de girafa e zebra.', 'TERRESTRE', 'CONFIRMADO', '/home/braian/Documentos/Workspace/Java/Gedit/Trabalho_BD/database/imagens/Ocapi.jpg'),
 ('Mokele-Mbembe', 'Um dinossauro aquático no Congo.', 'AQUATICO', 'AVISTADO', '/home/braian/Documentos/Workspace/Java/Gedit/Trabalho_BD/database/imagens/mokele-mbembe.png'),
 ('Mapinguari', 'Um bípede parecido com macaco que viva na amazônia.', 'TERRESTRE', 'AVISTADO', '/home/braian/Documentos/Workspace/Java/Gedit/Trabalho_BD/database/imagens/Mapinguari.jpg'),
 ('Minhocão', 'Um verme ou cobra gigante que vive em rios e lagos.', 'TERRESTRE', 'AVISTADO', '/home/braian/Documentos/Workspace/Java/Gedit/Trabalho_BD/database/imagens/Minhocao.jpg'),
-('Ropen', 'Um pterossauro vivo.', 'VOADOR', 'AVISTADO', '/home/braian/Documentos/Workspace/Java/Gedit/Trabalho_BD/database/imagens/Ropen.jpeg'),
+('Ropen', 'Um pterossauro vivo.', 'AEREO', 'AVISTADO', '/home/braian/Documentos/Workspace/Java/Gedit/Trabalho_BD/database/imagens/Ropen.jpeg'),
 ('Lula-Gigante', 'Uma espécie gigantesca de lula que vive nas profundidades.', 'AQUATICO', 'CONFIRMADO', '/home/braian/Documentos/Workspace/Java/Gedit/Trabalho_BD/database/imagens/Lula_Gigante.jpg');
 
 INSERT INTO Avistamento (Local_Av, Pais, Data_Av) VALUES

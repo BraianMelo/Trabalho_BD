@@ -18,24 +18,26 @@ public class Aplicacao extends Application {
 	private static final boolean REDIMENSIONAVEL = false;
 	
     public static void main(String[] args) {
-        launch(args);  
-        System.out.println("Aplicação encerrada!");
+    	try {
+			Connection conexao = ConexaoBD.getConexao();
+			launch(args);  
+			
+    	} catch (SQLException e) {
+			e.printStackTrace();
+			
+		} finally {
+			ConexaoBD.fecharConexao();
+		}
     }
 
     @Override
     public void start(Stage stage) {
-        try {
-            Connection conexao = ConexaoBD.getConexao();
-            
-            abrirJanela(
-            		"/visao/MenuVisao.fxml", 
-            		"/visao/estilos/MenuVisaoModoEscuro.css", 
-            		"SGBD: Criptozoologia", 
-            		"/visao/imagens/Icone_Aplicativo.png");
-            
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    	abrirJanela(
+    			"/visao/MenuVisao.fxml", 
+            	"/visao/estilos/MenuVisaoModoEscuro.css", 
+            	"SGBD: Criptozoologia", 
+            	"/visao/imagens/Icone_Aplicativo.png");
+
     }
     
 	public static void abrirJanela(String caminhoFXML, String caminhoCss, String titulo, String iconePath) {
@@ -69,11 +71,6 @@ public class Aplicacao extends Application {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-		
-	@Override
-	public void stop() {
-	   ConexaoBD.fecharConexao();
 	}
 }
 
