@@ -36,7 +36,7 @@ public class PesquisadorController extends Controller{
 	
 	@FXML
 	private void onBtnExcluirAction() {
-		boolean resposta = mostrarAlertaConfirmacao("Quer excluir os dados do pesquisador?");
+		boolean resposta = alertaController.mostrarAlertaConfirmacao("Quer excluir os dados do pesquisador?");
 		
 		if(!resposta)
 			return;

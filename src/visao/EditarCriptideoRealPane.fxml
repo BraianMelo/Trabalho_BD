@@ -19,7 +19,7 @@
          <children>
             <VBox alignment="TOP_CENTER" prefWidth="700.0" spacing="10.0">
                <children>
-                  <Label fx:id="lblNome" alignment="CENTER" prefHeight="40.0" prefWidth="650.0" styleClass="lbl-titulo" text="Confirmar">
+                  <Label fx:id="lblTitulo" alignment="CENTER" prefHeight="40.0" prefWidth="650.0" styleClass="lbl-titulo" text="Confirmar">
                      <font>
                         <Font name="DejaVu Sans Bold" size="20.0" />
                      </font>

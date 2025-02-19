@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
@@ -14,10 +15,13 @@ import modelo.enums.StatusCriptideo;
 import modelo.enums.Tipo;
 import persistencia.CriptideoDAO;
 
-public class EditarCriptideoController extends Controller {
+public class EditarCriptideoController extends EditarController {
 	
 	private MenuController menuController;
 	private Criptideo criptideo;
+	
+	@FXML
+	private Label lblTitulo;
 
     @FXML
     private TextField txtfNomeCriptideo;
@@ -46,6 +50,7 @@ public class EditarCriptideoController extends Controller {
 		this.modeloAba = modeloAba;
 		
 		setImagemBotao(imgBotao);
+		setLblTitulo(lblTitulo, "Criptídeo");
 		
 		setTextField(txtfNomeCriptideo, criptideo.getNome());
 		setTextField(txtfDescricao, criptideo.getDescricao());
@@ -86,7 +91,7 @@ public class EditarCriptideoController extends Controller {
     private void onBtnSalvarAction(ActionEvent event) {
     	
         if(textFieldVazio(txtfNomeCriptideo)) {
-        	mostrarAlerta(AlertType.ERROR, "Campo vazio!",
+        	alertaController.mostrarAlerta(AlertType.ERROR, "Campo vazio!",
         			"O campo 'nome' não pode ficar vazio");
         	return;
         }
@@ -103,7 +108,7 @@ public class EditarCriptideoController extends Controller {
         	criptideoDAO.inserir(criptideo);
         	menuController.addCriptideoAlterado(criptideo.getIdCriptideo());
         	
-        	mostrarAlerta(AlertType.WARNING,
+        	alertaController.mostrarAlerta(AlertType.WARNING,
         			"Criptideo adicionado!", 
         			"Caso você não adicione nenhum avistamento e nenhuma\n"
         			+ "testemunha ao criptídeo, ele será apagado!");

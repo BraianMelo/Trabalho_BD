@@ -42,7 +42,7 @@ public class CriptideoRealController extends Controller{
     
     @FXML
     private void onBtnExcluirAction() {
-    	boolean resposta = mostrarAlertaConfirmacao("Quer mesmo apagar os dados de confirmação?");
+    	boolean resposta = alertaController.mostrarAlertaConfirmacao("Quer mesmo apagar os dados de confirmação?");
     	
     	if (!resposta)
     		return;

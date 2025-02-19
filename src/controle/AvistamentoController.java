@@ -109,7 +109,7 @@ public class AvistamentoController extends Controller {
     @FXML
     private void onBtnExcluirAction() {
         	
-    	boolean resposta = mostrarAlertaConfirmacao("Quer mesmo apagar esse avistamento?");
+    	boolean resposta = alertaController.mostrarAlertaConfirmacao("Quer mesmo apagar esse avistamento?");
     	    	
     	if (!resposta)
     		return;

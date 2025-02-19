@@ -20,7 +20,7 @@
          <children>
             <VBox prefHeight="440.0" prefWidth="660.0" spacing="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="40.0" prefWidth="642.0" styleClass="lbl-titulo" text="Editar Criptideo">
+                  <Label fx:id="lblTitulo" alignment="CENTER" prefHeight="40.0" prefWidth="642.0" styleClass="lbl-titulo" text="Editar Criptideo">
                      <font>
                         <Font name="DejaVu Sans Bold" size="18.0" />
                      </font>

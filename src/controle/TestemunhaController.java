@@ -137,7 +137,7 @@ public class TestemunhaController extends Controller {
 	@FXML
 	private void onBtnExcluirAction() {
 
-    	boolean resposta = mostrarAlertaConfirmacao("Quer mesmo apagar essa testemunha?");
+    	boolean resposta = alertaController.mostrarAlertaConfirmacao("Quer mesmo apagar essa testemunha?");
     	    	
     	if (!resposta)
     		return;

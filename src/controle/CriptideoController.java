@@ -98,7 +98,7 @@ public class CriptideoController extends Controller{
     
     @FXML
     private void onBtnExcluirAction() {
-		boolean resposta =  mostrarAlertaConfirmacao("Excluir "+criptideo.getNome()); 
+		boolean resposta =  alertaController.mostrarAlertaConfirmacao("Excluir "+criptideo.getNome()); 
         
 		if (resposta) {
 				CriptideoDAO criptideoDAO = new CriptideoDAO();
@@ -125,7 +125,7 @@ public class CriptideoController extends Controller{
 				
 				
 				menuController.carregarGridCriptideos();
-				mostrarAlerta(AlertType.INFORMATION, 
+				alertaController.mostrarAlerta(AlertType.INFORMATION, 
 						"Criptídeo apagado", 
 						"O criptídeo foi apagado");
         } 

@@ -3,6 +3,7 @@ package controle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
@@ -13,12 +14,15 @@ import modelo.enums.ModeloAba;
 import persistencia.AvistamentoTestemunhaDAO;
 import persistencia.TestemunhaDAO;
 
-public class EditarTestemunhaController extends Controller{
+public class EditarTestemunhaController extends EditarController{
 	
 	private AvistamentoController avistamentoController;
 	private MenuController menuController;
 	private Testemunha testemunha;
 	private Integer idAvistamento;
+	
+	@FXML
+	private Label lblTitulo; 
 	
 	@FXML
 	private TextField txtfNome;
@@ -49,6 +53,7 @@ public class EditarTestemunhaController extends Controller{
 		this.modeloAba = modeloAba;
 		
 		setImagemBotao(imgBotao);
+		setLblTitulo(lblTitulo, "Testemunha");
 		
 		setTextField(txtfNome, testemunha.getNome());
 		setTextField(txtfSobrenome, testemunha.getSobrenome());
@@ -91,7 +96,7 @@ public class EditarTestemunhaController extends Controller{
 	private void onBtnSalvarAction() {
 		if(textFieldVazio(txtfNome) || textFieldVazio(txtfSobrenome) || textFieldVazio(txtfIdade)) {
 			
-			mostrarAlerta(AlertType.ERROR, 
+			alertaController.mostrarAlerta(AlertType.ERROR, 
 					"Há campos vazios!", 
 					"'Nome', 'Sobrenome', 'Idade' não aceitma campos vazios.");
 			

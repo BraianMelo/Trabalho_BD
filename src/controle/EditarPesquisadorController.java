@@ -2,17 +2,21 @@ package controle;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import modelo.Pesquisador;
 import modelo.enums.ModeloAba;
 import persistencia.PesquisadorDAO;
 
-public class EditarPesquisadorController extends Controller{
+public class EditarPesquisadorController extends EditarController{
 	
 	private TestemunhaController testemunhaController;
 	private MenuController menuController;
 	private Pesquisador pesquisador;
+	
+	@FXML
+	private Label lblTitulo;
 	
 	@FXML
 	private TextField txtfAreaAtuacao;
@@ -30,6 +34,7 @@ public class EditarPesquisadorController extends Controller{
 		this.modeloAba = modeloAba;
 		
 		setImagemBotao(imgBotao);
+		setLblTitulo(lblTitulo, "Pesquisador");
 		
 		setTextField(txtfAreaAtuacao, pesquisador.getAreaAtuacao());
 		setTextField(txtfInstituicao, pesquisador.getInstituicao());
@@ -39,7 +44,7 @@ public class EditarPesquisadorController extends Controller{
 	private void onBtnSalvarAction() {
 		if(textFieldVazio(txtfAreaAtuacao) || textFieldVazio(txtfInstituicao)) {
 			
-			mostrarAlerta(AlertType.ERROR, 
+			alertaController.mostrarAlerta(AlertType.ERROR, 
 					"Há campos vazios!", 
 					"'Area de Atuação' e 'Instituição' não aceitma campos vazios.");
 			

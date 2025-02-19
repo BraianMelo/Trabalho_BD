@@ -3,6 +3,7 @@ package controle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import modelo.Criptideo;
@@ -12,11 +13,14 @@ import modelo.enums.StatusCriptideo;
 import persistencia.CriptideoConfirmadoDAO;
 import persistencia.CriptideoDAO;
 
-public class EditarCriptideoRealController extends Controller{
+public class EditarCriptideoRealController extends EditarController{
 	
 	private MenuController menuController;
 	private InformacoesCriptideoController infoCripController;
 	private CriptideoConfirmado cripConfirmado;
+	
+	@FXML
+	private Label lblTitulo;
 	
 	@FXML
 	private TextField txtfNomeCientifico;
@@ -40,6 +44,7 @@ public class EditarCriptideoRealController extends Controller{
 		this.modeloAba = modeloAba;
 		
 		setImagemBotao(imgBotao);
+		setLblTitulo(lblTitulo, "Criptídeo Real");
 		
 		setTextField(txtfNomeCientifico, cripConfirmado.getNomeCientifico());
 		setTextField(txtfFonte, cripConfirmado.getFonte());
@@ -51,7 +56,7 @@ public class EditarCriptideoRealController extends Controller{
 	private void onBtnSalvarAction() {
 		if(textFieldVazio(txtfNomeCientifico) || textFieldVazio(txtfFonte) ||  dtpDataConfirmacao.getValue().toString() == null) {
 			
-			mostrarAlerta(AlertType.ERROR, 
+			alertaController.mostrarAlerta(AlertType.ERROR, 
 					"Há campos vazios!", 
 					"'Nome cientídico', 'Fonte' e 'Data confirmação' não aceitma campos vazios.");
 			
@@ -79,7 +84,7 @@ public class EditarCriptideoRealController extends Controller{
 			menuController.carregarGridCriptideos();
 			
 
-			mostrarAlerta(AlertType.INFORMATION,
+			alertaController.mostrarAlerta(AlertType.INFORMATION,
 					"Você precisa adicionar um pesquisador ao criptídeo confirmado!",
 					"Caso contrário, o criptídeo confirmado será apagado!");
 			

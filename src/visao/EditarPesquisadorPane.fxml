@@ -15,7 +15,7 @@
    <children>
       <VBox spacing="10.0">
          <children>
-            <Label alignment="CENTER" prefHeight="40.0" prefWidth="642.0" styleClass="lbl-titulo" text="Editar Pesquisador">
+            <Label fx:id="lblTitulo" alignment="CENTER" prefHeight="40.0" prefWidth="642.0" styleClass="lbl-titulo" text="Editar Pesquisador">
                <font>
                   <Font name="DejaVu Sans Bold" size="18.0" />
                </font>

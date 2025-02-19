@@ -139,7 +139,7 @@ public class MenuController extends Controller{
                 Runtime.getRuntime().exec(new String[]{"open", url});
                 
             } else {
-            	mostrarAlerta(AlertType.ERROR,
+            	alertaController.mostrarAlerta(AlertType.ERROR,
             			"Não é possível abrir o link!", 
             			"Sistema operacional não suportado.");
                 
@@ -184,7 +184,7 @@ public class MenuController extends Controller{
                 avistamentoDAO.excluir(idAvistamento);
                 caDAO.excluirRelacao(idCriptideo, idAvistamento);
                 
-                mostrarAlerta(AlertType.INFORMATION,
+                alertaController.mostrarAlerta(AlertType.INFORMATION,
                 		"Avistamento Excluído",
                 		"Você adicionou um avistamento sem nenhuma testemunha. \n"
                 		+ "O avistamento n. "+ idAvistamento +"° do criptídeo n. "+ idCriptideo +"° "
@@ -197,7 +197,7 @@ public class MenuController extends Controller{
         if (caDAO.buscarIdsAvistamentosPorCriptideo(idCriptideo).isEmpty()) {
             criptideoDAO.excluir(idCriptideo);
             
-            mostrarAlerta(AlertType.INFORMATION,
+            alertaController.mostrarAlerta(AlertType.INFORMATION,
             		"Criptídeo Excluído",
             		"Você adicionou um criptídeo sem nenhum avistamento. \n"
                     + "O criptídeo n. "+ idCriptideo +"° foi excluído!");
@@ -233,7 +233,7 @@ public class MenuController extends Controller{
 				criptideo.setStatusCr(StatusCriptideo.AVISTADO);
 				criptideoDAO.atualizar(criptideo);
 				
-				mostrarAlerta(AlertType.INFORMATION,
+				alertaController.mostrarAlerta(AlertType.INFORMATION,
 	            		"Criptídeo Confirmado Excluído",
 	            		"Você confirmou um criptídeo sem nenhum pesquisador envolvido. \n"
 	            		+ "O criptídeo confirmado n. "+ cripConfirmado.getIdConfirmado() +"°"
