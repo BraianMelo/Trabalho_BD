@@ -6,20 +6,20 @@ Este projeto é um sistema de gerenciamento de banco de dados com interface grá
 
 ```
 Trabalho_BD/
-├── database/         # Scripts do banco de dados
-├── bin/              # Arquivos compilados
-├── src/              # Código-fonte do projeto
-│   ├── app/          # Ponto de entrada da aplicação
-│   ├── controle/     # Controladores da interface
-│   ├── visao/        # Interface gráfica
-│   │   ├── imagens/  # Ícones e imagens
-│   │   └── estilos/  # Estilos visuais
-│   ├── modelo/       # Dados e regras de negócio
-│   │   └── enums/    # Enumerações
+├── database/          # Scripts do banco de dados
+├── bin/               # Arquivos compilados
+├── src/               # Código-fonte do projeto
+│   ├── app/           # Ponto de entrada da aplicação
+│   ├── controle/      # Controladores da interface
+│   ├── visao/         # Interface gráfica
+│   │   ├── imagens/   # Ícones e imagens
+│   │   └── estilos/   # Estilos visuais
+│   ├── modelo/        # Dados e regras de negócio
+│   │   └── enums/     # Enumerações
 │   └──  persistencia/ # Acesso a dados (JDBC, DAOs)
-├── Makefile          # Automação de compilação e execução
-├── README.md         # Documentação do projeto
-└── .gitignore        # Arquivos ignorados pelo Git
+├── Makefile           # Automação de compilação e execução
+├── README.md          # Documentação do projeto
+└── .gitignore         # Arquivos ignorados pelo Git
 ```
 
 ## 🛠️ Tecnologias Utilizadas
